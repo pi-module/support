@@ -1,5 +1,48 @@
 <?php $this->css($this->assetModule('css/front.css')); ?>
 <div class="clearfix">
-    <h3><?php echo $this->escape($title); ?></h3>
-    <?php echo $this->form($form); ?>
+    <div class="page-header">
+        <h1><?php echo $this->escape($title); ?></h1>
+    </div>
+    <div class="col-md-3">
+        <?php include $this->templateModule('front/user-profile-sidebar.phtml', 'user'); ?>
+    </div>
+    <div class="col-md-9">
+        <?php if (isset($ticket) && !empty($ticket)) { ?>
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                    <div class="pull-left">
+                        <?php echo $ticket['user']['avatar']; ?>
+                        <?php echo $this->escape($ticket['user']['name']); ?>
+                    </div>
+                    <div class="pull-right">
+                        <?php echo $this->escape($ticket['time_create_view']); ?>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <?php echo $ticket['message']; ?>
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (isset($tickets) && !empty($tickets)) { ?>
+            <?php foreach ($tickets as $ticket) { ?>
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <div class="pull-left">
+                            <?php echo $ticket['user']['avatar']; ?>
+                            <?php echo $this->escape($ticket['user']['name']); ?>
+                        </div>
+                        <div class="pull-right">
+                            <?php echo $this->escape($ticket['time_create_view']); ?>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <?php echo $ticket['message']; ?>
+                    </div>
+                </div>
+            <?php } ?>
+        <?php } ?>
+        <div class="well">
+            <?php echo $this->form($form, 'vertical'); ?>
+        </div>
+    </div>
 </div>

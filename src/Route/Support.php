@@ -54,19 +54,17 @@ class Support extends Standard
         if (isset($matches['controller'])) {
             switch ($matches['controller']) {
                 case 'ticket':
-                    //$matches['id'] = intval($parts[1]);
-                    break;
-
-                case 'index':
-
+                    if (isset($parts[1]) && is_numeric($parts[1])) {
+                        $matches['id'] = intval($parts[1]);
+                    }
                     break;
             }
         }
 
-        echo '<pre>';
+        /* echo '<pre>';
         print_r($parts);
         print_r($matches);
-        echo '</pre>';
+        echo '</pre>'; */
 
         return $matches;
     }
