@@ -10,19 +10,16 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+namespace Module\Support\Model;
 
-namespace Module\Support\Controller\Admin;
+use Pi\Application\Model\Model;
 
-use Pi;
-use Pi\Mvc\Controller\ActionController;
-
-class IndexController extends ActionController
+class Ticket extends Model
 {
-    public function indexAction()
-    {
-        return $this->redirect()->toRoute('', array(
-            'controller' => 'ticket',
-            'action' => 'index',
-        ));
-    }
+    /**
+     * {@inheritDoc}
+     */
+    protected $columns = array(
+        'id', 'subject', 'message', 'uid', 'status', 'time_create', 'ip', 'mid',
+    );
 }
