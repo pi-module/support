@@ -38,6 +38,8 @@ class Ticket extends AbstractApi
         }
         // object to array
         $ticket = $ticket->toArray();
+        // Set message
+        $ticket['message'] = Pi::service('markup')->render($ticket['message'], 'html', 'text');
         // Set item url
         $ticket['ticketUrl'] = Pi::url(Pi::service('url')->assemble('support', array(
             'module' => $this->getModule(),

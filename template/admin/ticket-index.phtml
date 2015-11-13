@@ -1,0 +1,62 @@
+<?php $this->css($this->assetModule('css/admin.css')); ?>
+<div class="clearfix">
+    <?php if (!empty($tickets)) { ?>
+        <table class="table table-striped table-bordered table-condensed">
+            <tr>
+                <th><?php _e('ID'); ?></th>
+                <th><?php _e('User'); ?></th>
+                <th><?php _e('Title'); ?></th>
+                <th class="text-center"><?php _e('Status'); ?></th>
+                <th class="text-center"><?php _e('Action'); ?></th>
+            </tr>
+            <?php foreach ($tickets as $ticket) { ?>
+                <tr>
+                    <td class="text-center"><?php echo $this->escape($ticket['id']); ?></td>
+                    <td>
+                        <a data-toggle="modal" data-target="#userModal<?php echo $this->escape($ticket['id']); ?>">
+                            <?php echo $this->escape($ticket['user']['name']); ?>
+                        </a>
+                        <div class="modal fade" id="userModal<?php echo $this->escape($ticket['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="userModalLabel<?php echo $this->escape($ticket['id']); ?>">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="<?php _e('Close'); ?>">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="userModalLabel<?php echo $this->escape($ticket['id']); ?>">
+                                            <?php echo sprintf(__('%s information'), $ticket['user']['name']); ?>
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong><?php _e('ID'); ?></strong> : <?php echo $this->escape($ticket['user']['id']); ?></p>
+                                        <p><strong><?php _e('Identity'); ?></strong> : <?php echo $this->escape($ticket['user']['identity']); ?></p>
+                                        <p><strong><?php _e('Name'); ?></strong> : <?php echo $this->escape($ticket['user']['name']); ?></p>
+                                        <p><strong><?php _e('Email'); ?></strong> : <?php echo $this->escape($ticket['user']['email']); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="<?php echo $this->escape($ticket['ticketUrl']); ?>">
+                            <?php echo $this->escape($ticket['subject']); ?>
+                        </a>
+                    </td>
+                    <td class="text-center">
+                            <span class="label <?php echo $this->escape($ticket['status_class']); ?>">
+                                <?php echo $this->escape($ticket['status_view']); ?>
+                            </span>
+                    </td>
+                    <td class="text-center"><?php echo $this->escape($ticket['time_create_view']); ?></td>
+                </tr>
+            <?php } ?>
+        </table>
+    <?php } else { ?>
+        <div class="alert alert-danger" role="alert">
+            <?php _e('You didnt send any support ticket yet') ?>
+        </div>
+    <?php } ?>
+    <div class="paginator">
+        <?php echo $this->paginationControl($paginator, 'Sliding', 'paginator.phtml'); ?>
+    </div>
+</div>

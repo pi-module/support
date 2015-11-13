@@ -46,7 +46,6 @@ class TicketController extends ActionController
                 $ticket['user'] = Pi::user()->get($ticket['uid'], array('id', 'identity', 'name', 'email'));
                 $ticket['user']['avatar'] = Pi::service('user')->avatar($ticket['uid'], 'small', $ticket['user']['name']);
             }
-            $title = $ticket['subject'];
             // Get list of replies
             $tickets = array();
             $where = array('mid' => $id);
@@ -64,13 +63,15 @@ class TicketController extends ActionController
                     $tickets[$row->id]['user']['avatar'] = Pi::service('user')->avatar($row->uid, 'small', $tickets[$row->id]['user']['name']);
                 }
             }
-            // Set info
-            $mid = $ticket['id'];
-            $status = 0;
             // Set view
             $this->view()->assign('ticket', $ticket);
             $this->view()->assign('tickets', $tickets);
+            // Set info
+            $title = $ticket['subject'];
+            $mid = $ticket['id'];
+            $status = 0;
         } else {
+            // Set info
             $title = __('Open new support ticket');
             $mid = 0;
             $status = 1;
