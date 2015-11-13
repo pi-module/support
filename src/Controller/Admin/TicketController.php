@@ -121,9 +121,9 @@ class TicketController extends ActionController
                 $row->assign($values);
                 $row->save();
                 // Update main ticket status
-                if (isset($ticket['id']) && $id > 0) {
-                    Pi::model('ticket', $this->getModule())->update(array('status' => 2), array('id' => $ticket['id']));
-                }
+                Pi::model('ticket', $this->getModule())->update(array('status' => 2), array('id' => $ticket['id']));
+                // Send notification
+                Pi::api('notification', 'support')->supportTicket($ticket, 'reply');
                 // Jump
                 $message = __('Your answer user support ticket successfully');
                 $url = array('controller' => 'index', 'action' => 'index');

@@ -1,0 +1,16 @@
+[comment]Admin open ticket[/comment]
+
+[format]html[/format]
+
+[subject]Open ticket on %site_name%[/subject]
+
+[body]
+<div style="padding: 1px; direction: ltr;">
+	<h3 style="font-size: 1.1em;">Dear %site_name% admin</h3>
+	<div style="padding: 3px; margin: 2px;">New ticket by %subject% subject opened on %site_name%, please go to admin side and check it</div>
+	<div style="padding: 3px; margin: 2px;">Dont reply to this email</div>
+	<div style="margin-top: 10px">
+        <a href="%site_url%" title="%site_name%">%site_name%</a>
+    </div>
+</div>
+[/body]

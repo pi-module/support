@@ -98,6 +98,11 @@ class TicketController extends ActionController
                 // Update main ticket status
                 if (isset($ticket['id']) && $id > 0) {
                     Pi::model('ticket', $this->getModule())->update(array('status' => 3), array('id' => $ticket['id']));
+                    // Send notification
+                    Pi::api('notification', 'support')->supportTicket($ticket, 'reply');
+                } else {
+                    // Send notification
+                    Pi::api('notification', 'support')->supportTicket($ticket, 'open');
                 }
                 // Jump
                 $message = __('Your support ticket submit successfully, we will answer you very soon');

@@ -31,6 +31,14 @@ return array(
             'filter' => 'number_int',
             'value' => 10
         ),
+        'admin_email' => array(
+            'category' => 'admin',
+            'title' => _a('Main support email'),
+            'description' => '',
+            'edit' => 'text',
+            'filter' => 'string',
+            'value' => ''
+        ),
         // View
         'view_perpage' => array(
             'category' => 'view',
