@@ -18,8 +18,20 @@ use Zend\InputFilter\InputFilter;
 
 class TicketFilter extends InputFilter
 {
-    public function __construct()
+    public function __construct($option = array())
     {
+        // Select user
+        if (isset($option['selectUser']) && $option['selectUser'] == 1) {
+            $this->add(array(
+                'name' => 'user',
+                'required' => true,
+                'filters' => array(
+                    array(
+                        'name' => 'StringTrim',
+                    ),
+                ),
+            ));
+        }
         // subject
         $this->add(array(
             'name' => 'subject',

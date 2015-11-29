@@ -96,10 +96,10 @@ class TicketController extends ActionController
             $mid = $ticket['id'];
             $status = 0;
         } else {
-            // Set info
-            $title = __('Open new support ticket');
-            $mid = 0;
-            $status = 1;
+            // Jump
+            $message = __('Please select ticket to see details');
+            $url = array('controller' => 'index', 'action' => 'index');
+            $this->jump($url, $message);
         }
 
         // Set form
@@ -138,5 +138,58 @@ class TicketController extends ActionController
         // Set view
         $this->view()->assign('form', $form);
         $this->view()->assign('title', $title);
+    }
+
+    public function updateAction()
+    {
+        // Set form
+        $option = array('selectUser' => 1);
+        $form = new TicketForm('ticket', $option);
+        if ($this->request->isPost()) {
+            $data = $this->request->getPost();
+            $form->setInputFilter(new TicketFilter($option));
+            $form->setData($data);
+            if ($form->isValid()) {
+                $values = $form->getData();
+                // Check user
+                if (isset($values['user']) && $values['user'] > 0) {
+                    $message =  $values['message'];
+                    // Set values for main ticket
+                    $values['uid'] = $values['user'];
+                    $values['time_create'] = time();
+                    $values['ip'] = Pi::user()->getIp();
+                    $values['mid'] = 0;
+                    $values['status'] = 1;
+                    $values['message'] = __('Admin open this ticket for you');
+                    // Save main ticket
+                    $row = $this->getModel('ticket')->createRow();
+                    $row->assign($values);
+                    $row->save();
+                    // Set values for admin ticket
+                    $values['uid'] = Pi::user()->getId();
+                    $values['time_create'] = time();
+                    $values['ip'] = Pi::user()->getIp();
+                    $values['mid'] = $row->id;
+                    $values['status'] = 1;
+                    $values['message'] = $message;
+                    // Save admin ticket
+                    $row = $this->getModel('ticket')->createRow();
+                    $row->assign($values);
+                    $row->save();
+                    // Get main ticket
+                    $ticket = Pi::api('ticket', 'support')->canonizeTicket($row);
+                    $ticket['user'] = Pi::user()->get($ticket['uid'], array('id', 'identity', 'name', 'email'));
+                    // Send notification
+                    Pi::api('notification', 'support')->supportTicket($ticket, 'admin');
+                    // Jump
+                    $message = __('Your answer user support ticket successfully');
+                    $url = array('controller' => 'index', 'action' => 'index');
+                    $this->jump($url, $message);
+                }
+            }
+        }
+        // Set view
+        $this->view()->assign('form', $form);
+        $this->view()->assign('title', __('Open new support ticket'));
     }
 }

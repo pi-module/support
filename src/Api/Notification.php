@@ -66,6 +66,11 @@ class Notification extends AbstractApi
                 $templateAdmin = 'admin_open_ticket';
                 $templateUser = 'user_open_ticket';
                 break;
+
+            case 'admin':
+                $templateAdmin = 'admin_admin_ticket';
+                $templateUser = 'user_admin_ticket';
+                break;
         }
 
         // Send mail to admin

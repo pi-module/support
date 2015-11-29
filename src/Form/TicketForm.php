@@ -18,22 +18,35 @@ use Pi\Form\Form as BaseForm;
 
 class TicketForm extends BaseForm
 {
-    public function __construct($name = null)
+    public function __construct($name = null, $option = array())
     {
+        $this->option = $option;
         parent::__construct($name);
     }
 
     public function getInputFilter()
     {
         if (!$this->filter) {
-            $this->filter = new TicketFilter;
+            $this->filter = new TicketFilter($this->option);
         }
         return $this->filter;
     }
 
     public function init()
     {
-
+        // Select user
+        if (isset($this->option['selectUser']) && $this->option['selectUser'] == 1) {
+            $this->add(array(
+                'name' => 'user',
+                'options' => array(
+                    'label' => __('To user ID'),
+                ),
+                'attributes' => array(
+                    'type' => 'text',
+                    'required' => true,
+                )
+            ));
+        }
         // Subject
         $this->add(array(
             'name' => 'subject',

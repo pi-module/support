@@ -1,0 +1,16 @@
+[comment]Admin reply ticket[/comment]
+
+[format]html[/format]
+
+[subject]ثبت درخواست پشتیبانی جدید در سایت %site_name% توسط مدیر برای کاربر[/subject]
+
+[body]
+<div style="padding: 1px; direction: rtl;">
+	<h3 style="font-size: 1.1em;">مدیر عزیز %site_name%</h3>
+	<div style="padding: 3px; margin: 2px;">یک درخواست پشتیبانی جدید با موضوع %subject% توسط مدیر سیستم در وب سایت به ثبت رسیده است. لطفا با مراجعه به بخش مدیریت آن را بررسی فرمایید.</div>
+	<div style="padding: 3px; margin: 2px;">لطفا به این پیام پاسخ ندهید</div>
+	<div style="margin-top: 10px">
+        <a href="%site_url%" title="%site_name%">%site_name%</a>
+    </div>
+</div>
+[/body]
