@@ -1,5 +1,8 @@
-<?php $this->css($this->assetModule('css/admin.css')); ?>
-<div class="clearfix">
+<?php
+$this->css($this->assetModule('css/admin.css'));
+$this->backbone();
+?>
+<div id="js-ticket" class="clearfix">
     <p>
         <a class="btn btn-primary" title="<?php _e('Open new support ticket'); ?>"
            href="<?php echo $this->url('', array('controller' => 'ticket', 'action' => 'update')); ?>"><i
@@ -12,10 +15,13 @@
                 <th><?php _e('User'); ?></th>
                 <th><?php _e('Title'); ?></th>
                 <th class="text-center"><?php _e('Status'); ?></th>
-                <th class="text-center"><?php _e('Action'); ?></th>
+                <th class="text-center"><?php _e('Time'); ?></th>
             </tr>
             <?php foreach ($tickets as $ticket) { ?>
-                <tr>
+                <tr
+                    data-id="<?php echo $this->escape($ticket['id']); ?>"
+                    data-status="<?php echo Pi::url($this->url('', array('action' => 'updateStatus', 'id' => $ticket['id']))); ?>"
+                >
                     <td class="text-center"><?php echo $this->escape($ticket['id']); ?></td>
                     <td>
                         <a data-toggle="modal" data-target="#userModal<?php echo $this->escape($ticket['id']); ?>">
@@ -48,9 +54,9 @@
                         </a>
                     </td>
                     <td class="text-center">
-                            <span class="label <?php echo $this->escape($ticket['status_class']); ?>">
-                                <?php echo $this->escape($ticket['status_view']); ?>
-                            </span>
+                        <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn <?php echo $this->escape($ticket['status_btn']); ?>">
+                            <?php echo $this->escape($ticket['status_view']); ?>
+                        </button>
                     </td>
                     <td class="text-center"><?php echo $this->escape($ticket['time_create_view']); ?></td>
                 </tr>
@@ -65,3 +71,31 @@
         <?php echo $this->paginationControl($paginator, 'Sliding', 'paginator.phtml'); ?>
     </div>
 </div>
+<script>
+    (function ($) {
+        var page = {
+            el: $('#js-ticket'),
+            modal: $('<div class="modal fade">').appendTo(document.body),
+            $: function (selector) {
+                return this.el.find(selector);
+            },
+            init: function () {
+                _.bindAll(this);
+                this.$('.update-status').click(this.statusAction);
+            },
+            statusAction: function (e) {
+                var p = $(e.target).parents('tr'),
+                    self = this;
+                $.get(p.attr('data-status')).done(function (res) {
+                    self.modal.html(res).modal('show');
+                    formModule.success = function (res) {
+                        var d = res.data;
+                        self.modal.html(res).modal('hide');
+                        $('#update-status-' + p.attr('data-id')).attr('class', 'update-status btn ' + d.status_btn).html(d.status_view);
+                    };
+                });
+            },
+        }
+        page.init();
+    })(jQuery)
+</script>

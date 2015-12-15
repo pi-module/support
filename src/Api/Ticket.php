@@ -18,6 +18,7 @@ use Zend\Json\Json;
 
 /*
  * Pi::api('ticket', 'support')->getTicket($parameter, $type = 'id');
+ * Pi::api('ticket', 'support')->status($status);
  * Pi::api('ticket', 'support')->canonizeTicket($ticket);
  */
 
@@ -27,6 +28,43 @@ class Ticket extends AbstractApi
     {
         $ticket = Pi::model('ticket', $this->getModule())->find($parameter, $type);
         $ticket = $this->canonizeTicket($ticket);
+        return $ticket;
+    }
+
+    public function status($status) {
+        $ticket = array();
+        switch ($status) {
+            case 1:
+                $ticket['status_view'] = __('Open');
+                $ticket['status_class'] = 'label-info';
+                $ticket['status_btn'] = 'btn-info';
+                break;
+
+            case 2:
+                $ticket['status_view'] = __('Answered');
+                $ticket['status_class'] = 'label-primary';
+                $ticket['status_btn'] = 'btn-primary';
+                break;
+
+            case 3:
+                $ticket['status_view'] = __('Customer-Reply');
+                $ticket['status_class'] = 'label-warning';
+                $ticket['status_btn'] = 'btn-warning';
+                break;
+
+            case 4:
+                $ticket['status_view'] = __('In Progress');
+                $ticket['status_class'] = 'label-danger';
+                $ticket['status_btn'] = 'btn-danger';
+                break;
+
+            case 5:
+                $ticket['status_view'] = __('Finished');
+                $ticket['status_class'] = 'label-success';
+                $ticket['status_btn'] = 'btn-success';
+                break;
+        }
+
         return $ticket;
     }
 
@@ -49,32 +87,40 @@ class Ticket extends AbstractApi
         // Set time
         $ticket['time_create_view'] = _date($ticket['time_create']);
         // Set status view
-        switch ($ticket['status']) {
+        /* switch ($ticket['status']) {
             case 1:
                 $ticket['status_view'] = __('Open');
                 $ticket['status_class'] = 'label-success';
+                $ticket['status_btn'] = 'btn-success';
                 break;
 
             case 2:
                 $ticket['status_view'] = __('Answered');
                 $ticket['status_class'] = 'label-primary';
+                $ticket['status_btn'] = 'btn-success';
                 break;
 
             case 3:
                 $ticket['status_view'] = __('Customer-Reply');
                 $ticket['status_class'] = 'label-warning';
+                $ticket['status_btn'] = 'btn-success';
                 break;
 
             case 4:
                 $ticket['status_view'] = __('In Progress');
                 $ticket['status_class'] = 'label-danger';
+                $ticket['status_btn'] = 'btn-success';
                 break;
 
             case 5:
-                $ticket['status_view'] = __('Closed');
+                $ticket['status_view'] = __('Finished');
                 $ticket['status_class'] = 'label-default';
+                $ticket['status_btn'] = 'btn-success';
                 break;
-        }
+        } */
+
+        $status = $this->status($ticket['status']);
+        $ticket = array_merge($ticket, $status);
 
         return $ticket;
     }

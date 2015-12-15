@@ -19,6 +19,8 @@ use Pi\Paginator\Paginator;
 use Zend\Db\Sql\Predicate\Expression;
 use Module\Support\Form\TicketForm;
 use Module\Support\Form\TicketFilter;
+use Module\Support\Form\StatusForm;
+use Module\Support\Form\StatusFilter;
 
 class TicketController extends ActionController
 {
@@ -191,5 +193,42 @@ class TicketController extends ActionController
         // Set view
         $this->view()->assign('form', $form);
         $this->view()->assign('title', __('Open new support ticket'));
+    }
+
+    public function updateStatusAction()
+    {
+        // Get id
+        $id = $this->params('id');
+        $module = $this->params('module');
+        $return = array();
+        // Get order
+        $ticket = $this->getModel('ticket')->find($id);
+        // Set form
+        $form = new StatusForm('status');
+        if ($this->request->isPost()) {
+            $data = $this->request->getPost();
+            $form->setInputFilter(new StatusFilter);
+            $form->setData($data);
+            if ($form->isValid()) {
+                $values = $form->getData();
+                $ticket->status = $values['status'];
+                $ticket->save();
+                // Set return
+                $return['status'] = 1;
+                $return['data'] = Pi::api('ticket', 'support')->status($ticket->status);
+            } else {
+                $return['status'] = 0;
+                $return['data'] = '';
+            }
+            return $return;
+        } else {
+            $values['status'] = $ticket->status;
+            $form->setData($values);
+            $form->setAttribute('action', $this->url('', array('action' => 'updateStatus', 'id' => $ticket->id)));
+        }
+        // Set view
+        $this->view()->setTemplate('system:component/form-popup');
+        $this->view()->assign('title', __('Update status'));
+        $this->view()->assign('form', $form);
     }
 }
