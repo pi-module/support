@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: support\n"
-"POT-Creation-Date: 2015-11-29 12:27+0330\n"
+"POT-Creation-Date: 2016-01-15 13:31+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,47 +20,59 @@ msgstr ""
 msgid "New support ticket"
 msgstr ""
 
-#: src/Api/Ticket.php:54
+#: src/Api/Ticket.php:38 src/Form/StatusForm.php:43
 msgid "Open"
 msgstr ""
 
-#: src/Api/Ticket.php:59
+#: src/Api/Ticket.php:44 src/Form/StatusForm.php:44
 msgid "Answered"
 msgstr ""
 
-#: src/Api/Ticket.php:64
+#: src/Api/Ticket.php:50 src/Form/StatusForm.php:45
 msgid "Customer-Reply"
 msgstr ""
 
-#: src/Api/Ticket.php:69
+#: src/Api/Ticket.php:56 src/Form/StatusForm.php:46
 msgid "In Progress"
 msgstr ""
 
-#: src/Api/Ticket.php:74
-msgid "Closed"
+#: src/Api/Ticket.php:62 src/Form/StatusForm.php:47
+msgid "Finished"
 msgstr ""
 
-#: src/Controller/Admin/TicketController.php:100
+#: src/Controller/Admin/TicketController.php:102
 msgid "Please select ticket to see details"
 msgstr ""
 
-#: src/Controller/Admin/TicketController.php:128
-#: src/Controller/Admin/TicketController.php:185
+#: src/Controller/Admin/TicketController.php:130
+#: src/Controller/Admin/TicketController.php:187
 msgid "Your answer user support ticket successfully"
 msgstr ""
 
-#: src/Controller/Admin/TicketController.php:163
+#: src/Controller/Admin/TicketController.php:165
 msgid "Admin open this ticket for you"
 msgstr ""
 
-#: src/Controller/Admin/TicketController.php:193
+#: src/Controller/Admin/TicketController.php:195
 #: src/Controller/Front/TicketController.php:75
-#: template/admin/ticket-index.phtml:4 template/admin/ticket-index.phtml:6
+#: template/admin/ticket-index.phtml:7 template/admin/ticket-index.phtml:9
 msgid "Open new support ticket"
+msgstr ""
+
+#: src/Controller/Admin/TicketController.php:231
+msgid "Update status"
 msgstr ""
 
 #: src/Controller/Front/TicketController.php:111
 msgid "Your support ticket submit successfully, we will answer you very soon"
+msgstr ""
+
+#: src/Form/StatusForm.php:41
+msgid "Change status"
+msgstr ""
+
+#: src/Form/StatusForm.php:56
+msgid "Update"
 msgstr ""
 
 #: src/Form/TicketForm.php:42
@@ -79,48 +91,49 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:11 template/admin/ticket-index.phtml:36
+#: template/admin/ticket-index.phtml:14 template/admin/ticket-index.phtml:42
 msgid "ID"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:12
+#: template/admin/ticket-index.phtml:15
 msgid "User"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:13 template/front/index-index.phtml:23
+#: template/admin/ticket-index.phtml:16 template/front/index-index.phtml:23
 msgid "Title"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:14 template/front/index-index.phtml:24
+#: template/admin/ticket-index.phtml:17 template/front/index-index.phtml:24
+#: template/front/ticket-index.phtml:12
 msgid "Status"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:15 template/front/index-index.phtml:25
-msgid "Action"
+#: template/admin/ticket-index.phtml:18 template/front/index-index.phtml:25
+msgid "Time"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:28
+#: template/admin/ticket-index.phtml:34
 msgid "Close"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:32
+#: template/admin/ticket-index.phtml:38
 #, php-format
 msgid "%s information"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:37
+#: template/admin/ticket-index.phtml:43
 msgid "Identity"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:38
+#: template/admin/ticket-index.phtml:44
 msgid "Name"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:39
+#: template/admin/ticket-index.phtml:45
 msgid "Email"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:61 template/front/index-index.phtml:45
+#: template/admin/ticket-index.phtml:67 template/front/index-index.phtml:45
 msgid "You didnt send any support ticket yet"
 msgstr ""
 
@@ -130,4 +143,8 @@ msgstr ""
 
 #: template/front/index-index.phtml:9 template/front/index-index.phtml:10
 msgid "New ticket"
+msgstr ""
+
+#: template/front/ticket-index.phtml:54
+msgid "This ticket finished, for more suppoert please open new ticket"
 msgstr ""
