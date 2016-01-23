@@ -45,13 +45,13 @@
                 </div>
             <?php } ?>
         <?php } ?>
-        <?php if (!isset($ticket) || in_array($ticket['status'], array(1,2,3,4))) { ?>
-        <div class="well">
-            <?php echo $this->form($form, 'vertical'); ?>
-        </div>
-        <?php } elseif ($ticket['status'] == 5) { ?>
+        <?php if (isset($ticket['status']) && $ticket['status'] == 5) { ?>
             <div class="well">
                 <?php _e('This ticket finished, for more suppoert please open new ticket'); ?>
+            </div>
+        <?php } else { ?>
+            <div class="well">
+                <?php echo $this->form($form, 'vertical'); ?>
             </div>
         <?php } ?>
     </div>
