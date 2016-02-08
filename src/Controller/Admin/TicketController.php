@@ -28,12 +28,27 @@ class TicketController extends ActionController
     {
         // Get page
         $page = $this->params('page', 1);
+        $status = $this->params('status', 'open');
         // Set info
         $ticket = array();
         $where = array('mid' => 0);
         $order = array('id DESC', 'time_create DESC');
         $offset = (int)($page - 1) * $this->config('admin_perpage');
         $limit = intval($this->config('admin_perpage'));
+        // Check status
+        switch ($status) {
+            case 'open':
+                $where['status'] = array(1, 2, 3, 4);
+                break;
+
+            case 'finish':
+                $where['status'] = array(5);
+                break;
+
+            case 'all':
+                // $where['status'] = array(1, 2, 3, 4, 5);
+                break;
+        }
         // Get info
         $select = $this->getModel('ticket')->select()->where($where)->order($order)->offset($offset)->limit($limit);
         $rowset = $this->getModel('ticket')->selectWith($select);
@@ -61,11 +76,13 @@ class TicketController extends ActionController
                 'module'        => $this->getModule(),
                 'controller'    => 'index',
                 'action'        => 'index',
+                'status'        => $status,
             )),
         ));
         // Set view
         $this->view()->assign('tickets', $ticket);
         $this->view()->assign('paginator', $paginator);
+        $this->view()->assign('status', $status);
     }
 
     public function detailAction()
