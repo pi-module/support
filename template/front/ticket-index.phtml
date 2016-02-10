@@ -9,7 +9,16 @@
     <div class="col-md-9">
         <?php if (isset($ticketMain) && !empty($ticketMain)) { ?>
             <div class="clearfix">
-                <?php _e('Status'); ?> : <span class="label <?php echo $this->escape($ticketMain['status_class']); ?>"><?php echo $this->escape($ticketMain['status_view']); ?></span>
+                <ul class="list-inline">
+                    <li class="col-md-6">
+                        <?php _e('Status'); ?> : <span class="label <?php echo $this->escape($ticketMain['status_class']); ?>">
+                            <?php echo $this->escape($ticketMain['status_view']); ?>
+                        </span>
+                    </li>
+                    <li class="col-md-6 text-right">
+                        <?php _e('Last update'); ?> : <strong><?php echo $this->escape($ticketMain['time_create_update']); ?></strong>
+                    </li>
+                </ul>
             </div>
             <br />
             <div class="panel panel-default">
