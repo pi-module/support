@@ -39,12 +39,12 @@ class TicketController extends ActionController
         $id = $this->params('id');
         if ($id) {
             // Get main ticket
-            $ticket = Pi::api('ticket', 'support')->getTicket($id);
-            if ($uid == $ticket['uid']) {
-                $ticket['user'] = $user;
+            $ticketMain = Pi::api('ticket', 'support')->getTicket($id);
+            if ($uid == $ticketMain['uid']) {
+                $ticketMain['user'] = $user;
             } else {
-                $ticket['user'] = Pi::user()->get($ticket['uid'], array('id', 'identity', 'name', 'email'));
-                $ticket['user']['avatar'] = Pi::service('user')->avatar($ticket['uid'], 'small', $ticket['user']['name']);
+                $ticketMain['user'] = Pi::user()->get($ticketMain['uid'], array('id', 'identity', 'name', 'email'));
+                $ticketMain['user']['avatar'] = Pi::service('user')->avatar($ticketMain['uid'], 'small', $ticketMain['user']['name']);
             }
             // Get list of replies
             $tickets = array();
@@ -64,11 +64,11 @@ class TicketController extends ActionController
                 }
             }
             // Set view
-            $this->view()->assign('ticket', $ticket);
+            $this->view()->assign('ticketMain', $ticketMain);
             $this->view()->assign('tickets', $tickets);
             // Set info
-            $title = $ticket['subject'];
-            $mid = $ticket['id'];
+            $title = $ticketMain['subject'];
+            $mid = $ticketMain['id'];
             $status = 0;
         } else {
             // Set info
@@ -97,22 +97,22 @@ class TicketController extends ActionController
                 $row->assign($values);
                 $row->save();
                 // Update main ticket status
-                if (isset($ticket['id']) && $id > 0) {
+                if (isset($ticketMain['id']) && $id > 0) {
                     Pi::model('ticket', $this->getModule())->update(
                         array(
                             'status' => 3,
                             'time_update' => time(),
                         ),
-                        array('id' => $ticket['id'])
+                        array('id' => $ticketMain['id'])
                     );
                     // Send notification
-                    Pi::api('notification', 'support')->supportTicket($ticket, 'reply');
+                    Pi::api('notification', 'support')->supportTicket($ticketMain, 'reply');
                 } else {
                     // Set ticket
-                    $ticket = Pi::api('ticket', 'support')->canonizeTicket($row);
-                    $ticket['user'] = $user;
+                    $ticketMain = Pi::api('ticket', 'support')->canonizeTicket($row);
+                    $ticketMain['user'] = $user;
                     // Send notification
-                    Pi::api('notification', 'support')->supportTicket($ticket, 'open');
+                    Pi::api('notification', 'support')->supportTicket($ticketMain, 'open');
                 }
                 // Jump
                 $message = __('Your support ticket submit successfully, we will answer you very soon');
@@ -121,7 +121,7 @@ class TicketController extends ActionController
             }
         } elseif (isset($ticket) && !empty($ticket)) {
             $values = array(
-                'subject' => sprintf('Re : %s', $ticket['subject']),
+                'subject' => sprintf('Re : %s', $ticketMain['subject']),
             );
             $form->setData($values);
         }

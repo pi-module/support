@@ -7,23 +7,23 @@
         <?php include $this->templateModule('front/user-profile-sidebar.phtml', 'user'); ?>
     </div>
     <div class="col-md-9">
-        <?php if (isset($ticket) && !empty($ticket)) { ?>
+        <?php if (isset($ticketMain) && !empty($ticketMain)) { ?>
             <div class="clearfix">
-                <?php _e('Status'); ?> : <span class="label <?php echo $this->escape($ticket['status_class']); ?>"><?php echo $this->escape($ticket['status_view']); ?></span>
+                <?php _e('Status'); ?> : <span class="label <?php echo $this->escape($ticketMain['status_class']); ?>"><?php echo $this->escape($ticketMain['status_view']); ?></span>
             </div>
             <br />
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
                     <div class="pull-left">
-                        <?php echo $ticket['user']['avatar']; ?>
-                        <?php echo $this->escape($ticket['user']['name']); ?>
+                        <?php echo $ticketMain['user']['avatar']; ?>
+                        <?php echo $this->escape($ticketMain['user']['name']); ?>
                     </div>
                     <div class="pull-right">
-                        <?php echo $this->escape($ticket['time_create_view']); ?>
+                        <?php echo $this->escape($ticketMain['time_create_view']); ?>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <?php echo $ticket['message']; ?>
+                    <?php echo $ticketMain['message']; ?>
                 </div>
             </div>
         <?php } ?>
@@ -45,7 +45,7 @@
                 </div>
             <?php } ?>
         <?php } ?>
-        <?php if (isset($ticket['status']) && $ticket['status'] == 5) { ?>
+        <?php if (isset($ticketMain['status']) && $ticketMain['status'] == 5) { ?>
             <div class="well">
                 <?php _e('This ticket finished, for more suppoert please open new ticket'); ?>
             </div>
