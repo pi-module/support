@@ -119,7 +119,7 @@ class TicketController extends ActionController
                 $url = array('controller' => 'index', 'action' => 'index');
                 $this->jump($url, $message);
             }
-        } elseif (isset($ticket) && !empty($ticket)) {
+        } elseif (isset($ticketMain) && !empty($ticketMain)) {
             $values = array(
                 'subject' => sprintf('Re : %s', $ticketMain['subject']),
             );
