@@ -39,7 +39,7 @@ class IndexController extends ActionController
         // Set info
         $ticket = array();
         $where = array('mid' => 0, 'uid' => $uid);
-        $order = array('id DESC', 'time_create DESC');
+        $order = array('time_update DESC', 'id DESC');
         $offset = (int)($page - 1) * $this->config('view_perpage');
         $limit = intval($this->config('view_perpage'));
         // Get info

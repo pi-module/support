@@ -20,6 +20,6 @@ class Ticket extends Model
      * {@inheritDoc}
      */
     protected $columns = array(
-        'id', 'subject', 'message', 'uid', 'status', 'time_create', 'ip', 'mid',
+        'id', 'subject', 'message', 'uid', 'status', 'time_create', 'time_update', 'ip', 'mid',
     );
 }

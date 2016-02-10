@@ -5,6 +5,7 @@ CREATE TABLE `{ticket}` (
   `uid`         INT(10) UNSIGNED    NOT NULL DEFAULT '0',
   `status`      TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
   `time_create` INT(10) UNSIGNED    NOT NULL DEFAULT '0',
+  `time_update` INT(10) UNSIGNED    NOT NULL DEFAULT '0',
   `ip`          CHAR(15)            NOT NULL DEFAULT '',
   `mid`         INT(10) UNSIGNED    NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),

@@ -32,7 +32,7 @@ class TicketController extends ActionController
         // Set info
         $ticket = array();
         $where = array('mid' => 0);
-        $order = array('id DESC', 'time_create DESC');
+        $order = array('time_update DESC', 'id DESC');
         $offset = (int)($page - 1) * $this->config('admin_perpage');
         $limit = intval($this->config('admin_perpage'));
         // Check status
@@ -132,6 +132,7 @@ class TicketController extends ActionController
                 // Set values
                 $values['uid'] = Pi::user()->getId();
                 $values['time_create'] = time();
+                $values['time_update'] = time();
                 $values['ip'] = Pi::user()->getIp();
                 $values['mid'] = $mid;
                 $values['status'] = $status;
@@ -140,7 +141,13 @@ class TicketController extends ActionController
                 $row->assign($values);
                 $row->save();
                 // Update main ticket status
-                Pi::model('ticket', $this->getModule())->update(array('status' => 2), array('id' => $ticket['id']));
+                Pi::model('ticket', $this->getModule())->update(
+                    array(
+                        'status' => 2,
+                        'time_update' => time(),
+                    ),
+                    array('id' => $ticket['id'])
+                );
                 // Send notification
                 Pi::api('notification', 'support')->supportTicket($ticket, 'reply');
                 // Jump
@@ -176,6 +183,7 @@ class TicketController extends ActionController
                     // Set values for main ticket
                     $values['uid'] = $values['user'];
                     $values['time_create'] = time();
+                    $values['time_update'] = time();
                     $values['ip'] = Pi::user()->getIp();
                     $values['mid'] = 0;
                     $values['status'] = 1;
@@ -187,6 +195,7 @@ class TicketController extends ActionController
                     // Set values for admin ticket
                     $values['uid'] = Pi::user()->getId();
                     $values['time_create'] = time();
+                    $values['time_update'] = time();
                     $values['ip'] = Pi::user()->getIp();
                     $values['mid'] = $ticket->id;
                     $values['status'] = 1;
@@ -229,6 +238,7 @@ class TicketController extends ActionController
             if ($form->isValid()) {
                 $values = $form->getData();
                 $ticket->status = $values['status'];
+                $ticket->time_update = time();
                 $ticket->save();
                 // Set return
                 $return['status'] = 1;

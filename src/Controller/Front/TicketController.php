@@ -88,6 +88,7 @@ class TicketController extends ActionController
                 // Set values
                 $values['uid'] = $uid;
                 $values['time_create'] = time();
+                $values['time_update'] = time();
                 $values['ip'] = Pi::user()->getIp();
                 $values['mid'] = $mid;
                 $values['status'] = $status;
@@ -97,7 +98,13 @@ class TicketController extends ActionController
                 $row->save();
                 // Update main ticket status
                 if (isset($ticket['id']) && $id > 0) {
-                    Pi::model('ticket', $this->getModule())->update(array('status' => 3), array('id' => $ticket['id']));
+                    Pi::model('ticket', $this->getModule())->update(
+                        array(
+                            'status' => 3,
+                            'time_update' => time(),
+                        ),
+                        array('id' => $ticket['id'])
+                    );
                     // Send notification
                     Pi::api('notification', 'support')->supportTicket($ticket, 'reply');
                 } else {
