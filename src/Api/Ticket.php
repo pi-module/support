@@ -86,7 +86,7 @@ class Ticket extends AbstractApi
         )));
         // Set time
         $ticket['time_create_view'] = _date($ticket['time_create']);
-        $ticket['time_create_update'] = _date($ticket['time_update']);
+        $ticket['time_update_view'] = _date($ticket['time_update']);
         // Set status view
         /* switch ($ticket['status']) {
             case 1:
