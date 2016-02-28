@@ -105,8 +105,10 @@ class TicketController extends ActionController
                         ),
                         array('id' => $ticketMain['id'])
                     );
+                    // User ticket
+                    $ticketUser = Pi::api('ticket', 'support')->canonizeTicket($row);
                     // Send notification
-                    Pi::api('notification', 'support')->supportTicket($ticketMain, 'reply');
+                    Pi::api('notification', 'support')->supportTicket($ticketMain, 'reply', $ticketUser['message']);
                 } else {
                     // Set ticket
                     $ticketMain = Pi::api('ticket', 'support')->canonizeTicket($row);

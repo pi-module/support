@@ -16,12 +16,12 @@ use Pi;
 use Pi\Application\Api\AbstractApi;
 
 /*
- * Pi::api('notification', 'support')->supportTicket($ticket, $type);
+ * Pi::api('notification', 'support')->supportTicket($ticket, $type, $message);
  */
 
 class Notification extends AbstractApi
 {
-    public function supportTicket($ticket, $type)
+    public function supportTicket($ticket, $type, $message = '')
     {
         // Check notification module
         if (!Pi::service('module')->isActive('notification')) {
@@ -53,6 +53,7 @@ class Notification extends AbstractApi
             'message' => $ticket['message'],
             'time' => $ticket['time_create_view'],
             'url' => $ticket['ticketUrl'],
+            'message' => empty($message) ? $ticket['message'] : $message,
         );
 
         // Set template

@@ -7,7 +7,8 @@
 [body]
 <div style="padding: 1px; direction: rtl;">
 	<h3 style="font-size: 1.1em;">کاربر عزیز %site_name%</h3>
-	<div style="padding: 3px; margin: 2px;">یک پاسخ به درخواست پشتیبانی شما با موضوع %subject% در وب سایت درج شده است. لطفا با استفاده از لینک زیر و پس از ورود به وب سایت پاسخ را بررسی فرمایید.</div>
+	<div style="padding: 3px; margin: 2px;">یک پاسخ به درخواست پشتیبانی شما با موضوع <strong>%subject%</strong> در وب سایت درج شده است. لطفا با استفاده از لینک زیر و پس از ورود به وب سایت پاسخ را بررسی فرمایید.</div>
+	<div style="margin-top: 10px; margin-bottom: 10px; padding: 10px 5px; background-color: #ddd;">%message%</div>
 	<div style="margin-top: 10px">
         <a href="%url%" title="%subject%">%url%</a>
     </div>

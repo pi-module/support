@@ -148,8 +148,10 @@ class TicketController extends ActionController
                     ),
                     array('id' => $ticket['id'])
                 );
+                // Admin ticket
+                $ticketAdmin = Pi::api('ticket', 'support')->canonizeTicket($row);
                 // Send notification
-                Pi::api('notification', 'support')->supportTicket($ticket, 'reply');
+                Pi::api('notification', 'support')->supportTicket($ticket, 'reply', $ticketAdmin['message']);
                 // Jump
                 $message = __('Your answer user support ticket successfully');
                 $url = array('controller' => 'index', 'action' => 'index');
@@ -205,10 +207,11 @@ class TicketController extends ActionController
                     $row->assign($values);
                     $row->save();
                     // Get main ticket
+                    $ticketAdmin = Pi::api('ticket', 'support')->canonizeTicket($row);
                     $ticket = Pi::api('ticket', 'support')->canonizeTicket($ticket);
                     $ticket['user'] = Pi::user()->get($ticket['uid'], array('id', 'identity', 'name', 'email'));
                     // Send notification
-                    Pi::api('notification', 'support')->supportTicket($ticket, 'admin');
+                    Pi::api('notification', 'support')->supportTicket($ticket, 'admin', $ticketAdmin['message']);
                     // Jump
                     $message = __('Your answer user support ticket successfully');
                     $url = array('controller' => 'index', 'action' => 'index');
