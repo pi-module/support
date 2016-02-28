@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: support\n"
-"POT-Creation-Date: 2016-02-10 16:25+0330\n"
+"POT-Creation-Date: 2016-02-28 14:32+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -40,33 +40,74 @@ msgstr "در حال اجرا"
 msgid "Finished"
 msgstr "پایان یافته"
 
-#: src/Controller/Admin/TicketController.php:119
+#: src/Controller/Admin/TicketController.php:113
+msgid "Go to filter"
+msgstr "فهرست درخواست های پشتیبانی بر اساس فیلتر انتخاب شده"
+
+#: src/Controller/Admin/TicketController.php:120
+msgid "Not valid"
+msgstr "صحیح نیست"
+
+#: src/Controller/Admin/TicketController.php:126
+msgid "Not set"
+msgstr "تنظیم نشده"
+
+#: src/Controller/Admin/TicketController.php:165
 msgid "Please select ticket to see details"
 msgstr "لطفا یک درخواست پشتیبانی را برای مشاهده جززئیات انتخاب کنید"
 
-#: src/Controller/Admin/TicketController.php:154
-#: src/Controller/Admin/TicketController.php:213
+#: src/Controller/Admin/TicketController.php:204
+#: src/Controller/Admin/TicketController.php:268
 msgid "Your answer user support ticket successfully"
 msgstr "شما با موفقیت به درخواست پشتیبانی کاربر پاسخ داده اید"
 
-#: src/Controller/Admin/TicketController.php:190
+#: src/Controller/Admin/TicketController.php:240
 msgid "Admin open this ticket for you"
 msgstr "مدیر وب سایت این درخواست پشتیبانی را برای شما باز کرده است"
 
-#: src/Controller/Admin/TicketController.php:221
+#: src/Controller/Admin/TicketController.php:276
 #: src/Controller/Front/TicketController.php:75
-#: template/admin/ticket-index.phtml:21 template/admin/ticket-index.phtml:23
+#: template/admin/ticket-index.phtml:12 template/admin/ticket-index.phtml:14
 msgid "Open new support ticket"
 msgstr "ارسال درخواست پشتیبانی جدید"
 
-#: src/Controller/Admin/TicketController.php:258
+#: src/Controller/Admin/TicketController.php:313
 msgid "Update status"
 msgstr "به روز رسانی وضعیت"
 
-#: src/Controller/Front/TicketController.php:118
+#: src/Controller/Front/TicketController.php:124
 msgid "Your support ticket submit successfully, we will answer you very soon"
 msgstr ""
 "درخواست پشتیبانی شما با موفقیت ارسال شد ، به زودی به آن پاسخ خواهیم داد"
+
+#: src/Form/Element/User.php:28
+msgid "All users"
+msgstr "همه کاربر ها"
+
+#: src/Form/SearchForm.php:41 template/admin/ticket-index.phtml:25
+#: template/front/index-index.phtml:24 template/front/ticket-index.phtml:14
+msgid "Status"
+msgstr "وضعیت"
+
+#: src/Form/SearchForm.php:43
+msgid "Opened tickets"
+msgstr "تیکت های باز"
+
+#: src/Form/SearchForm.php:44
+msgid "Finished tickets"
+msgstr "تیکت های تکمیل شده"
+
+#: src/Form/SearchForm.php:45
+msgid "All tickets"
+msgstr "همه تیکت ها"
+
+#: src/Form/SearchForm.php:54 template/admin/ticket-index.phtml:23
+msgid "User"
+msgstr "کاربر"
+
+#: src/Form/SearchForm.php:62
+msgid "Filter"
+msgstr "فیلتر"
 
 #: src/Form/StatusForm.php:41
 msgid "Change status"
@@ -92,61 +133,40 @@ msgstr "پیام"
 msgid "Submit"
 msgstr "ارسال"
 
-#: template/admin/ticket-index.phtml:9 template/admin/ticket-index.phtml:10
-msgid "Opened tickets"
-msgstr "تیکت های باز"
-
-#: template/admin/ticket-index.phtml:13 template/admin/ticket-index.phtml:14
-msgid "Finished tickets"
-msgstr "تیکت های تکمیل شده"
-
-#: template/admin/ticket-index.phtml:17 template/admin/ticket-index.phtml:18
-msgid "All tickets"
-msgstr "همه تیکت ها"
-
-#: template/admin/ticket-index.phtml:31 template/admin/ticket-index.phtml:59
+#: template/admin/ticket-index.phtml:22 template/admin/ticket-index.phtml:50
 msgid "ID"
 msgstr "شناسه"
 
-#: template/admin/ticket-index.phtml:32
-msgid "User"
-msgstr "کاربر"
-
-#: template/admin/ticket-index.phtml:33 template/front/index-index.phtml:23
+#: template/admin/ticket-index.phtml:24 template/front/index-index.phtml:23
 msgid "Title"
 msgstr "عنوان"
 
-#: template/admin/ticket-index.phtml:34 template/front/index-index.phtml:24
-#: template/front/ticket-index.phtml:14
-msgid "Status"
-msgstr "وضعیت"
-
-#: template/admin/ticket-index.phtml:35 template/front/index-index.phtml:25
+#: template/admin/ticket-index.phtml:26 template/front/index-index.phtml:25
 msgid "Time"
 msgstr "زمان"
 
-#: template/admin/ticket-index.phtml:51
+#: template/admin/ticket-index.phtml:42
 msgid "Close"
 msgstr "بستن"
 
-#: template/admin/ticket-index.phtml:55
+#: template/admin/ticket-index.phtml:46
 #, php-format
 msgid "%s information"
 msgstr "اطلاعات %s"
 
-#: template/admin/ticket-index.phtml:60
+#: template/admin/ticket-index.phtml:51
 msgid "Identity"
 msgstr "نام کاربری"
 
-#: template/admin/ticket-index.phtml:61
+#: template/admin/ticket-index.phtml:52
 msgid "Name"
 msgstr "نام نمایشی"
 
-#: template/admin/ticket-index.phtml:62
+#: template/admin/ticket-index.phtml:53
 msgid "Email"
 msgstr "ایمیل"
 
-#: template/admin/ticket-index.phtml:84 template/front/index-index.phtml:45
+#: template/admin/ticket-index.phtml:75 template/front/index-index.phtml:45
 msgid "You didnt send any support ticket yet"
 msgstr "شما هنوز هیچ درخواست پشتیبانی ارسال نکرده اید"
 

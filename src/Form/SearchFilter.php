@@ -16,13 +16,18 @@ namespace Module\Support\Form;
 use Pi;
 use Zend\InputFilter\InputFilter;
 
-class StatusFilter extends InputFilter
+class SearchFilter extends InputFilter
 {
     public function __construct()
     {
-        // status
+        // searchStatus
         $this->add(array(
-            'name' => 'status',
+            'name' => 'searchStatus',
+            'required' => true,
+        ));
+        // searchUser
+        $this->add(array(
+            'name' => 'searchUser',
             'required' => true,
         ));
     }

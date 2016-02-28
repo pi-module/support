@@ -21,6 +21,8 @@ use Module\Support\Form\TicketForm;
 use Module\Support\Form\TicketFilter;
 use Module\Support\Form\StatusForm;
 use Module\Support\Form\StatusFilter;
+use Module\Support\Form\SearchForm;
+use Module\Support\Form\SearchFilter;
 
 class TicketController extends ActionController
 {
@@ -28,7 +30,8 @@ class TicketController extends ActionController
     {
         // Get page
         $page = $this->params('page', 1);
-        $status = $this->params('status', 'open');
+        $searchStatus = $this->params('searchStatus', 'open');
+        $searchUser = $this->params('searchUser');
         // Set info
         $ticket = array();
         $where = array('mid' => 0);
@@ -36,7 +39,7 @@ class TicketController extends ActionController
         $offset = (int)($page - 1) * $this->config('admin_perpage');
         $limit = intval($this->config('admin_perpage'));
         // Check status
-        switch ($status) {
+        switch ($searchStatus) {
             case 'open':
                 $where['status'] = array(1, 2, 3, 4);
                 break;
@@ -48,6 +51,10 @@ class TicketController extends ActionController
             case 'all':
                 // $where['status'] = array(1, 2, 3, 4, 5);
                 break;
+        }
+        // Check user
+        if ($searchUser > 0) {
+            $where['uid'] = intval($searchUser);
         }
         // Get info
         $select = $this->getModel('ticket')->select()->where($where)->order($order)->offset($offset)->limit($limit);
@@ -76,13 +83,52 @@ class TicketController extends ActionController
                 'module'        => $this->getModule(),
                 'controller'    => 'index',
                 'action'        => 'index',
-                'status'        => $status,
+                'searchStatus' => $searchStatus,
+                'searchUser' => $searchUser,
             )),
         ));
+        // Set form
+        $values = array(
+            'searchStatus' => $searchStatus,
+            'searchUser' => $searchUser,
+        );
+        $form = new SearchForm('search');
+        $form->setAttribute('action', $this->url('', array('action' => 'process')));
+        $form->setData($values);
         // Set view
         $this->view()->assign('tickets', $ticket);
         $this->view()->assign('paginator', $paginator);
-        $this->view()->assign('status', $status);
+        $this->view()->assign('form', $form);
+    }
+
+    public function processAction()
+    {
+        if ($this->request->isPost()) {
+            $data = $this->request->getPost();
+            $form = new SearchForm('search');
+            $form->setInputFilter(new SearchFilter());
+            $form->setData($data);
+            if ($form->isValid()) {
+                $values = $form->getData();
+                $message = __('Go to filter');
+                $url = array(
+                    'action' => 'index',
+                    'searchUser' => $values['searchUser'],
+                    'searchStatus' => $values['searchStatus'],
+                );
+            } else {
+                $message = __('Not valid');
+                $url = array(
+                    'action' => 'index',
+                );
+            }
+        } else {
+            $message = __('Not set');
+            $url = array(
+                'action' => 'index',
+            );
+        }
+        return $this->jump($url, $message);
     }
 
     public function detailAction()

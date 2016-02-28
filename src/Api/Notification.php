@@ -87,7 +87,8 @@ class Notification extends AbstractApi
             $toUser,
             $templateUser,
             $information,
-            Pi::service('module')->current()
+            Pi::service('module')->current(),
+            $ticket['uid']
         );
     }
 }

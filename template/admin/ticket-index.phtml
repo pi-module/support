@@ -3,20 +3,11 @@ $this->css($this->assetModule('css/admin.css'));
 $this->backbone();
 ?>
 <div id="js-ticket" class="clearfix">
-    <div class="well well-sm">
-        <ul class="nav nav-pills">
-            <li<?php if ($status == 'open') { echo ' class="active"';} ?>>
-                <a title="<?php _e('Opened tickets'); ?>"
-                   href="<?php echo $this->url('', array('controller' => 'ticket', 'action' => 'index', 'status' => 'open')); ?>"><?php _e('Opened tickets'); ?></a>
-            </li>
-            <li<?php if ($status == 'finish') { echo ' class="active"';} ?>>
-                <a title="<?php _e('Finished tickets'); ?>"
-                   href="<?php echo $this->url('', array('controller' => 'ticket', 'action' => 'index', 'status' => 'finish')); ?>"><?php _e('Finished tickets'); ?></a>
-            </li>
-            <li<?php if ($status == 'all') { echo ' class="active"';} ?>>
-                <a title="<?php _e('All tickets'); ?>"
-                   href="<?php echo $this->url('', array('controller' => 'ticket', 'action' => 'index', 'status' => 'all')); ?>"><?php _e('All tickets'); ?></a>
-            </li>
+    <div class="well well-sm clearfix">
+        <div class="col-md-8">
+            <?php echo $this->form($form, 'inline'); ?>
+        </div>
+        <ul class="nav nav-pills col-md-4">
             <li class="pull-right active">
                 <a title="<?php _e('Open new support ticket'); ?>"
                    href="<?php echo $this->url('', array('controller' => 'ticket', 'action' => 'update')); ?>">
@@ -71,7 +62,7 @@ $this->backbone();
                         </a>
                     </td>
                     <td class="text-center">
-                        <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn <?php echo $this->escape($ticket['status_btn']); ?> btn-xs">
+                        <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn btn-xs <?php echo $this->escape($ticket['status_btn']); ?>">
                             <?php echo $this->escape($ticket['status_view']); ?>
                         </button>
                     </td>
@@ -108,7 +99,7 @@ $this->backbone();
                     formModule.success = function (res) {
                         var d = res.data;
                         self.modal.html(res).modal('hide');
-                        $('#update-status-' + p.attr('data-id')).attr('class', 'update-status btn ' + d.status_btn).html(d.status_view);
+                        $('#update-status-' + p.attr('data-id')).attr('class', 'update-status btn btn-xs ' + d.status_btn).html(d.status_view);
                     };
                 });
             },

@@ -16,7 +16,7 @@ namespace Module\Support\Form;
 use Pi;
 use Pi\Form\Form as BaseForm;
 
-class StatusForm extends BaseForm
+class SearchForm extends BaseForm
 {
     public function __construct($name = null)
     {
@@ -26,26 +26,32 @@ class StatusForm extends BaseForm
     public function getInputFilter()
     {
         if (!$this->filter) {
-            $this->filter = new StatusFilter;
+            $this->filter = new SearchFilter;
         }
         return $this->filter;
     }
 
     public function init()
     {
-        // status
+        // searchStatus
         $this->add(array(
-            'name' => 'status',
+            'name' => 'searchStatus',
             'type' => 'select',
             'options' => array(
-                'label' => __('Change status'),
+                'label' => __('Status'),
                 'value_options' => array(
-                    1 => __('Open'),
-                    2 => __('Answered'),
-                    3 => __('Customer-Reply'),
-                    4 => __('In Progress'),
-                    5 => __('Finished'),
+                    'open' => __('Opened tickets'),
+                    'finish' => __('Finished tickets'),
+                    'all' => __('All tickets'),
                 ),
+            ),
+        ));
+        // searchUser
+        $this->add(array(
+            'name' => 'searchUser',
+            'type' => 'Module\Support\Form\Element\User',
+            'options' => array(
+                'label' => __('User'),
             ),
         ));
         // Save
@@ -53,7 +59,7 @@ class StatusForm extends BaseForm
             'name' => 'submit',
             'type' => 'submit',
             'attributes' => array(
-                'value' => __('Update'),
+                'value' => __('Filter'),
                 'class' => 'btn btn-primary',
             )
         ));
