@@ -51,21 +51,24 @@ class User extends AbstractApi
     {
         // Get info
         $list = array();
+        $where = array('ticket > ?' => 0);
         $order = array('time_update DESC', 'id DESC');
-        $select = Pi::model('user', $this->getModule())->select()->order($order);
+        $select = Pi::model('user', $this->getModule())->select()->where($where)->order($order);
         $rowset = Pi::model('user', $this->getModule())->selectWith($select);
         // Make list
         foreach ($rowset as $row) {
             $user = Pi::user()->get($row->id, array('id', 'identity', 'name', 'email', 'first_name', 'last_name'));
-            if (!empty($user['first_name']) && !empty($user['last_name'])) {
-                $user['display'] = sprintf('%s %s', $user['first_name'], $user['last_name']);
-            } else {
-                $user['display'] = $user['name'];
+            if (isset($user) && !empty($user)) {
+                if (!empty($user['first_name']) && !empty($user['last_name'])) {
+                    $user['display'] = sprintf('%s %s', $user['first_name'], $user['last_name']);
+                } else {
+                    $user['display'] = $user['name'];
+                }
+                $list[$row->id] = array(
+                    'id' => $row->id,
+                    'display' => $user['display'],
+                );
             }
-            $list[$row->id] = array(
-                'id' => $row->id,
-                'display' => $user['display'],
-            );
         }
         return $list;
     }
