@@ -152,6 +152,8 @@ class TicketController extends ActionController
                 $ticketAdmin = Pi::api('ticket', 'support')->canonizeTicket($row);
                 // Send notification
                 Pi::api('notification', 'support')->supportTicket($ticket, 'reply', $ticketAdmin['message']);
+                // Update user info
+                Pi::api('user', 'support')->updateUser($row->uid, 'reply');
                 // Jump
                 $message = __('Your answer user support ticket successfully');
                 $url = array('controller' => 'index', 'action' => 'index');
@@ -194,6 +196,8 @@ class TicketController extends ActionController
                     $ticket = $this->getModel('ticket')->createRow();
                     $ticket->assign($values);
                     $ticket->save();
+                    // Update user info
+                    Pi::api('user', 'support')->updateUser($ticket->uid, 'ticket');
                     // Set values for admin ticket
                     $values['uid'] = Pi::user()->getId();
                     $values['time_create'] = time();
@@ -206,6 +210,8 @@ class TicketController extends ActionController
                     $row = $this->getModel('ticket')->createRow();
                     $row->assign($values);
                     $row->save();
+                    // Update user info
+                    Pi::api('user', 'support')->updateUser($row->uid, 'reply');
                     // Get main ticket
                     $ticketAdmin = Pi::api('ticket', 'support')->canonizeTicket($row);
                     $ticket = Pi::api('ticket', 'support')->canonizeTicket($ticket);

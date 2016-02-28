@@ -39,10 +39,15 @@ class Update extends BasicUpdate
     {
         $moduleVersion = $e->getParam('version');
 
-        // Set product model
+        // Set ticket model
         $ticketModel = Pi::model('ticket', $this->module);
         $ticketTable = $ticketModel->getTable();
         $ticketAdapter = $ticketModel->getAdapter();
+
+        // Set user model
+        $userModel = Pi::model('user', $this->module);
+        $userTable = $userModel->getTable();
+        $userAdapter = $userModel->getAdapter();
 
         // Update to version 0.0.3
         if (version_compare($moduleVersion, '0.0.3', '<')) {
@@ -57,6 +62,76 @@ class Update extends BasicUpdate
                         . $exception->getMessage(),
                 ));
                 return false;
+            }
+        }
+
+        // Update to version 0.0.6
+        if (version_compare($moduleVersion, '0.0.6', '<')) {
+            // Add table of user
+            $sql = <<<'EOD'
+CREATE TABLE `{user}` (
+  `id`          INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ticket`      INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  `reply`       INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  `time_update` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `ticket` (`ticket`),
+  KEY `reply` (`reply`),
+  KEY `time_update` (`time_update`)
+);
+EOD;
+            SqlSchema::setType($this->module);
+            $sqlHandler = new SqlSchema;
+            try {
+                $sqlHandler->queryContent($sql);
+            } catch (\Exception $exception) {
+                $this->setResult('db', array(
+                    'status' => false,
+                    'message' => 'SQL schema query for author table failed: '
+                        . $exception->getMessage(),
+                ));
+                return false;
+            }
+        }
+        // Update user table
+        $list = array();
+        $order = array('time_update DESC');
+
+        $where = array('mid' => 0);
+        $select = $ticketModel->select()->where($where)->order($order);
+        $rowset = $ticketModel->selectWith($select);
+        foreach ($rowset as $row) {
+            if (isset($list[$row->uid])) {
+                $list[$row->uid]['ticket'] = $list[$row->uid]['ticket'] + 1;
+                $list[$row->uid]['time_update'] = $row->time_create;
+            } else {
+                $list[$row->uid] = array(
+                    'id' => $row->uid,
+                    'ticket' => 1,
+                    'reply' => 0,
+                    'time_update' => $row->time_create,
+                );
+            }
+        }
+
+        $where = array('mid != ?' => 0);
+        $select = $ticketModel->select()->where($where)->order($order);
+        $rowset = $ticketModel->selectWith($select);
+        foreach ($rowset as $row) {
+            if (isset($list[$row->uid])) {
+                $list[$row->uid]['reply'] = $list[$row->uid]['reply'] + 1;
+                $list[$row->uid]['time_update'] = $row->time_create;
+            }
+        }
+
+        foreach($list as $single) {
+            if (isset($single['id']) && $single['id'] > 0) {
+                $user = $userModel->createRow();
+                $user->id = $single['id'];
+                $user->ticket = $single['ticket'];
+                $user->reply = $single['reply'];
+                $user->time_update = $single['time_update'];
+                $user->save();
             }
         }
 

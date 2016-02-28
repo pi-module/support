@@ -18,3 +18,14 @@ CREATE TABLE `{ticket}` (
   KEY `mid_status_uid` (`mid`, `status`, `uid`),
   KEY `time_create_id` (`time_create`, `id`)
 );
+
+CREATE TABLE `{user}` (
+  `id`          INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ticket`      INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  `reply`       INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  `time_update` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `ticket` (`ticket`),
+  KEY `reply` (`reply`),
+  KEY `time_update` (`time_update`)
+);
