@@ -22,7 +22,7 @@ $this->backbone();
                 <th><?php _e('ID'); ?></th>
                 <th><?php _e('User'); ?></th>
                 <th><?php _e('Title'); ?></th>
-                <th class="text-center"><?php _e('Status'); ?></th>
+                <th class="text-center"><?php _e('Status / Label'); ?></th>
                 <th class="text-center"><?php _e('Time'); ?></th>
             </tr>
             <?php foreach ($tickets as $ticket) { ?>
@@ -65,6 +65,7 @@ $this->backbone();
                         <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn btn-xs <?php echo $this->escape($ticket['status_btn']); ?>">
                             <?php echo $this->escape($ticket['status_view']); ?>
                         </button>
+                        <span id="update-label-<?php echo $this->escape($ticket['id']); ?>" class="label" style="background: <?php echo $this->escape($ticket['label_color']); ?>"><?php echo $this->escape($ticket['label_title']); ?></span>
                     </td>
                     <td class="text-center"><?php echo $this->escape($ticket['time_update_view']); ?></td>
                 </tr>
@@ -100,6 +101,7 @@ $this->backbone();
                         var d = res.data;
                         self.modal.html(res).modal('hide');
                         $('#update-status-' + p.attr('data-id')).attr('class', 'update-status btn btn-xs ' + d.status_btn).html(d.status_view);
+                        $('#update-label-' + p.attr('data-id')).attr('style',  'background: ' + d.label_color).html(d.label_title);
                     };
                 });
             },

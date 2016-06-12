@@ -18,6 +18,16 @@ return array(
             'controller' => 'ticket',
             'permission' => 'ticket',
         ),
+        array(
+            'title' => _a('User'),
+            'controller' => 'user',
+            'permission' => 'user',
+        ),
+        array(
+            'title' => _a('Label'),
+            'controller' => 'label',
+            'permission' => 'label',
+        ),
     ),
     // Front section
     'front' => array(

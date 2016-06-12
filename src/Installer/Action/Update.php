@@ -65,8 +65,8 @@ class Update extends BasicUpdate
             }
         }
 
-        // Update to version 0.0.6
-        if (version_compare($moduleVersion, '0.0.6', '<')) {
+        // Update to version 0.0.4
+        if (version_compare($moduleVersion, '0.0.4', '<')) {
             // Add table of user
             $sql = <<<'EOD'
 CREATE TABLE `{user}` (
@@ -92,46 +92,92 @@ EOD;
                 ));
                 return false;
             }
-        }
-        // Update user table
-        $list = array();
-        $order = array('time_update DESC');
 
-        $where = array('mid' => 0);
-        $select = $ticketModel->select()->where($where)->order($order);
-        $rowset = $ticketModel->selectWith($select);
-        foreach ($rowset as $row) {
-            if (isset($list[$row->uid])) {
-                $list[$row->uid]['ticket'] = $list[$row->uid]['ticket'] + 1;
-                $list[$row->uid]['time_update'] = $row->time_create;
-            } else {
-                $list[$row->uid] = array(
-                    'id' => $row->uid,
-                    'ticket' => 1,
-                    'reply' => 0,
-                    'time_update' => $row->time_create,
-                );
+            // Update user table
+            $list = array();
+            $order = array('time_update DESC');
+
+            $where = array('mid' => 0);
+            $select = $ticketModel->select()->where($where)->order($order);
+            $rowset = $ticketModel->selectWith($select);
+            foreach ($rowset as $row) {
+                if (isset($list[$row->uid])) {
+                    $list[$row->uid]['ticket'] = $list[$row->uid]['ticket'] + 1;
+                    $list[$row->uid]['time_update'] = $row->time_create;
+                } else {
+                    $list[$row->uid] = array(
+                        'id' => $row->uid,
+                        'ticket' => 1,
+                        'reply' => 0,
+                        'time_update' => $row->time_create,
+                    );
+                }
+            }
+
+            $where = array('mid != ?' => 0);
+            $select = $ticketModel->select()->where($where)->order($order);
+            $rowset = $ticketModel->selectWith($select);
+            foreach ($rowset as $row) {
+                if (isset($list[$row->uid])) {
+                    $list[$row->uid]['reply'] = $list[$row->uid]['reply'] + 1;
+                    $list[$row->uid]['time_update'] = $row->time_create;
+                }
+            }
+
+            foreach($list as $single) {
+                if (isset($single['id']) && $single['id'] > 0) {
+                    $user = $userModel->createRow();
+                    $user->id = $single['id'];
+                    $user->ticket = $single['ticket'];
+                    $user->reply = $single['reply'];
+                    $user->time_update = $single['time_update'];
+                    $user->save();
+                }
             }
         }
 
-        $where = array('mid != ?' => 0);
-        $select = $ticketModel->select()->where($where)->order($order);
-        $rowset = $ticketModel->selectWith($select);
-        foreach ($rowset as $row) {
-            if (isset($list[$row->uid])) {
-                $list[$row->uid]['reply'] = $list[$row->uid]['reply'] + 1;
-                $list[$row->uid]['time_update'] = $row->time_create;
-            }
-        }
+        // Update to version 0.1.0
+        if (version_compare($moduleVersion, '0.1.0', '<')) {
+            // Add table of label
+            $sql = <<<'EOD'
+CREATE TABLE `{label}` (
+  `id`          INT(10) UNSIGNED    NOT NULL AUTO_INCREMENT,
+  `title`       VARCHAR(255)        NOT NULL DEFAULT '',
+  `ticket`      INT(10) UNSIGNED    NOT NULL DEFAULT '0',
+  `status`      TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
+  `color`       VARCHAR(8)          NOT NULL DEFAULT '',
+  `time_update` INT(10) UNSIGNED    NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `ticket` (`ticket`),
+  KEY `status` (`status`),
+  KEY `time_update` (`time_update`)
+);
 
-        foreach($list as $single) {
-            if (isset($single['id']) && $single['id'] > 0) {
-                $user = $userModel->createRow();
-                $user->id = $single['id'];
-                $user->ticket = $single['ticket'];
-                $user->reply = $single['reply'];
-                $user->time_update = $single['time_update'];
-                $user->save();
+EOD;
+            SqlSchema::setType($this->module);
+            $sqlHandler = new SqlSchema;
+            try {
+                $sqlHandler->queryContent($sql);
+            } catch (\Exception $exception) {
+                $this->setResult('db', array(
+                    'status' => false,
+                    'message' => 'SQL schema query for author table failed: '
+                        . $exception->getMessage(),
+                ));
+                return false;
+            }
+
+            // Alter table field `label`
+            $sql = sprintf("ALTER TABLE %s ADD `label` INT(10) UNSIGNED NOT NULL DEFAULT '0'", $ticketTable);
+            try {
+                $ticketAdapter->query($sql, 'execute');
+            } catch (\Exception $exception) {
+                $this->setResult('db', array(
+                    'status' => false,
+                    'message' => 'Table alter query failed: '
+                        . $exception->getMessage(),
+                ));
+                return false;
             }
         }
 

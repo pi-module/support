@@ -14,21 +14,17 @@ namespace Module\Support\Model;
 
 use Pi\Application\Model\Model;
 
-class Ticket extends Model
+class Label extends Model
 {
     /**
      * {@inheritDoc}
      */
     protected $columns = array(
         'id',
-        'subject',
-        'message',
-        'uid',
+        'title',
+        'ticket',
         'status',
-        'time_create',
+        'color',
         'time_update',
-        'ip',
-        'mid',
-        'label',
     );
 }

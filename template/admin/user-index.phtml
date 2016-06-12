@@ -1,0 +1,24 @@
+<?php $this->css($this->assetModule('css/admin.css')); ?>
+<div class="clearfix">
+    <h3><?php _e('List of users'); ?></h3>
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th><?php _e('UID'); ?></th>
+            <th><?php _e('Name'); ?></th>
+            <th><?php _e('Email'); ?></th>
+            <th><?php _e('Number open ticket'); ?></th>
+            <th><?php _e('Number reply'); ?></th>
+            <th><?php _e('Last activity'); ?></th>
+        </tr>
+        <?php foreach ($list as $user) { ?>
+            <tr>
+                <td><?php echo $this->escape($user['id']); ?></td>
+                <td><?php echo $this->escape($user['display']); ?></td>
+                <td><?php echo $this->escape($user['email']); ?></td>
+                <td><?php echo $this->escape($user['ticket']); ?></td>
+                <td><?php echo $this->escape($user['reply']); ?></td>
+                <td><?php echo $this->escape($user['time']); ?></td>
+            </tr>
+        <?php } ?>
+    </table>
+</div>

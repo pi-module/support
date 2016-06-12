@@ -48,6 +48,15 @@ class StatusForm extends BaseForm
                 ),
             ),
         ));
+        // Label
+        $this->add(array(
+            'name' => 'label',
+            'type' => 'Module\Support\Form\Element\Label',
+            'options' => array(
+                'label' => __('Label'),
+                'zero-title' => '',
+            ),
+        ));
         // Save
         $this->add(array(
             'name' => 'submit',

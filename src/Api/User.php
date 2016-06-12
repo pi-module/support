@@ -14,7 +14,6 @@ namespace Module\Support\Api;
 
 use Pi;
 use Pi\Application\Api\AbstractApi;
-use Zend\Json\Json;
 
 /*
  * Pi::api('user', 'support')->updateUser($uid, $type);
@@ -67,6 +66,11 @@ class User extends AbstractApi
                 $list[$row->id] = array(
                     'id' => $row->id,
                     'display' => $user['display'],
+                    'identity' => $user['identity'],
+                    'email' => $user['email'],
+                    'ticket' => _number($row->ticket),
+                    'reply' => _number($row->reply),
+                    'time' => _date($row->time_update),
                 );
             }
         }

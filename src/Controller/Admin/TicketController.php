@@ -32,6 +32,7 @@ class TicketController extends ActionController
         $page = $this->params('page', 1);
         $searchStatus = $this->params('searchStatus', 'open');
         $searchUser = $this->params('searchUser');
+        $searchLabel = $this->params('searchLabel');
         // Set info
         $ticket = array();
         $where = array('mid' => 0);
@@ -55,6 +56,10 @@ class TicketController extends ActionController
         // Check user
         if ($searchUser > 0) {
             $where['uid'] = intval($searchUser);
+        }
+        //
+        if ($searchLabel > 0) {
+            $where['label'] = intval($searchLabel);
         }
         // Get info
         $select = $this->getModel('ticket')->select()->where($where)->order($order)->offset($offset)->limit($limit);
@@ -85,12 +90,14 @@ class TicketController extends ActionController
                 'action'        => 'index',
                 'searchStatus' => $searchStatus,
                 'searchUser' => $searchUser,
+                'searchLabel' => $searchLabel,
             )),
         ));
         // Set form
         $values = array(
             'searchStatus' => $searchStatus,
             'searchUser' => $searchUser,
+            'searchLabel' => $searchLabel,
         );
         $form = new SearchForm('search');
         $form->setAttribute('action', $this->url('', array('action' => 'process')));
@@ -115,6 +122,7 @@ class TicketController extends ActionController
                     'action' => 'index',
                     'searchUser' => $values['searchUser'],
                     'searchStatus' => $values['searchStatus'],
+                    'searchLabel' => $values['searchLabel'],
                 );
             } else {
                 $message = __('Not valid');
@@ -168,10 +176,13 @@ class TicketController extends ActionController
         }
 
         // Set form
-        $form = new TicketForm('ticket');
+        $option = array(
+            'side' => 'admin',
+        );
+        $form = new TicketForm('ticket', $option);
         if ($this->request->isPost()) {
             $data = $this->request->getPost();
-            $form->setInputFilter(new TicketFilter);
+            $form->setInputFilter(new TicketFilter($option));
             $form->setData($data);
             if ($form->isValid()) {
                 $values = $form->getData();
@@ -219,7 +230,10 @@ class TicketController extends ActionController
     public function updateAction()
     {
         // Set form
-        $option = array('selectUser' => 1);
+        $option = array(
+            'selectUser' => 1,
+            'side' => 'admin',
+        );
         $form = new TicketForm('ticket', $option);
         if ($this->request->isPost()) {
             $data = $this->request->getPost();
@@ -244,6 +258,10 @@ class TicketController extends ActionController
                     $ticket->save();
                     // Update user info
                     Pi::api('user', 'support')->updateUser($ticket->uid, 'ticket');
+                    // Update count
+                    if ($ticket->label > 0) {
+                        Pi::api('label', 'support')->updateCount($ticket->label);
+                    }
                     // Set values for admin ticket
                     $values['uid'] = Pi::user()->getId();
                     $values['time_create'] = time();
@@ -293,11 +311,18 @@ class TicketController extends ActionController
             if ($form->isValid()) {
                 $values = $form->getData();
                 $ticket->status = $values['status'];
+                $ticket->label = $values['label'];
                 $ticket->time_update = time();
                 $ticket->save();
                 // Set return
                 $return['status'] = 1;
                 $return['data'] = Pi::api('ticket', 'support')->status($ticket->status);
+                if ($values['label'] > 0) {
+                    $label = Pi::api('ticket', 'support')->label($ticket->label);
+                    $return['data'] = array_merge($return['data'], $label);
+                    // Update count
+                    Pi::api('label', 'support')->updateCount($ticket->label);
+                }
             } else {
                 $return['status'] = 0;
                 $return['data'] = '';
@@ -305,6 +330,7 @@ class TicketController extends ActionController
             return $return;
         } else {
             $values['status'] = $ticket->status;
+            $values['label'] = $ticket->label;
             $form->setData($values);
             $form->setAttribute('action', $this->url('', array('action' => 'updateStatus', 'id' => $ticket->id)));
         }

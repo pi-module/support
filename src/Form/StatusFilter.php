@@ -25,5 +25,10 @@ class StatusFilter extends InputFilter
             'name' => 'status',
             'required' => true,
         ));
+        // Label
+        $this->add(array(
+            'name' => 'label',
+            'required' => false,
+        ));
     }
 }

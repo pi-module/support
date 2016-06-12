@@ -33,7 +33,7 @@ class SearchForm extends BaseForm
 
     public function init()
     {
-        // searchStatus
+        // search Status
         $this->add(array(
             'name' => 'searchStatus',
             'type' => 'select',
@@ -46,12 +46,21 @@ class SearchForm extends BaseForm
                 ),
             ),
         ));
-        // searchUser
+        // searc hUser
         $this->add(array(
             'name' => 'searchUser',
             'type' => 'Module\Support\Form\Element\User',
             'options' => array(
                 'label' => __('User'),
+            ),
+        ));
+        // search Label
+        $this->add(array(
+            'name' => 'searchLabel',
+            'type' => 'Module\Support\Form\Element\Label',
+            'options' => array(
+                'label' => __('Label'),
+                'zero-title' => __('All labels'),
             ),
         ));
         // Save

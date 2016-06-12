@@ -20,6 +20,9 @@ class User extends Model
      * {@inheritDoc}
      */
     protected $columns = array(
-        'id', 'ticket', 'reply', 'time_update',
+        'id',
+        'ticket',
+        'reply',
+        'time_update',
     );
 }

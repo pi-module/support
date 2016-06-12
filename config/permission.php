@@ -17,5 +17,13 @@ return array(
             'title' => _a('Ticket'),
             'access' => array(),
         ),
+        'user' => array(
+            'title' => _a('User'),
+            'access' => array(),
+        ),
+        'label' => array(
+            'title' => _a('Label'),
+            'access' => array(),
+        ),
     ),
 );

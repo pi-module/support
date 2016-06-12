@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: support\n"
-"POT-Creation-Date: 2016-02-28 14:32+0330\n"
+"POT-Creation-Date: 2016-06-12 15:15+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ../..\n"
@@ -20,58 +20,67 @@ msgstr ""
 msgid "New support ticket"
 msgstr "درخواست پشتیبانی جدید"
 
-#: src/Api/Ticket.php:38 src/Form/StatusForm.php:43
+#: src/Api/Ticket.php:39 src/Form/StatusForm.php:43
 msgid "Open"
 msgstr "باز"
 
-#: src/Api/Ticket.php:44 src/Form/StatusForm.php:44
+#: src/Api/Ticket.php:45 src/Form/StatusForm.php:44
 msgid "Answered"
 msgstr "پاسخ داده شده"
 
-#: src/Api/Ticket.php:50 src/Form/StatusForm.php:45
+#: src/Api/Ticket.php:51 src/Form/StatusForm.php:45
 msgid "Customer-Reply"
 msgstr "پاسخ مشتری"
 
-#: src/Api/Ticket.php:56 src/Form/StatusForm.php:46
+#: src/Api/Ticket.php:57 src/Form/StatusForm.php:46
 msgid "In Progress"
 msgstr "در حال اجرا"
 
-#: src/Api/Ticket.php:62 src/Form/StatusForm.php:47
+#: src/Api/Ticket.php:63 src/Form/StatusForm.php:47
 msgid "Finished"
 msgstr "پایان یافته"
 
-#: src/Controller/Admin/TicketController.php:113
+#: src/Controller/Admin/LabelController.php:57
+msgid "Label data saved successfully."
+msgstr "اطلاعات برچسب با موفقیت ذخیره شد"
+
+#: src/Controller/Admin/LabelController.php:69
+#: template/admin/label-index.phtml:4 template/admin/label-index.phtml:6
+msgid "Add label"
+msgstr "برچسب جدید"
+
+#: src/Controller/Admin/TicketController.php:120
 msgid "Go to filter"
 msgstr "فهرست درخواست های پشتیبانی بر اساس فیلتر انتخاب شده"
 
-#: src/Controller/Admin/TicketController.php:120
+#: src/Controller/Admin/TicketController.php:128
 msgid "Not valid"
 msgstr "صحیح نیست"
 
-#: src/Controller/Admin/TicketController.php:126
+#: src/Controller/Admin/TicketController.php:134
 msgid "Not set"
 msgstr "تنظیم نشده"
 
-#: src/Controller/Admin/TicketController.php:165
+#: src/Controller/Admin/TicketController.php:173
 msgid "Please select ticket to see details"
 msgstr "لطفا یک درخواست پشتیبانی را برای مشاهده جززئیات انتخاب کنید"
 
-#: src/Controller/Admin/TicketController.php:204
-#: src/Controller/Admin/TicketController.php:268
+#: src/Controller/Admin/TicketController.php:215
+#: src/Controller/Admin/TicketController.php:282
 msgid "Your answer user support ticket successfully"
 msgstr "شما با موفقیت به درخواست پشتیبانی کاربر پاسخ داده اید"
 
-#: src/Controller/Admin/TicketController.php:240
+#: src/Controller/Admin/TicketController.php:254
 msgid "Admin open this ticket for you"
 msgstr "مدیر وب سایت این درخواست پشتیبانی را برای شما باز کرده است"
 
-#: src/Controller/Admin/TicketController.php:276
+#: src/Controller/Admin/TicketController.php:290
 #: src/Controller/Front/TicketController.php:75
 #: template/admin/ticket-index.phtml:12 template/admin/ticket-index.phtml:14
 msgid "Open new support ticket"
 msgstr "ارسال درخواست پشتیبانی جدید"
 
-#: src/Controller/Admin/TicketController.php:313
+#: src/Controller/Admin/TicketController.php:333
 msgid "Update status"
 msgstr "به روز رسانی وضعیت"
 
@@ -84,10 +93,43 @@ msgstr ""
 msgid "All users"
 msgstr "همه کاربر ها"
 
-#: src/Form/SearchForm.php:41 template/admin/ticket-index.phtml:25
+#: src/Form/LabelForm.php:48 template/admin/label-index.phtml:13
+#: template/admin/ticket-index.phtml:24 template/front/index-index.phtml:23
+msgid "Title"
+msgstr "عنوان"
+
+#: src/Form/LabelForm.php:60
+msgid "Color"
+msgstr "رنگ"
+
+#: src/Form/LabelForm.php:73 src/Form/SearchForm.php:41
 #: template/front/index-index.phtml:24 template/front/ticket-index.phtml:14
 msgid "Status"
 msgstr "وضعیت"
+
+#: src/Form/LabelForm.php:75
+msgid "Published"
+msgstr "منتشر شده"
+
+#: src/Form/LabelForm.php:76
+msgid "Pending review"
+msgstr "درانتظار تایید"
+
+#: src/Form/LabelForm.php:77
+msgid "Draft"
+msgstr "پیش نویس"
+
+#: src/Form/LabelForm.php:78
+msgid "Private"
+msgstr "خصوصی"
+
+#: src/Form/LabelForm.php:79
+msgid "Delete"
+msgstr "حذف"
+
+#: src/Form/LabelForm.php:88 src/Form/TicketForm.php:79
+msgid "Submit"
+msgstr "ارسال"
 
 #: src/Form/SearchForm.php:43
 msgid "Opened tickets"
@@ -105,7 +147,15 @@ msgstr "همه تیکت ها"
 msgid "User"
 msgstr "کاربر"
 
-#: src/Form/SearchForm.php:62
+#: src/Form/SearchForm.php:62 src/Form/StatusForm.php:56
+msgid "Label"
+msgstr "برچسب"
+
+#: src/Form/SearchForm.php:63
+msgid "All labels"
+msgstr "همه برچسب ها"
+
+#: src/Form/SearchForm.php:71
 msgid "Filter"
 msgstr "فیلتر"
 
@@ -113,7 +163,7 @@ msgstr "فیلتر"
 msgid "Change status"
 msgstr "تغییر وضعیت"
 
-#: src/Form/StatusForm.php:56
+#: src/Form/StatusForm.php:65
 msgid "Update"
 msgstr "به روز کردن"
 
@@ -129,17 +179,30 @@ msgstr "موضوع"
 msgid "Message"
 msgstr "پیام"
 
-#: src/Form/TicketForm.php:79
-msgid "Submit"
-msgstr "ارسال"
+#: template/admin/label-index.phtml:9
+msgid "List of labels"
+msgstr "فهرست برچسب ها"
 
-#: template/admin/ticket-index.phtml:22 template/admin/ticket-index.phtml:50
+#: template/admin/label-index.phtml:12 template/admin/ticket-index.phtml:22
+#: template/admin/ticket-index.phtml:50
 msgid "ID"
 msgstr "شناسه"
 
-#: template/admin/ticket-index.phtml:24 template/front/index-index.phtml:23
-msgid "Title"
-msgstr "عنوان"
+#: template/admin/label-index.phtml:14
+msgid "Ticket"
+msgstr "درخواست پشتیبانی"
+
+#: template/admin/label-index.phtml:15
+msgid "Action"
+msgstr "عملکرد"
+
+#: template/admin/label-index.phtml:32 template/admin/label-index.phtml:34
+msgid "Edit"
+msgstr "ویرایش"
+
+#: template/admin/ticket-index.phtml:25
+msgid "Status / Label"
+msgstr "وضعیت / برچسب"
 
 #: template/admin/ticket-index.phtml:26 template/front/index-index.phtml:25
 msgid "Time"
@@ -158,17 +221,37 @@ msgstr "اطلاعات %s"
 msgid "Identity"
 msgstr "نام کاربری"
 
-#: template/admin/ticket-index.phtml:52
+#: template/admin/ticket-index.phtml:52 template/admin/user-index.phtml:7
 msgid "Name"
 msgstr "نام نمایشی"
 
-#: template/admin/ticket-index.phtml:53
+#: template/admin/ticket-index.phtml:53 template/admin/user-index.phtml:8
 msgid "Email"
 msgstr "ایمیل"
 
-#: template/admin/ticket-index.phtml:75 template/front/index-index.phtml:45
+#: template/admin/ticket-index.phtml:76 template/front/index-index.phtml:45
 msgid "You didnt send any support ticket yet"
 msgstr "شما هنوز هیچ درخواست پشتیبانی ارسال نکرده اید"
+
+#: template/admin/user-index.phtml:3
+msgid "List of users"
+msgstr "فهرست کاربران"
+
+#: template/admin/user-index.phtml:6
+msgid "UID"
+msgstr "شناسه کاربر"
+
+#: template/admin/user-index.phtml:9
+msgid "Number open ticket"
+msgstr "تعداد درخواست های پشتیبانی"
+
+#: template/admin/user-index.phtml:10
+msgid "Number reply"
+msgstr "تعداد پاسخ ها"
+
+#: template/admin/user-index.phtml:11
+msgid "Last activity"
+msgstr "آخرین فعالیت"
 
 #: template/front/index-index.phtml:6
 msgid "List of your submitted tickets"
@@ -190,6 +273,3 @@ msgstr ""
 
 #~ msgid "Closed"
 #~ msgstr "بسته شده"
-
-#~ msgid "Action"
-#~ msgstr "عملکرد"

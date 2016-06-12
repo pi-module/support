@@ -30,5 +30,25 @@ return array(
             'controller' => 'ticket',
             'action' => 'index',
         ),
+        'user' => array(
+            'label' => _a('User'),
+            'permission' => array(
+                'resource' => 'user',
+            ),
+            'route' => 'admin',
+            'module' => 'support',
+            'controller' => 'user',
+            'action' => 'index',
+        ),
+        'label' => array(
+            'label' => _a('Label'),
+            'permission' => array(
+                'resource' => 'label',
+            ),
+            'route' => 'admin',
+            'module' => 'support',
+            'controller' => 'label',
+            'action' => 'index',
+        ),
     ),
 );

@@ -1,3 +1,9 @@
 .well .form-inline {
     margin-bottom: 0;
 }
+
+.ticket-label {
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #ffffff;
+}
