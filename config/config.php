@@ -29,15 +29,15 @@ return array(
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',
-            'value' => 10
+            'value' => 50
         ),
-        'admin_email' => array(
-            'category' => 'admin',
-            'title' => _a('Main support email'),
-            'description' => '',
-            'edit' => 'text',
-            'filter' => 'string',
-            'value' => ''
+        'admin_group' => array(
+            'category' => 'view',
+            'title' => _a('Send notification to admin group'),
+            'description' => _a('If not checked send notification to website admin email and if checked send to all admin users'),
+            'edit' => 'checkbox',
+            'filter' => 'number_int',
+            'value' => 0
         ),
         // View
         'view_perpage' => array(
@@ -46,7 +46,7 @@ return array(
             'description' => '',
             'edit' => 'text',
             'filter' => 'number_int',
-            'value' => 10
+            'value' => 50
         ),
     ),
 );

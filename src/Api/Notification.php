@@ -31,22 +31,6 @@ class Notification extends AbstractApi
         // Get config
         $config = Pi::service('registry')->config->read($this->getModule());
 
-        // Set to admin
-        if (isset($config['admin_email']) && !empty($config['admin_email'])) {
-            $toAdmin = array(
-                $config['admin_email'] => Pi::config('adminname'),
-            );
-        } else {
-            $toAdmin = array(
-                Pi::config('adminmail') => Pi::config('adminname'),
-            );
-        }
-
-        // Set to user
-        $toUser = array(
-            $ticket['user']['email'] => $ticket['user']['name'],
-        );
-
         // Set info
         $information = array(
             'subject' => $ticket['subject'],
@@ -74,12 +58,49 @@ class Notification extends AbstractApi
                 break;
         }
 
-        // Send mail to admin
-        Pi::api('mail', 'notification')->send(
-            $toAdmin,
-            $templateAdmin,
-            $information,
-            Pi::service('module')->current()
+        // Set to admin
+        if (isset($config['admin_group']) && !empty($config['admin_group'])) {
+            // Get admin list
+            $uids = array();
+            $where = array('role' => 'admin', 'section' => 'admin');
+            $select = Pi::model('user_role')->select()->where($where);
+            $rowset = Pi::model('user_role')->selectWith($select);
+            foreach ($rowset as $row) {
+                $uids[$row->uid] = $row->uid;
+            }
+            $users = Pi::service('user')->mget($uids, array('uid', 'name', 'email', 'identity'));
+            // Send email to admins
+            foreach ($users as $user) {
+                $toAdmin = array(
+                    $user['email'] => $user['name'],
+                );
+                // Send mail to admin
+                Pi::api('mail', 'notification')->send(
+                    $toAdmin,
+                    $templateAdmin,
+                    $information,
+                    Pi::service('module')->current(),
+                    $user['id']
+                );
+            }
+        } else {
+            $toAdmin = array(
+                Pi::config('adminmail') => Pi::config('adminname'),
+            );
+            // Send mail to admin
+            Pi::api('mail', 'notification')->send(
+                $toAdmin,
+                $templateAdmin,
+                $information,
+                Pi::service('module')->current()
+            );
+        }
+
+
+
+        // Set to user
+        $toUser = array(
+            $ticket['user']['email'] => $ticket['user']['name'],
         );
 
         // Send mail to user

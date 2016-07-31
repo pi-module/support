@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: support\n"
-"POT-Creation-Date: 2016-06-12 15:13+0430\n"
+"POT-Creation-Date: 2016-07-31 15:10+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -29,8 +29,16 @@ msgid "Perpage"
 msgstr "تعداد در هر صفحه"
 
 #: config/config.php:36
-msgid "Main support email"
-msgstr "ایمیل پشتیبانی اصلی"
+msgid "Send notification to admin group"
+msgstr "ارسال آگاهی رسانی به تمام مدیران"
+
+#: config/config.php:37
+msgid ""
+"If not checked send notification to website admin email and if checked send "
+"to all admin users"
+msgstr ""
+"اگر این گزینه تنظیم نشود ایمیل آگاهی رسانی به ایمیل اصلی سایت ارسال می "
+"شود ، و اگر تنظیم شود به تمام مدیران سایت ارسال می شود"
 
 #: config/module.php:16
 msgid "Support"
@@ -60,3 +68,6 @@ msgstr "برچسب"
 #: config/page.php:35
 msgid "Index page"
 msgstr "صفحه اصلی"
+
+#~ msgid "Main support email"
+#~ msgstr "ایمیل پشتیبانی اصلی"

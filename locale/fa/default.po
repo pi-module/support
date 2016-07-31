@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: support\n"
-"POT-Creation-Date: 2016-06-12 15:15+0430\n"
+"POT-Creation-Date: 2016-07-31 15:11+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -15,6 +15,7 @@ msgstr ""
 "X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\n"
 
 #: src/Api/Breadcrumbs.php:53
 msgid "New support ticket"
@@ -66,7 +67,7 @@ msgid "Please select ticket to see details"
 msgstr "لطفا یک درخواست پشتیبانی را برای مشاهده جززئیات انتخاب کنید"
 
 #: src/Controller/Admin/TicketController.php:215
-#: src/Controller/Admin/TicketController.php:282
+#: src/Controller/Admin/TicketController.php:286
 msgid "Your answer user support ticket successfully"
 msgstr "شما با موفقیت به درخواست پشتیبانی کاربر پاسخ داده اید"
 
@@ -74,13 +75,13 @@ msgstr "شما با موفقیت به درخواست پشتیبانی کاربر
 msgid "Admin open this ticket for you"
 msgstr "مدیر وب سایت این درخواست پشتیبانی را برای شما باز کرده است"
 
-#: src/Controller/Admin/TicketController.php:290
+#: src/Controller/Admin/TicketController.php:294
 #: src/Controller/Front/TicketController.php:75
 #: template/admin/ticket-index.phtml:12 template/admin/ticket-index.phtml:14
 msgid "Open new support ticket"
 msgstr "ارسال درخواست پشتیبانی جدید"
 
-#: src/Controller/Admin/TicketController.php:333
+#: src/Controller/Admin/TicketController.php:339
 msgid "Update status"
 msgstr "به روز رسانی وضعیت"
 
