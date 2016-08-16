@@ -4,6 +4,7 @@
         <h1><?php echo $this->escape($title); ?></h1>
     </div>
     <div class="col-md-3">
+        <?php $sideActive = 'support'; ?>
         <?php include $this->templateModule('front/user-profile-sidebar.phtml', 'user'); ?>
     </div>
     <div class="col-md-9">
