@@ -14,10 +14,12 @@ namespace Module\Support\Api;
 
 use Pi;
 use Pi\Application\Api\AbstractApi;
+use Zend\Db\Sql\Predicate\Expression;
 use Zend\Json\Json;
 
 /*
  * Pi::api('ticket', 'support')->getTicket($parameter, $type = 'id');
+ * Pi::api('ticket', 'support')->getCount($uid);
  * Pi::api('ticket', 'support')->status($status);
  * Pi::api('ticket', 'support')->label($label);
  * Pi::api('ticket', 'support')->canonizeTicket($ticket);
@@ -30,6 +32,29 @@ class Ticket extends AbstractApi
         $ticket = Pi::model('ticket', $this->getModule())->find($parameter, $type);
         $ticket = $this->canonizeTicket($ticket);
         return $ticket;
+    }
+
+    public function getCount($uid = '')
+    {
+        // Get user id if not set
+        if (empty($uid)) {
+            $uid = Pi::user()->getId();
+        }
+        // Check user id
+        if (!$uid || $uid == 0) {
+            return array();
+        }
+
+        $where = array(
+            'uid' => $uid,
+            'mid' => 0,
+            'status' => array(2, 4),
+        );
+        $columns = array('count' => new Expression('count(*)'));
+
+        $select = Pi::model('ticket', $this->getModule())->select()->columns($columns)->where($where);
+        $count = Pi::model('ticket', $this->getModule())->selectWith($select)->current()->count;
+        return $count;
     }
 
     public function status($status) {
