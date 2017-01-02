@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: support\n"
-"POT-Creation-Date: 2016-07-31 15:11+0430\n"
+"POT-Creation-Date: 2017-01-02 10:38+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -9,37 +9,61 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: .\n"
 
 #: src/Api/Breadcrumbs.php:53
 msgid "New support ticket"
 msgstr "درخواست پشتیبانی جدید"
 
-#: src/Api/Ticket.php:39 src/Form/StatusForm.php:43
+#: src/Api/Ticket.php:64 src/Form/StatusForm.php:43
 msgid "Open"
 msgstr "باز"
 
-#: src/Api/Ticket.php:45 src/Form/StatusForm.php:44
+#: src/Api/Ticket.php:70 src/Form/StatusForm.php:44
 msgid "Answered"
 msgstr "پاسخ داده شده"
 
-#: src/Api/Ticket.php:51 src/Form/StatusForm.php:45
+#: src/Api/Ticket.php:76 src/Form/StatusForm.php:45
 msgid "Customer-Reply"
 msgstr "پاسخ مشتری"
 
-#: src/Api/Ticket.php:57 src/Form/StatusForm.php:46
+#: src/Api/Ticket.php:82 src/Form/StatusForm.php:46
 msgid "In Progress"
 msgstr "در حال اجرا"
 
-#: src/Api/Ticket.php:63 src/Form/StatusForm.php:47
+#: src/Api/Ticket.php:88 src/Form/StatusForm.php:47
 msgid "Finished"
 msgstr "پایان یافته"
+
+#: src/Api/Ticket.php:102 src/Form/StatusForm.php:58
+msgid "Not defined"
+msgstr "نامشخص"
+
+#: src/Api/Ticket.php:108 src/Form/StatusForm.php:59
+msgid "Paid"
+msgstr "پرداخت شده"
+
+#: src/Api/Ticket.php:114 src/Form/StatusForm.php:60
+msgid "Not paid"
+msgstr "پرداخت نشده"
+
+#: src/Api/Ticket.php:120 src/Form/StatusForm.php:61
+msgid "Including contract"
+msgstr "قرارداد"
+
+#: src/Api/Ticket.php:126 src/Form/StatusForm.php:62
+msgid "Free"
+msgstr "رایگان"
+
+#: src/Api/Ticket.php:170 src/Api/Ticket.php:171 src/Form/StatusForm.php:83
+#: src/Form/StatusForm.php:94
+msgid "minute"
+msgstr "دقیقه"
 
 #: src/Controller/Admin/LabelController.php:57
 msgid "Label data saved successfully."
@@ -81,7 +105,7 @@ msgstr "مدیر وب سایت این درخواست پشتیبانی را بر�
 msgid "Open new support ticket"
 msgstr "ارسال درخواست پشتیبانی جدید"
 
-#: src/Controller/Admin/TicketController.php:339
+#: src/Controller/Admin/TicketController.php:347
 msgid "Update status"
 msgstr "به روز رسانی وضعیت"
 
@@ -95,7 +119,7 @@ msgid "All users"
 msgstr "همه کاربر ها"
 
 #: src/Form/LabelForm.php:48 template/admin/label-index.phtml:13
-#: template/admin/ticket-index.phtml:24 template/front/index-index.phtml:23
+#: template/admin/ticket-index.phtml:24 template/front/index-index.phtml:25
 msgid "Title"
 msgstr "عنوان"
 
@@ -104,7 +128,7 @@ msgid "Color"
 msgstr "رنگ"
 
 #: src/Form/LabelForm.php:73 src/Form/SearchForm.php:41
-#: template/front/index-index.phtml:24 template/front/ticket-index.phtml:14
+#: template/front/index-index.phtml:26 template/front/ticket-index.phtml:15
 msgid "Status"
 msgstr "وضعیت"
 
@@ -148,7 +172,7 @@ msgstr "همه تیکت ها"
 msgid "User"
 msgstr "کاربر"
 
-#: src/Form/SearchForm.php:62 src/Form/StatusForm.php:56
+#: src/Form/SearchForm.php:62 src/Form/StatusForm.php:71
 msgid "Label"
 msgstr "برچسب"
 
@@ -164,7 +188,21 @@ msgstr "فیلتر"
 msgid "Change status"
 msgstr "تغییر وضعیت"
 
-#: src/Form/StatusForm.php:65
+#: src/Form/StatusForm.php:56
+msgid "Financial status"
+msgstr "وضعیت مالی"
+
+#: src/Form/StatusForm.php:79 template/admin/ticket-index.phtml:27
+#: template/front/index-index.phtml:28
+msgid "Suggested time"
+msgstr "زمان پیشنهادی"
+
+#: src/Form/StatusForm.php:90 template/admin/ticket-index.phtml:28
+#: template/front/index-index.phtml:29
+msgid "Execution time"
+msgstr "زمان اجرا"
+
+#: src/Form/StatusForm.php:102
 msgid "Update"
 msgstr "به روز کردن"
 
@@ -185,7 +223,7 @@ msgid "List of labels"
 msgstr "فهرست برچسب ها"
 
 #: template/admin/label-index.phtml:12 template/admin/ticket-index.phtml:22
-#: template/admin/ticket-index.phtml:50
+#: template/admin/ticket-index.phtml:52
 msgid "ID"
 msgstr "شناسه"
 
@@ -202,35 +240,35 @@ msgid "Edit"
 msgstr "ویرایش"
 
 #: template/admin/ticket-index.phtml:25
-msgid "Status / Label"
-msgstr "وضعیت / برچسب"
+msgid "Status / Label / Financial"
+msgstr "وضعیت / برچسب / مالی"
 
-#: template/admin/ticket-index.phtml:26 template/front/index-index.phtml:25
-msgid "Time"
-msgstr "زمان"
+#: template/admin/ticket-index.phtml:26 template/front/index-index.phtml:27
+msgid "Time update"
+msgstr "به روز رسانی"
 
-#: template/admin/ticket-index.phtml:42
+#: template/admin/ticket-index.phtml:44
 msgid "Close"
 msgstr "بستن"
 
-#: template/admin/ticket-index.phtml:46
+#: template/admin/ticket-index.phtml:48
 #, php-format
 msgid "%s information"
 msgstr "اطلاعات %s"
 
-#: template/admin/ticket-index.phtml:51
+#: template/admin/ticket-index.phtml:53
 msgid "Identity"
 msgstr "نام کاربری"
 
-#: template/admin/ticket-index.phtml:52 template/admin/user-index.phtml:7
+#: template/admin/ticket-index.phtml:54 template/admin/user-index.phtml:7
 msgid "Name"
 msgstr "نام نمایشی"
 
-#: template/admin/ticket-index.phtml:53 template/admin/user-index.phtml:8
+#: template/admin/ticket-index.phtml:55 template/admin/user-index.phtml:8
 msgid "Email"
 msgstr "ایمیل"
 
-#: template/admin/ticket-index.phtml:76 template/front/index-index.phtml:45
+#: template/admin/ticket-index.phtml:81 template/front/index-index.phtml:52
 msgid "You didnt send any support ticket yet"
 msgstr "شما هنوز هیچ درخواست پشتیبانی ارسال نکرده اید"
 
@@ -262,15 +300,25 @@ msgstr "فهرست درخواست های پشتیبانی ارسالی شما"
 msgid "New ticket"
 msgstr "درخواست پشتیبانی جدید"
 
-#: template/front/ticket-index.phtml:19
+#: template/front/index-index.phtml:24
+msgid "Number"
+msgstr "شماره"
+
+#: template/front/ticket-index.phtml:20
 msgid "Last update"
 msgstr "آخرین به روز رسانی"
 
-#: template/front/ticket-index.phtml:59
+#: template/front/ticket-index.phtml:60
 msgid "This ticket finished, for more suppoert please open new ticket"
 msgstr ""
 "مراحل اجرای این درخواست پشتیبانی به پایان رسیده است. برای موارد دیگر درخواست "
 "پشتیبانی جدید باز فرمایید."
+
+#~ msgid "Status / Label"
+#~ msgstr "وضعیت / برچسب"
+
+#~ msgid "Time"
+#~ msgstr "زمان"
 
 #~ msgid "Closed"
 #~ msgstr "بسته شده"

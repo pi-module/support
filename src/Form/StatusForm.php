@@ -48,6 +48,21 @@ class StatusForm extends BaseForm
                 ),
             ),
         ));
+        // status_financial
+        $this->add(array(
+            'name' => 'status_financial',
+            'type' => 'select',
+            'options' => array(
+                'label' => __('Financial status'),
+                'value_options' => array(
+                    0 => __('Not defined'),
+                    1 => __('Paid'),
+                    2 => __('Not paid'),
+                    3 => __('Including contract'),
+                    4 => __('Free'),
+                ),
+            ),
+        ));
         // Label
         $this->add(array(
             'name' => 'label',
@@ -56,6 +71,28 @@ class StatusForm extends BaseForm
                 'label' => __('Label'),
                 'zero-title' => '',
             ),
+        ));
+        // time_suggested
+        $this->add(array(
+            'name' => 'time_suggested',
+            'options' => array(
+                'label' => __('Suggested time'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'description' => __('minute'),
+            )
+        ));
+        // time_execution
+        $this->add(array(
+            'name' => 'time_execution',
+            'options' => array(
+                'label' => __('Execution time'),
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'description' => __('minute'),
+            )
         ));
         // Save
         $this->add(array(

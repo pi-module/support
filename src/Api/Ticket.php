@@ -93,6 +93,44 @@ class Ticket extends AbstractApi
 
         return $ticket;
     }
+
+    public function statusFinancial($statusFinancial)
+    {
+        $ticket = array();
+        switch ($statusFinancial) {
+            case 0:
+                $ticket['status_financial_view'] = __('Not defined');
+                $ticket['status_financial_class'] = 'label-warning';
+                $ticket['status_financial_btn'] = 'btn-warning';
+                break;
+                
+            case 1:
+                $ticket['status_financial_view'] = __('Paid');
+                $ticket['status_financial_class'] = 'label-success';
+                $ticket['status_financial_btn'] = 'btn-success';
+                break;
+
+            case 2:
+                $ticket['status_financial_view'] = __('Not paid');
+                $ticket['status_financial_class'] = 'label-danger';
+                $ticket['status_financial_btn'] = 'btn-danger';
+                break;
+
+            case 3:
+                $ticket['status_financial_view'] = __('Including contract');
+                $ticket['status_financial_class'] = 'label-success';
+                $ticket['status_financial_btn'] = 'btn-success';
+                break;
+
+            case 4:
+                $ticket['status_financial_view'] = __('Free');
+                $ticket['status_financial_class'] = 'label-success';
+                $ticket['status_financial_btn'] = 'btn-success';
+                break;
+        }
+
+        return $ticket;
+    }
     
     public function label($label)
     {
@@ -104,7 +142,7 @@ class Ticket extends AbstractApi
             );
         } else {
             return array(
-                'label_title' => __(''),
+                'label_title' => '',
                 'label_color' => 'inherit',
             );
         }
@@ -129,9 +167,12 @@ class Ticket extends AbstractApi
         // Set time
         $ticket['time_create_view'] = _date($ticket['time_create']);
         $ticket['time_update_view'] = _date($ticket['time_update']);
+        $ticket['time_suggested_view'] = ($ticket['time_suggested'] > 0) ? sprintf('%s %s', _number($ticket['time_suggested']), __('minute')) : '-';
+        $ticket['time_execution_view'] = ($ticket['time_execution'] > 0) ? sprintf('%s %s', _number($ticket['time_execution']), __('minute')) : '-';
         $status = $this->status($ticket['status']);
+        $statusFinancial = $this->statusFinancial($ticket['status_financial']);
         $label = $this->label($ticket['label']);
-        $ticket = array_merge($ticket, $status, $label);
+        $ticket = array_merge($ticket, $status, $statusFinancial, $label);
 
         return $ticket;
     }

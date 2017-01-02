@@ -25,10 +25,35 @@ class StatusFilter extends InputFilter
             'name' => 'status',
             'required' => true,
         ));
+        // status_financial
+        $this->add(array(
+            'name' => 'status_financial',
+            'required' => true,
+        ));
         // Label
         $this->add(array(
             'name' => 'label',
             'required' => false,
+        ));
+        // time_suggested
+        $this->add(array(
+            'name' => 'time_suggested',
+            'required' => false,
+            'filters' => array(
+                array(
+                    'name' => 'StringTrim',
+                ),
+            ),
+        ));
+        // time_execution
+        $this->add(array(
+            'name' => 'time_execution',
+            'required' => false,
+            'filters' => array(
+                array(
+                    'name' => 'StringTrim',
+                ),
+            ),
         ));
     }
 }

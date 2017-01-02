@@ -298,7 +298,6 @@ class TicketController extends ActionController
     {
         // Get id
         $id = $this->params('id');
-        $module = $this->params('module');
         $return = array();
         // Get order
         $ticket = $this->getModel('ticket')->find($id);
@@ -312,14 +311,17 @@ class TicketController extends ActionController
                 $values = $form->getData();
                 $ticket->status = $values['status'];
                 $ticket->label = $values['label'];
+                $ticket->status_financial = $values['status_financial'];
+                $ticket->time_suggested = $values['time_suggested'];
+                $ticket->time_execution = $values['time_execution'];
                 $ticket->time_update = time();
                 $ticket->save();
                 // Set return
                 $return['status'] = 1;
-                $return['data'] = Pi::api('ticket', 'support')->status($ticket->status);
+                $return['data'] = Pi::api('ticket', 'support')->canonizeTicket($ticket);
                 if ($values['label'] > 0) {
-                    $label = Pi::api('ticket', 'support')->label($ticket->label);
-                    $return['data'] = array_merge($return['data'], $label);
+                    //$label = Pi::api('ticket', 'support')->label($ticket->label);
+                    //$return['data'] = array_merge($return['data'], $label);
                     // Update count
                     Pi::api('label', 'support')->updateCount($ticket->label);
                 }
@@ -331,8 +333,14 @@ class TicketController extends ActionController
         } else {
             $values['status'] = $ticket->status;
             $values['label'] = $ticket->label;
+            $values['status_financial'] = $ticket->status_financial;
+            $values['time_suggested'] = $ticket->time_suggested;
+            $values['time_execution'] = $ticket->time_execution;
             $form->setData($values);
-            $form->setAttribute('action', $this->url('', array('action' => 'updateStatus', 'id' => $ticket->id)));
+            $form->setAttribute('action', $this->url('', array(
+                'action' => 'updateStatus',
+                'id' => $ticket->id
+            )));
         }
         // Set view
         $this->view()->setTemplate('system:component/form-popup');
