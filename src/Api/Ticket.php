@@ -169,9 +169,11 @@ class Ticket extends AbstractApi
         $ticket['time_update_view'] = _date($ticket['time_update']);
         $ticket['time_suggested_view'] = ($ticket['time_suggested'] > 0) ? sprintf('%s %s', _number($ticket['time_suggested']), __('minute')) : '-';
         $ticket['time_execution_view'] = ($ticket['time_execution'] > 0) ? sprintf('%s %s', _number($ticket['time_execution']), __('minute')) : '-';
+
         $status = $this->status($ticket['status']);
         $statusFinancial = $this->statusFinancial($ticket['status_financial']);
         $label = $this->label($ticket['label']);
+
         $ticket = array_merge($ticket, $status, $statusFinancial, $label);
 
         return $ticket;
