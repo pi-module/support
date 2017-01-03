@@ -20,6 +20,10 @@ return array(
             'title' => _a('View'),
             'name' => 'view'
         ),
+        array(
+            'title' => _a('File'),
+            'name' => 'file'
+        ),
     ),
     'item' => array(
         // Admin
@@ -47,6 +51,39 @@ return array(
             'edit' => 'text',
             'filter' => 'number_int',
             'value' => 50
+        ),
+        'view_timing' => array(
+            'category' => 'view',
+            'title' => _a('Show timing'),
+            'description' => '',
+            'edit' => 'checkbox',
+            'filter' => 'number_int',
+            'value' => 1
+        ),
+        // File
+        'file_active' => array(
+            'category' => 'view',
+            'title' => _a('Active attach file'),
+            'description' => '',
+            'edit' => 'checkbox',
+            'filter' => 'number_int',
+            'value' => 1
+        ),
+        'file_size' => array(
+            'category' => 'file',
+            'title' => _a('File Size'),
+            'description' => '',
+            'edit' => 'text',
+            'filter' => 'number_int',
+            'value' => 1000000
+        ),
+        'file_extension' => array(
+            'category' => 'file',
+            'title' => _a('File Extension'),
+            'description' => '',
+            'edit' => 'textarea',
+            'filter' => 'string',
+            'value' => 'jpg,jpeg,png,gif,avi,flv,mp3,mp4,pdf,docs,xdocs,zip,rar'
         ),
     ),
 );

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: support\n"
-"POT-Creation-Date: 2017-01-02 10:40+0330\n"
+"POT-Creation-Date: 2017-01-03 12:29+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _a;_t\n"
 "X-Poedit-Basepath: ../..\n"
@@ -24,18 +24,38 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: config/config.php:28 config/config.php:45
+#: config/config.php:24
+msgid "File"
+msgstr ""
+
+#: config/config.php:32 config/config.php:49
 msgid "Perpage"
 msgstr ""
 
-#: config/config.php:36
+#: config/config.php:40
 msgid "Send notification to admin group"
 msgstr ""
 
-#: config/config.php:37
+#: config/config.php:41
 msgid ""
 "If not checked send notification to website admin email and if checked send "
 "to all admin users"
+msgstr ""
+
+#: config/config.php:57
+msgid "Show timing"
+msgstr ""
+
+#: config/config.php:66
+msgid "Active attach file"
+msgstr ""
+
+#: config/config.php:74
+msgid "File Size"
+msgstr ""
+
+#: config/config.php:82
+msgid "File Extension"
 msgstr ""
 
 #: config/module.php:16

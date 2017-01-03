@@ -221,6 +221,58 @@ EOD;
             }
         }
 
+        // Update to version 0.1.4
+        if (version_compare($moduleVersion, '0.1.4', '<')) {
+            // Alter table field `file_name`
+            $sql = sprintf("ALTER TABLE %s ADD `file_name` VARCHAR(255) NOT NULL DEFAULT ''", $ticketTable);
+            try {
+                $ticketAdapter->query($sql, 'execute');
+            } catch (\Exception $exception) {
+                $this->setResult('db', array(
+                    'status' => false,
+                    'message' => 'Table alter query failed: '
+                        . $exception->getMessage(),
+                ));
+                return false;
+            }
+            // Alter table field `file_path`
+            $sql = sprintf("ALTER TABLE %s ADD `file_path` VARCHAR(16) NOT NULL DEFAULT ''", $ticketTable);
+            try {
+                $ticketAdapter->query($sql, 'execute');
+            } catch (\Exception $exception) {
+                $this->setResult('db', array(
+                    'status' => false,
+                    'message' => 'Table alter query failed: '
+                        . $exception->getMessage(),
+                ));
+                return false;
+            }
+            // Alter table field `file_title`
+            $sql = sprintf("ALTER TABLE %s ADD `file_title` VARCHAR(255) NOT NULL DEFAULT ''", $ticketTable);
+            try {
+                $ticketAdapter->query($sql, 'execute');
+            } catch (\Exception $exception) {
+                $this->setResult('db', array(
+                    'status' => false,
+                    'message' => 'Table alter query failed: '
+                        . $exception->getMessage(),
+                ));
+                return false;
+            }
+            // Alter table field `file_type`
+            $sql = sprintf("ALTER TABLE %s ADD `file_type` VARCHAR(16) NOT NULL DEFAULT ''", $ticketTable);
+            try {
+                $ticketAdapter->query($sql, 'execute');
+            } catch (\Exception $exception) {
+                $this->setResult('db', array(
+                    'status' => false,
+                    'message' => 'Table alter query failed: '
+                        . $exception->getMessage(),
+                ));
+                return false;
+            }
+        }
+
         return true;
     }
 }

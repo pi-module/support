@@ -47,5 +47,12 @@ class TicketFilter extends InputFilter
             'name' => 'message',
             'required' => true,
         ));
+        // attach
+        if ($option['attach']) {
+            $this->add(array(
+                'name' => 'attach',
+                'required' => false,
+            ));
+        }
     }
 }

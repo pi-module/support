@@ -71,6 +71,19 @@ class TicketForm extends BaseForm
                 'cols' => '40',
             )
         ));
+        // Attach
+        if ($this->option['attach']) {
+            $this->add(array(
+                'name' => 'attach',
+                'options' => array(
+                    'label' => __('Attach file'),
+                ),
+                'attributes' => array(
+                    'type' => 'file',
+                    'description' => '',
+                )
+            ));
+        }
         // Save
         $this->add(array(
             'name' => 'submit',

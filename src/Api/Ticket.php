@@ -154,6 +154,8 @@ class Ticket extends AbstractApi
         if (empty($ticket)) {
             return '';
         }
+        // Get config
+        $config = Pi::service('registry')->config->read($this->getModule());
         // object to array
         $ticket = $ticket->toArray();
         // Set message
@@ -169,11 +171,26 @@ class Ticket extends AbstractApi
         $ticket['time_update_view'] = _date($ticket['time_update']);
         $ticket['time_suggested_view'] = ($ticket['time_suggested'] > 0) ? sprintf('%s %s', _number($ticket['time_suggested']), __('minute')) : '-';
         $ticket['time_execution_view'] = ($ticket['time_execution'] > 0) ? sprintf('%s %s', _number($ticket['time_execution']), __('minute')) : '-';
-
+        // Set file
+        if (!empty($ticket['file_path']) && !empty($ticket['file_name']) && $config['file_active']) {
+            $ticket['file_title_view'] = sprintf('%s : %s', __('Attache file'), $ticket['file_title']);
+            $ticket['file_url_admin'] = Pi::url(Pi::service('url')->assemble('admin', array(
+                'module' => $this->getModule(),
+                'controller' => 'ticket',
+                'action' => 'download',
+                'id' => $ticket['id'],
+            )));
+            $ticket['file_url_user'] = Pi::url(Pi::service('url')->assemble('support', array(
+                'module' => $this->getModule(),
+                'controller' => 'ticket',
+                'action' => 'download',
+                'id' => $ticket['id'],
+            )));
+        }
+        // Set extra information
         $status = $this->status($ticket['status']);
         $statusFinancial = $this->statusFinancial($ticket['status_financial']);
         $label = $this->label($ticket['label']);
-
         $ticket = array_merge($ticket, $status, $statusFinancial, $label);
 
         return $ticket;

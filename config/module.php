@@ -15,12 +15,12 @@ return array(
     'meta' => array(
         'title' => _a('Support'),
         'description' => _a('Support ticket system'),
-        'version' => '0.1.2',
+        'version' => '0.1.5',
         'license' => 'New BSD',
         'logo' => 'image/logo.png',
         'readme' => 'docs/readme.txt',
         'demo' => 'http://pialog',
-        'icon' => 'fa-life-ring',
+        'icon' => 'fa-ticket',
     ),
     // Author information
     'author' => array(

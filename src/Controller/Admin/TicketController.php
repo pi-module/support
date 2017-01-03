@@ -16,6 +16,7 @@ namespace Module\Support\Controller\Admin;
 use Pi;
 use Pi\Mvc\Controller\ActionController;
 use Pi\Paginator\Paginator;
+use Pi\File\Transfer\Upload;
 use Zend\Db\Sql\Predicate\Expression;
 use Module\Support\Form\TicketForm;
 use Module\Support\Form\TicketFilter;
@@ -141,6 +142,10 @@ class TicketController extends ActionController
 
     public function detailAction()
     {
+        // Get info from url
+        $module = $this->params('module');
+        // Get config
+        $config = Pi::service('registry')->config->read($module);
         // Get id
         $id = $this->params('id');
         if ($id) {
@@ -178,14 +183,35 @@ class TicketController extends ActionController
         // Set form
         $option = array(
             'side' => 'admin',
+            'attach' => $config['file_active'],
         );
         $form = new TicketForm('ticket', $option);
+        $form->setAttribute('enctype', 'multipart/form-data');
         if ($this->request->isPost()) {
             $data = $this->request->getPost();
+            $file = $this->request->getFiles();
             $form->setInputFilter(new TicketFilter($option));
             $form->setData($data);
             if ($form->isValid()) {
                 $values = $form->getData();
+                // upload file
+                if (!empty($file['attach']['name']) && $config['file_active']) {
+                    // Set upload path
+                    $values['file_path'] = sprintf('%s/%s', date('Y'), date('m'));
+                    $path = Pi::path(sprintf('upload/support/%s', $values['file_path']));
+                    // Upload
+                    $uploader = new Upload;
+                    $uploader->setDestination($path);
+                    $uploader->setRename('%random%');
+                    $uploader->setExtension($this->config('file_extension'));
+                    $uploader->setSize($this->config('file_size'));
+                    if ($uploader->isValid()) {
+                        $uploader->receive();
+                        $values['file_title'] = $file['attach']['name'];
+                        $values['file_type'] = Pi::api('file', 'support')->getType($file['attach']['name']);
+                        $values['file_name'] = $uploader->getUploaded('attach');
+                    }
+                }
                 // Set values
                 $values['uid'] = Pi::user()->getId();
                 $values['time_create'] = time();
@@ -225,18 +251,26 @@ class TicketController extends ActionController
         // Set view
         $this->view()->assign('form', $form);
         $this->view()->assign('title', $title);
+        $this->view()->assign('config', $config);
     }
 
     public function updateAction()
     {
+        // Get info from url
+        $module = $this->params('module');
+        // Get config
+        $config = Pi::service('registry')->config->read($module);
         // Set form
         $option = array(
             'selectUser' => 1,
             'side' => 'admin',
+            'attach' => $config['file_active'],
         );
         $form = new TicketForm('ticket', $option);
+        $form->setAttribute('enctype', 'multipart/form-data');
         if ($this->request->isPost()) {
             $data = $this->request->getPost();
+            $file = $this->request->getFiles();
             $form->setInputFilter(new TicketFilter($option));
             $form->setData($data);
             if ($form->isValid()) {
@@ -261,6 +295,24 @@ class TicketController extends ActionController
                     // Update count
                     if ($ticket->label > 0) {
                         Pi::api('label', 'support')->updateCount($ticket->label);
+                    }
+                    // upload file
+                    if (!empty($file['attach']['name']) && $config['file_active']) {
+                        // Set upload path
+                        $values['file_path'] = sprintf('%s/%s', date('Y'), date('m'));
+                        $path = Pi::path(sprintf('upload/support/%s', $values['file_path']));
+                        // Upload
+                        $uploader = new Upload;
+                        $uploader->setDestination($path);
+                        $uploader->setRename('%random%');
+                        $uploader->setExtension($this->config('file_extension'));
+                        $uploader->setSize($this->config('file_size'));
+                        if ($uploader->isValid()) {
+                            $uploader->receive();
+                            $values['file_title'] = $file['attach']['name'];
+                            $values['file_type'] = Pi::api('file', 'support')->getType($file['attach']['name']);
+                            $values['file_name'] = $uploader->getUploaded('attach');
+                        }
                     }
                     // Set values for admin ticket
                     $values['uid'] = Pi::user()->getId();
@@ -292,6 +344,7 @@ class TicketController extends ActionController
         // Set view
         $this->view()->assign('form', $form);
         $this->view()->assign('title', __('Open new support ticket'));
+        $this->view()->assign('config', $config);
     }
 
     public function updateStatusAction()
@@ -346,5 +399,34 @@ class TicketController extends ActionController
         $this->view()->setTemplate('system:component/form-popup');
         $this->view()->assign('title', __('Update status'));
         $this->view()->assign('form', $form);
+    }
+
+    public function downloadAction()
+    {
+        $id = $this->params('id');
+        if ($id) {
+            $ticket = Pi::api('ticket', 'support')->getTicket($id);
+            if (!empty($ticket['file_path']) && !empty($ticket['file_name'])) {
+                $source = Pi::path(sprintf(
+                    'upload/support/%s/%s'                    ,
+                    $ticket['file_path'],
+                    $ticket['file_name']
+                ));
+                $options = array(
+                    'filename' => $ticket['file_title']
+                );
+                return Pi::service('file')->download($source, $options);
+            } else {
+                $this->getResponse()->setStatusCode(404);
+                $this->terminate(__('The media not set.'), '', 'error-404');
+                $this->view()->setLayout('layout-simple');
+                return;
+            }
+        } else {
+            $this->getResponse()->setStatusCode(404);
+            $this->terminate(__('The media not set.'), '', 'error-404');
+            $this->view()->setLayout('layout-simple');
+            return;
+        }
     }
 }

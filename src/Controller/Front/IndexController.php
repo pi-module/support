@@ -24,6 +24,10 @@ class IndexController extends ActionController
     {
         // Check user is login or not
         Pi::service('authentication')->requireLogin();
+        // Get info from url
+        $module = $this->params('module');
+        // Get config
+        $config = Pi::service('registry')->config->read($module);
         // Get user info
         $uid = Pi::user()->getId();
         $user = Pi::user()->get($uid, array('id', 'identity', 'name', 'email'));
@@ -75,5 +79,6 @@ class IndexController extends ActionController
         $this->view()->assign('paginator', $paginator);
         $this->view()->assign('user', $user);
         $this->view()->assign('submit', $submit);
+        $this->view()->assign('config', $config);
     }
 }

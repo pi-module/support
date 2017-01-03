@@ -56,6 +56,9 @@ class Support extends Standard
                 case 'ticket':
                     if (isset($parts[1]) && is_numeric($parts[1])) {
                         $matches['id'] = intval($parts[1]);
+                    } elseif (isset($parts[1]) && $parts[1] == 'download' && isset($parts[2]) && is_numeric($parts[2])) {
+                        $matches['action'] = 'download';
+                        $matches['id'] = intval($parts[2]);
                     }
                     break;
             }
