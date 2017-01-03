@@ -12,12 +12,10 @@ CREATE TABLE `{ticket}` (
   `ip`               CHAR(15)            NOT NULL DEFAULT '',
   `mid`              INT(10) UNSIGNED    NOT NULL DEFAULT '0',
   `label`            INT(10) UNSIGNED    NOT NULL DEFAULT '0',
-
   `file_name`        VARCHAR(255)        NOT NULL DEFAULT '',
   `file_path`        VARCHAR(16)         NOT NULL DEFAULT '',
   `file_title`       VARCHAR(255)        NOT NULL DEFAULT '',
   `file_type`        VARCHAR(16)         NOT NULL DEFAULT '',
-
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`),
   KEY `status` (`status`),
@@ -55,4 +53,3 @@ CREATE TABLE `{label}` (
   KEY `status` (`status`),
   KEY `time_update` (`time_update`)
 );
-
