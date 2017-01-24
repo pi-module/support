@@ -3,76 +3,79 @@
     <div class="page-header">
         <h1><?php echo $this->escape($title); ?></h1>
     </div>
-    <div class="col-md-3">
-        <?php $sideActive = 'support'; ?>
-        <?php include $this->templateModule('front/user-profile-sidebar.phtml', 'user'); ?>
-    </div>
-    <div class="col-md-9">
-        <?php if (isset($ticketMain) && !empty($ticketMain)) { ?>
-            <div class="clearfix">
-                <ul class="list-inline">
-                    <li class="col-md-6">
-                        <?php _e('Status'); ?> : <span class="label <?php echo $this->escape($ticketMain['status_class']); ?>">
+
+    <div class="row">
+        <div class="col-md-3">
+            <?php $sideActive = 'support'; ?>
+            <?php include $this->templateModule('front/user-profile-sidebar.phtml', 'user'); ?>
+        </div>
+        <div class="col-md-9">
+            <?php if (isset($ticketMain) && !empty($ticketMain)) { ?>
+                <div class="clearfix">
+                    <ul class="list-inline">
+                        <li class="col-md-6">
+                            <?php _e('Status'); ?> : <span class="label <?php echo $this->escape($ticketMain['status_class']); ?>">
                             <?php echo $this->escape($ticketMain['status_view']); ?>
                         </span>
-                    </li>
-                    <li class="col-md-6 text-right">
-                        <?php _e('Last update'); ?> : <strong><?php echo $this->escape($ticketMain['time_create_update']); ?></strong>
-                    </li>
-                </ul>
-            </div>
-            <br />
-            <div class="panel panel-default">
-                <div class="panel-heading clearfix">
-                    <div class="pull-left">
-                        <?php echo $ticketMain['user']['avatar']; ?>
-                        <?php echo $this->escape($ticketMain['user']['name']); ?>
-                    </div>
-                    <div class="pull-right">
-                        <?php echo $this->escape($ticketMain['time_create_view']); ?>
-                    </div>
+                        </li>
+                        <li class="col-md-6 text-right">
+                            <?php _e('Last update'); ?> : <strong><?php echo $this->escape($ticketMain['time_create_update']); ?></strong>
+                        </li>
+                    </ul>
                 </div>
-                <div class="panel-body">
-                    <?php echo $ticketMain['message']; ?>
-                    <?php if (!empty($ticketMain['file_path']) && !empty($ticketMain['file_name'])&& $config['file_active']) { ?>
-                        <div class="panel-footer">
-                            <a target="_blank" href="<?php echo $this->escape($ticketMain['file_url_user']); ?>" title="<?php echo $this->escape($ticketMain['file_title_view']); ?>"><i class="fa fa-paperclip"></i> <?php echo $this->escape($ticketMain['file_title_view']); ?></a>
-                        </div>
-                    <?php } ?>
-                </div>
-            </div>
-        <?php } ?>
-        <?php if (isset($tickets) && !empty($tickets)) { ?>
-            <?php foreach ($tickets as $ticket) { ?>
+                <br />
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
                         <div class="pull-left">
-                            <?php echo $ticket['user']['avatar']; ?>
-                            <?php echo $this->escape($ticket['user']['name']); ?>
+                            <?php echo $ticketMain['user']['avatar']; ?>
+                            <?php echo $this->escape($ticketMain['user']['name']); ?>
                         </div>
                         <div class="pull-right">
-                            <?php echo $this->escape($ticket['time_create_view']); ?>
+                            <?php echo $this->escape($ticketMain['time_create_view']); ?>
                         </div>
                     </div>
                     <div class="panel-body">
-                        <?php echo $ticket['message']; ?>
+                        <?php echo $ticketMain['message']; ?>
+                        <?php if (!empty($ticketMain['file_path']) && !empty($ticketMain['file_name'])&& $config['file_active']) { ?>
+                            <div class="panel-footer">
+                                <a target="_blank" href="<?php echo $this->escape($ticketMain['file_url_user']); ?>" title="<?php echo $this->escape($ticketMain['file_title_view']); ?>"><i class="fa fa-paperclip"></i> <?php echo $this->escape($ticketMain['file_title_view']); ?></a>
+                            </div>
+                        <?php } ?>
                     </div>
-                    <?php if (!empty($ticket['file_path']) && !empty($ticket['file_name']) && $config['file_active']) { ?>
-                        <div class="panel-footer">
-                            <a target="_blank" href="<?php echo $this->escape($ticket['file_url_user']); ?>" title="<?php echo $this->escape($ticket['file_title_view']); ?>"><i class="fa fa-paperclip"></i> <?php echo $this->escape($ticket['file_title_view']); ?></a>
-                        </div>
-                    <?php } ?>
                 </div>
             <?php } ?>
-        <?php } ?>
-        <?php if (isset($ticketMain['status']) && $ticketMain['status'] == 5) { ?>
-            <div class="well">
-                <?php _e('This ticket finished, for more suppoert please open new ticket'); ?>
-            </div>
-        <?php } else { ?>
-            <div class="well">
-                <?php echo $this->form($form, 'vertical'); ?>
-            </div>
-        <?php } ?>
+            <?php if (isset($tickets) && !empty($tickets)) { ?>
+                <?php foreach ($tickets as $ticket) { ?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <div class="pull-left">
+                                <?php echo $ticket['user']['avatar']; ?>
+                                <?php echo $this->escape($ticket['user']['name']); ?>
+                            </div>
+                            <div class="pull-right">
+                                <?php echo $this->escape($ticket['time_create_view']); ?>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <?php echo $ticket['message']; ?>
+                        </div>
+                        <?php if (!empty($ticket['file_path']) && !empty($ticket['file_name']) && $config['file_active']) { ?>
+                            <div class="panel-footer">
+                                <a target="_blank" href="<?php echo $this->escape($ticket['file_url_user']); ?>" title="<?php echo $this->escape($ticket['file_title_view']); ?>"><i class="fa fa-paperclip"></i> <?php echo $this->escape($ticket['file_title_view']); ?></a>
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+            <?php if (isset($ticketMain['status']) && $ticketMain['status'] == 5) { ?>
+                <div class="well">
+                    <?php _e('This ticket finished, for more suppoert please open new ticket'); ?>
+                </div>
+            <?php } else { ?>
+                <div class="well">
+                    <?php echo $this->form($form, 'vertical'); ?>
+                </div>
+            <?php } ?>
+        </div>
     </div>
 </div>
