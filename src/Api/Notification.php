@@ -23,11 +23,6 @@ class Notification extends AbstractApi
 {
     public function supportTicket($ticket, $type, $message = '')
     {
-        // Check notification module
-        if (!Pi::service('module')->isActive('notification')) {
-            return false;
-        }
-
         // Get config
         $config = Pi::service('registry')->config->read($this->getModule());
 
@@ -75,7 +70,7 @@ class Notification extends AbstractApi
                     $user['email'] => $user['name'],
                 );
                 // Send mail to admin
-                Pi::api('mail', 'notification')->send(
+                Pi::service('notification')->send(
                     $toAdmin,
                     $templateAdmin,
                     $information,
@@ -88,7 +83,7 @@ class Notification extends AbstractApi
                 Pi::config('adminmail') => Pi::config('adminname'),
             );
             // Send mail to admin
-            Pi::api('mail', 'notification')->send(
+            Pi::service('notification')->send(
                 $toAdmin,
                 $templateAdmin,
                 $information,
@@ -104,7 +99,7 @@ class Notification extends AbstractApi
         );
 
         // Send mail to user
-        Pi::api('mail', 'notification')->send(
+        Pi::service('notification')->send(
             $toUser,
             $templateUser,
             $information,
