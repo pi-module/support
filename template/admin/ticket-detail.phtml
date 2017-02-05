@@ -1,7 +1,16 @@
 <?php $this->css($this->assetModule('css/admin.css')); ?>
 <div class="clearfix">
     <div class="page-header">
-        <h1><?php echo $this->escape($title); ?></h1>
+        <div class="clearfix row">
+            <div class="col-md-8">
+                <h1><?php echo $this->escape($title); ?></h1>
+            </div>
+            <div class="col-md-4 text-right ticket-label">
+                <div class="label <?php echo $this->escape($ticket['status_class']); ?>">
+                    <?php echo $this->escape($ticket['status_view']); ?>
+                </div>
+            </div>
+        </div>
     </div>
     <?php if (isset($ticket) && !empty($ticket)) { ?>
         <div class="panel panel-default">
