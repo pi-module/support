@@ -47,12 +47,22 @@ class TicketController extends ActionController
                 break;
 
             case 'finish':
-                $where['status'] = array(5);
+                $where['status'] = 5;
                 break;
 
-            case 'all':
-                // $where['status'] = array(1, 2, 3, 4, 5);
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                $where['status'] = $searchStatus;
                 break;
+
         }
         // Check user
         if ($searchUser > 0) {
@@ -65,10 +75,17 @@ class TicketController extends ActionController
         // Get info
         $select = $this->getModel('ticket')->select()->where($where)->order($order)->offset($offset)->limit($limit);
         $rowset = $this->getModel('ticket')->selectWith($select);
+        $users = array();
         // Make list
         foreach ($rowset as $row) {
             $ticket[$row->id] = Pi::api('ticket', 'support')->canonizeTicket($row);
-            $ticket[$row->id]['user'] = Pi::user()->get($row->uid, array('id', 'identity', 'name', 'email'));
+            if (isset($users[$row->uid])) {
+                $ticket[$row->id]['user'] = $users[$row->uid];
+            } else {
+                $user = Pi::user()->get($row->uid, array('id', 'identity', 'name', 'email'));
+                $ticket[$row->id]['user'] = $user;
+                $users[$row->uid] = $user;
+            }
             $ticket[$row->id]['ticketUrl'] = Pi::url($this->url('', array(
                 'controller' => 'ticket',
                 'action' => 'detail',

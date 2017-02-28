@@ -92,14 +92,14 @@ class Ticket extends AbstractApi
 
             case 6:
                 $ticket['status_view'] = __('Hold');
-                $ticket['status_class'] = 'label-danger';
-                $ticket['status_btn'] = 'btn-danger';
+                $ticket['status_class'] = 'label-info';
+                $ticket['status_btn'] = 'btn-info';
                 break;
 
             case 7:
                 $ticket['status_view'] = __('Development');
-                $ticket['status_class'] = 'label-danger';
-                $ticket['status_btn'] = 'btn-danger';
+                $ticket['status_class'] = 'label-success';
+                $ticket['status_btn'] = 'btn-success';
                 break;
 
             case 8:
