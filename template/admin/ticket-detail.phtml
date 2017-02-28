@@ -1,18 +1,39 @@
-<?php $this->css($this->assetModule('css/admin.css')); ?>
-<div class="clearfix">
+<?php
+$this->css($this->assetModule('css/admin.css'));
+$this->backbone();
+?>
+<div id="js-ticket" class="clearfix">
     <div class="page-header">
-        <div class="clearfix row">
-            <div class="col-md-8">
-                <h1><?php echo $this->escape($title); ?></h1>
-            </div>
-            <div class="col-md-4 text-right ticket-label">
-                <div class="label <?php echo $this->escape($ticket['status_class']); ?>">
-                    <?php echo $this->escape($ticket['status_view']); ?>
-                </div>
-            </div>
-        </div>
+        <h1><?php echo $this->escape($title); ?></h1>
     </div>
     <?php if (isset($ticket) && !empty($ticket)) { ?>
+        <div class="alert alert-info" role="alert">
+            <ul class="list-inline clearfix"
+                data-id="<?php echo $this->escape($ticket['id']); ?>"
+                data-status="<?php echo Pi::url($this->url('', array('action' => 'updateStatus', 'id' => $ticket['id']))); ?>">
+                <li>
+                    <?php _e('Status'); ?> :
+                    <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn btn-xs <?php echo $this->escape($ticket['status_btn']); ?>">
+                        <?php echo $this->escape($ticket['status_view']); ?>
+                    </button>
+                </li>
+                <li id="update-label-<?php echo $this->escape($ticket['id']); ?>" class="label" style="background: <?php echo $this->escape($ticket['label_color']); ?>">
+                    <?php echo $this->escape($ticket['label_title']); ?>
+                </li>
+                <li id="update-status-financial-<?php echo $this->escape($ticket['id']); ?>" class="label <?php echo $this->escape($ticket['status_financial_class']); ?>">
+                    <?php echo $this->escape($ticket['status_financial_view']); ?>
+                </li>
+                <li>
+                    <?php _e('Suggested time'); ?> : <strong id="update-time-suggested-<?php echo $this->escape($ticket['id']); ?>"><?php echo $this->escape($ticket['time_suggested_view']); ?></strong>
+                </li>
+                <li>
+                    <?php _e('Execution time'); ?> : <strong id="update-time-execution-<?php echo $this->escape($ticket['id']); ?>"><?php echo $this->escape($ticket['time_execution_view']); ?></strong>
+                </li>
+                <li>
+                    <?php _e('Last update'); ?> : <strong><?php echo $this->escape($ticket['time_update_view']); ?></strong>
+                </li>
+            </ul>
+        </div>
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
                 <div class="pull-left">
@@ -60,3 +81,35 @@
         <?php echo $this->form($form, 'vertical'); ?>
     </div>
 </div>
+<script>
+    (function ($) {
+        var page = {
+            el: $('#js-ticket'),
+            modal: $('<div class="modal fade">').appendTo(document.body),
+            $: function (selector) {
+                return this.el.find(selector);
+            },
+            init: function () {
+                _.bindAll(this);
+                this.$('.update-status').click(this.statusAction);
+            },
+            statusAction: function (e) {
+                var p = $(e.target).parents('ul'),
+                    self = this;
+                $.get(p.attr('data-status')).done(function (res) {
+                    self.modal.html(res).modal('show');
+                    formModule.success = function (res) {
+                        var d = res.data;
+                        self.modal.html(res).modal('hide');
+                        $('#update-status-' + p.attr('data-id')).attr('class', 'update-status btn btn-xs ' + d.status_btn).html(d.status_view);
+                        $('#update-status-financial-' + p.attr('data-id')).attr('class', 'label ' + d.status_financial_class).html(d.status_financial_view);
+                        $('#update-label-' + p.attr('data-id')).attr('style',  'background: ' + d.label_color).html(d.label_title);
+                        $('#update-time-suggested-' + p.attr('data-id')).html(d.time_suggested_view);
+                        $('#update-time-execution-' + p.attr('data-id')).html(d.time_execution_view);
+                    };
+                });
+            },
+        }
+        page.init();
+    })(jQuery)
+</script>

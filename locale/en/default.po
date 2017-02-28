@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: support\n"
-"POT-Creation-Date: 2017-01-03 12:29+0330\n"
+"POT-Creation-Date: 2017-02-28 12:16+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ../..\n"
@@ -40,32 +40,52 @@ msgstr ""
 msgid "Finished"
 msgstr ""
 
-#: src/Api/Ticket.php:102 src/Form/StatusForm.php:58
+#: src/Api/Ticket.php:94 src/Form/StatusForm.php:48
+msgid "Hold"
+msgstr ""
+
+#: src/Api/Ticket.php:100 src/Form/StatusForm.php:49
+msgid "Development"
+msgstr ""
+
+#: src/Api/Ticket.php:106 src/Form/StatusForm.php:50
+msgid "Support"
+msgstr ""
+
+#: src/Api/Ticket.php:112 src/Form/StatusForm.php:51
+msgid "Financial"
+msgstr ""
+
+#: src/Api/Ticket.php:118 src/Form/StatusForm.php:52
+msgid "Follow up"
+msgstr ""
+
+#: src/Api/Ticket.php:132 src/Form/StatusForm.php:63
 msgid "Not defined"
 msgstr ""
 
-#: src/Api/Ticket.php:108 src/Form/StatusForm.php:59
+#: src/Api/Ticket.php:138 src/Form/StatusForm.php:64
 msgid "Paid"
 msgstr ""
 
-#: src/Api/Ticket.php:114 src/Form/StatusForm.php:60
+#: src/Api/Ticket.php:144 src/Form/StatusForm.php:65
 msgid "Not paid"
 msgstr ""
 
-#: src/Api/Ticket.php:120 src/Form/StatusForm.php:61
+#: src/Api/Ticket.php:150 src/Form/StatusForm.php:66
 msgid "Including contract"
 msgstr ""
 
-#: src/Api/Ticket.php:126 src/Form/StatusForm.php:62
+#: src/Api/Ticket.php:156 src/Form/StatusForm.php:67
 msgid "Free"
 msgstr ""
 
-#: src/Api/Ticket.php:172 src/Api/Ticket.php:173 src/Form/StatusForm.php:83
-#: src/Form/StatusForm.php:94
+#: src/Api/Ticket.php:202 src/Api/Ticket.php:203 src/Form/StatusForm.php:88
+#: src/Form/StatusForm.php:99
 msgid "minute"
 msgstr ""
 
-#: src/Api/Ticket.php:176
+#: src/Api/Ticket.php:206
 msgid "Attache file"
 msgstr ""
 
@@ -130,7 +150,7 @@ msgid "All users"
 msgstr ""
 
 #: src/Form/LabelForm.php:48 template/admin/label-index.phtml:13
-#: template/admin/ticket-index.phtml:24 template/front/index-index.phtml:25
+#: template/admin/ticket-index.phtml:24 template/front/index-index.phtml:27
 msgid "Title"
 msgstr ""
 
@@ -139,7 +159,8 @@ msgid "Color"
 msgstr ""
 
 #: src/Form/LabelForm.php:73 src/Form/SearchForm.php:41
-#: template/front/index-index.phtml:26 template/front/ticket-index.phtml:15
+#: template/admin/ticket-detail.phtml:15 template/front/index-index.phtml:28
+#: template/front/ticket-index.phtml:17
 msgid "Status"
 msgstr ""
 
@@ -183,7 +204,7 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: src/Form/SearchForm.php:62 src/Form/StatusForm.php:71
+#: src/Form/SearchForm.php:62 src/Form/StatusForm.php:76
 msgid "Label"
 msgstr ""
 
@@ -199,21 +220,23 @@ msgstr ""
 msgid "Change status"
 msgstr ""
 
-#: src/Form/StatusForm.php:56
+#: src/Form/StatusForm.php:61
 msgid "Financial status"
 msgstr ""
 
-#: src/Form/StatusForm.php:79 template/admin/ticket-index.phtml:27
-#: template/front/index-index.phtml:29
+#: src/Form/StatusForm.php:84 template/admin/ticket-detail.phtml:27
+#: template/admin/ticket-index.phtml:27 template/front/index-index.phtml:31
+#: template/front/ticket-index.phtml:21
 msgid "Suggested time"
 msgstr ""
 
-#: src/Form/StatusForm.php:90 template/admin/ticket-index.phtml:28
-#: template/front/index-index.phtml:30
+#: src/Form/StatusForm.php:95 template/admin/ticket-detail.phtml:30
+#: template/admin/ticket-index.phtml:28 template/front/index-index.phtml:32
+#: template/front/ticket-index.phtml:24
 msgid "Execution time"
 msgstr ""
 
-#: src/Form/StatusForm.php:102
+#: src/Form/StatusForm.php:107
 msgid "Update"
 msgstr ""
 
@@ -254,11 +277,15 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#: template/admin/ticket-detail.phtml:33 template/front/ticket-index.phtml:27
+msgid "Last update"
+msgstr ""
+
 #: template/admin/ticket-index.phtml:25
 msgid "Status / Label / Financial"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:26 template/front/index-index.phtml:27
+#: template/admin/ticket-index.phtml:26 template/front/index-index.phtml:29
 msgid "Time update"
 msgstr ""
 
@@ -283,7 +310,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: template/admin/ticket-index.phtml:81 template/front/index-index.phtml:54
+#: template/admin/ticket-index.phtml:81 template/front/index-index.phtml:56
 msgid "You didnt send any support ticket yet"
 msgstr ""
 
@@ -307,22 +334,18 @@ msgstr ""
 msgid "Last activity"
 msgstr ""
 
-#: template/front/index-index.phtml:6
+#: template/front/index-index.phtml:13
 msgid "List of your submitted tickets"
 msgstr ""
 
-#: template/front/index-index.phtml:9 template/front/index-index.phtml:10
+#: template/front/index-index.phtml:16 template/front/index-index.phtml:17
 msgid "New ticket"
 msgstr ""
 
-#: template/front/index-index.phtml:24
+#: template/front/index-index.phtml:26
 msgid "Number"
 msgstr ""
 
-#: template/front/ticket-index.phtml:20
-msgid "Last update"
-msgstr ""
-
-#: template/front/ticket-index.phtml:70
+#: template/front/ticket-index.phtml:77
 msgid "This ticket finished, for more suppoert please open new ticket"
 msgstr ""

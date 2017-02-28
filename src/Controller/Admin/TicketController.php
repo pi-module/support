@@ -43,7 +43,7 @@ class TicketController extends ActionController
         // Check status
         switch ($searchStatus) {
             case 'open':
-                $where['status'] = array(1, 2, 3, 4);
+                $where['status'] = array(1, 2, 3, 4, 6, 7, 8, 9, 10);
                 break;
 
             case 'finish':

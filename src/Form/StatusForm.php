@@ -45,6 +45,11 @@ class StatusForm extends BaseForm
                     3 => __('Customer-Reply'),
                     4 => __('In Progress'),
                     5 => __('Finished'),
+                    6 => __('Hold'),
+                    7 => __('Development'),
+                    8 => __('Support'),
+                    9 => __('Financial'),
+                    10 => __('Follow up'),
                 ),
             ),
         ));
