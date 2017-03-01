@@ -76,6 +76,10 @@
                 <div class="well">
                     <?php _e('This ticket finished, for more suppoert please open new ticket'); ?>
                 </div>
+            <?php } elseif (isset($ticketMain['status']) && $ticketMain['status'] == 6) { ?>
+                <div class="well">
+                    <?php _e('This ticket holded, please wait our support team finish your other support requests, after that we will work on this ticket'); ?>
+                </div>
             <?php } else { ?>
                 <div class="well">
                     <?php echo $this->form($form, 'vertical'); ?>
