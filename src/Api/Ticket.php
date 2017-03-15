@@ -20,6 +20,7 @@ use Zend\Json\Json;
 /*
  * Pi::api('ticket', 'support')->getTicket($parameter, $type = 'id');
  * Pi::api('ticket', 'support')->getCount($uid);
+ * Pi::api('ticket', 'support')->getCountAdmin();
  * Pi::api('ticket', 'support')->status($status);
  * Pi::api('ticket', 'support')->label($label);
  * Pi::api('ticket', 'support')->canonizeTicket($ticket);
@@ -48,7 +49,20 @@ class Ticket extends AbstractApi
         $where = array(
             'uid' => $uid,
             'mid' => 0,
-            'status' => array(2, 4),
+            'status' => array(2, 4, 7, 8, 9, 10),
+        );
+        $columns = array('count' => new Expression('count(*)'));
+
+        $select = Pi::model('ticket', $this->getModule())->select()->columns($columns)->where($where);
+        $count = Pi::model('ticket', $this->getModule())->selectWith($select)->current()->count;
+        return $count;
+    }
+
+    public function getCountAdmin()
+    {
+        $where = array(
+            'mid' => 0,
+            'status' => array(1, 3, 9, 10),
         );
         $columns = array('count' => new Expression('count(*)'));
 

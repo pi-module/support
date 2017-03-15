@@ -91,8 +91,6 @@ class Notification extends AbstractApi
             );
         }
 
-
-
         // Set to user
         $toUser = array(
             $ticket['user']['email'] => $ticket['user']['name'],
