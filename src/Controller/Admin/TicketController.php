@@ -384,7 +384,11 @@ class TicketController extends ActionController
                 $ticket->status_financial = $values['status_financial'];
                 $ticket->time_suggested = $values['time_suggested'];
                 $ticket->time_execution = $values['time_execution'];
-                $ticket->time_update = time();
+
+                if (in_array($ticket->status, array(2, 3, 4))) {
+                    $ticket->time_update = time();
+                }
+
                 $ticket->save();
                 // Set return
                 $return['status'] = 1;
