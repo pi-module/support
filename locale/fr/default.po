@@ -127,7 +127,7 @@ msgstr "L'admin a ouvert un ticket pour vous"
 #: src/Controller/Front/TicketController.php:80
 #: template/admin/ticket-index.phtml:12 template/admin/ticket-index.phtml:14
 msgid "Open new support ticket"
-msgstr "Ouvrir un nouveau ticket support"
+msgstr "Ouvrir une nouvelle demande d'assistance"
 
 #: src/Controller/Admin/TicketController.php:421
 msgid "Update status"
@@ -338,7 +338,7 @@ msgstr "Dernière activité"
 
 #: template/front/index-index.phtml:13
 msgid "List of your submitted tickets"
-msgstr "Liste de vos tickets de support soumis"
+msgstr "Vos demandes d'assistance"
 
 #: template/front/index-index.phtml:16 template/front/index-index.phtml:17
 msgid "New ticket"
