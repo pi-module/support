@@ -1,0 +1,90 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: support\n"
+"POT-Creation-Date: 2018-05-02 14:51+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.7\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _a;_t\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: config/config.php:16
+msgid "Admin"
+msgstr "Admin"
+
+#: config/config.php:20
+msgid "View"
+msgstr "Voir"
+
+#: config/config.php:24
+msgid "File"
+msgstr "Fichier"
+
+#: config/config.php:32 config/config.php:49
+msgid "Perpage"
+msgstr "Par Page"
+
+#: config/config.php:40
+msgid "Send notification to admin group"
+msgstr "Envoyer la notification au groupe Admin"
+
+#: config/config.php:41
+msgid ""
+"If not checked send notification to website admin email and if checked send "
+"to all admin users"
+msgstr ""
+"Si non coché, envoyé au seul admin website, si coché envoyé aux membres du "
+"groupe Admin"
+
+#: config/config.php:57
+msgid "Show timing"
+msgstr "Afficher le temps"
+
+#: config/config.php:66
+msgid "Active attach file"
+msgstr "Activer les pièces jointes"
+
+#: config/config.php:74
+msgid "File Size"
+msgstr "Taille fichier pièce jointe"
+
+#: config/config.php:82
+msgid "File Extension"
+msgstr "Extension fichier pièce jointe"
+
+#: config/module.php:16
+msgid "Support"
+msgstr "Support"
+
+#: config/module.php:17
+msgid "Support ticket system"
+msgstr "Gestionnaire de ticket support"
+
+#: config/navigation.php:16
+msgid "Submit ticket"
+msgstr "Soumettre le ticket"
+
+#: config/navigation.php:24 config/page.php:17 config/page.php:40
+#: config/permission.php:17
+msgid "Ticket"
+msgstr "Ticket"
+
+#: config/navigation.php:34 config/page.php:22 config/permission.php:21
+msgid "User"
+msgstr "User"
+
+#: config/navigation.php:44 config/page.php:27 config/permission.php:25
+msgid "Label"
+msgstr "Label"
+
+#: config/page.php:35
+msgid "Index page"
+msgstr "Page Index"
