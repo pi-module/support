@@ -1,0 +1,362 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: support\n"
+"POT-Creation-Date: 2018-05-02 15:18+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.7\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: src/Api/Breadcrumbs.php:53
+msgid "New support ticket"
+msgstr "Nouveau ticket support"
+
+#: src/Api/Ticket.php:78 src/Form/SearchForm.php:46 src/Form/StatusForm.php:43
+msgid "Open"
+msgstr "Ouvert"
+
+#: src/Api/Ticket.php:84 src/Form/SearchForm.php:47 src/Form/StatusForm.php:44
+msgid "Answered"
+msgstr "Répondu"
+
+#: src/Api/Ticket.php:90 src/Form/SearchForm.php:48 src/Form/StatusForm.php:45
+msgid "Customer-Reply"
+msgstr "Réponse client"
+
+#: src/Api/Ticket.php:96 src/Form/SearchForm.php:49 src/Form/StatusForm.php:46
+msgid "In Progress"
+msgstr "En cours"
+
+#: src/Api/Ticket.php:102 src/Form/SearchForm.php:50 src/Form/StatusForm.php:47
+msgid "Finished"
+msgstr "Terminé"
+
+#: src/Api/Ticket.php:108 src/Form/SearchForm.php:51 src/Form/StatusForm.php:48
+msgid "Hold"
+msgstr "Pris en charge"
+
+#: src/Api/Ticket.php:114 src/Form/SearchForm.php:52 src/Form/StatusForm.php:49
+msgid "Development"
+msgstr "Développement"
+
+#: src/Api/Ticket.php:120 src/Form/SearchForm.php:53 src/Form/StatusForm.php:50
+msgid "Support"
+msgstr "Support"
+
+#: src/Api/Ticket.php:126 src/Form/SearchForm.php:54 src/Form/StatusForm.php:51
+msgid "Financial"
+msgstr "Financier"
+
+#: src/Api/Ticket.php:132 src/Form/SearchForm.php:55 src/Form/StatusForm.php:52
+msgid "Follow up"
+msgstr "A suivre"
+
+#: src/Api/Ticket.php:146 src/Form/StatusForm.php:63
+msgid "Not defined"
+msgstr "Non défini"
+
+#: src/Api/Ticket.php:152 src/Form/StatusForm.php:64
+msgid "Paid"
+msgstr "Payé"
+
+#: src/Api/Ticket.php:158 src/Form/StatusForm.php:65
+msgid "Not paid"
+msgstr "Non payé"
+
+#: src/Api/Ticket.php:164 src/Form/StatusForm.php:66
+msgid "Including contract"
+msgstr "Inclus dans le contrat"
+
+#: src/Api/Ticket.php:170 src/Form/StatusForm.php:67
+msgid "Free"
+msgstr "Gratuit"
+
+#: src/Api/Ticket.php:216 src/Api/Ticket.php:217 src/Form/StatusForm.php:88
+#: src/Form/StatusForm.php:99
+msgid "minute"
+msgstr "minute"
+
+#: src/Api/Ticket.php:220
+msgid "Attache file"
+msgstr "Fichier attaché"
+
+#: src/Controller/Admin/LabelController.php:57
+msgid "Label data saved successfully."
+msgstr "Donnée Label enregistrées avec succès"
+
+#: src/Controller/Admin/LabelController.php:69
+#: template/admin/label-index.phtml:4 template/admin/label-index.phtml:6
+msgid "Add label"
+msgstr "Ajouter un label"
+
+#: src/Controller/Admin/TicketController.php:138
+msgid "Go to filter"
+msgstr "Aller au filtre"
+
+#: src/Controller/Admin/TicketController.php:146
+msgid "Not valid"
+msgstr "Non valide"
+
+#: src/Controller/Admin/TicketController.php:152
+msgid "Not set"
+msgstr "Non défini"
+
+#: src/Controller/Admin/TicketController.php:195
+msgid "Please select ticket to see details"
+msgstr "Merci de sélectionner le ticket pour en voir les détails"
+
+#: src/Controller/Admin/TicketController.php:258
+#: src/Controller/Admin/TicketController.php:355
+msgid "Your answer user support ticket successfully"
+msgstr "Vous avez répondu avec succès au ticket support utilisateur"
+
+#: src/Controller/Admin/TicketController.php:305
+msgid "Admin open this ticket for you"
+msgstr "L'admin a ouvert un ticket pour vous"
+
+#: src/Controller/Admin/TicketController.php:363
+#: src/Controller/Front/TicketController.php:80
+#: template/admin/ticket-index.phtml:12 template/admin/ticket-index.phtml:14
+msgid "Open new support ticket"
+msgstr "Ouvrir une nouvelle demande d'assistance"
+
+#: src/Controller/Admin/TicketController.php:421
+msgid "Update status"
+msgstr "Mettre à jour le statut"
+
+#: src/Controller/Admin/TicketController.php:442
+#: src/Controller/Admin/TicketController.php:448
+#: src/Controller/Front/TicketController.php:194
+#: src/Controller/Front/TicketController.php:211
+#: src/Controller/Front/TicketController.php:217
+msgid "The media not set."
+msgstr "Le media n'est pas défini."
+
+#: src/Controller/Front/TicketController.php:153
+msgid "Your support ticket submit successfully, we will answer you very soon"
+msgstr ""
+"Votre ticket de support a été posté avec succès, nous allons vous répondre "
+"très bientôt"
+
+#: src/Form/Element/User.php:28
+msgid "All users"
+msgstr "Tous les users"
+
+#: src/Form/LabelForm.php:48 template/admin/label-index.phtml:13
+#: template/admin/ticket-index.phtml:24 template/front/index-index.phtml:27
+msgid "Title"
+msgstr "Titre"
+
+#: src/Form/LabelForm.php:60
+msgid "Color"
+msgstr "Couleur"
+
+#: src/Form/LabelForm.php:73 src/Form/SearchForm.php:41
+#: template/admin/ticket-detail.phtml:15 template/front/index-index.phtml:28
+#: template/front/ticket-index.phtml:17
+msgid "Status"
+msgstr "Statut"
+
+#: src/Form/LabelForm.php:75
+msgid "Published"
+msgstr "Publié"
+
+#: src/Form/LabelForm.php:76
+msgid "Pending review"
+msgstr "En attente analyse"
+
+#: src/Form/LabelForm.php:77
+msgid "Draft"
+msgstr "Brouillon"
+
+#: src/Form/LabelForm.php:78
+msgid "Private"
+msgstr "Privé"
+
+#: src/Form/LabelForm.php:79
+msgid "Delete"
+msgstr "Supprimer"
+
+#: src/Form/LabelForm.php:88 src/Form/TicketForm.php:92
+msgid "Submit"
+msgstr "Soumettre"
+
+#: src/Form/SearchForm.php:43
+msgid "Opened tickets"
+msgstr "Tickets ouverts"
+
+#: src/Form/SearchForm.php:44
+msgid "Finished tickets"
+msgstr "Tickets terminés"
+
+#: src/Form/SearchForm.php:45
+msgid "All tickets"
+msgstr "Tous les tickets"
+
+#: src/Form/SearchForm.php:64 template/admin/ticket-index.phtml:23
+msgid "User"
+msgstr "Utilisateur"
+
+#: src/Form/SearchForm.php:72 src/Form/StatusForm.php:76
+msgid "Label"
+msgstr "Label"
+
+#: src/Form/SearchForm.php:73
+msgid "All labels"
+msgstr "Tous les labels"
+
+#: src/Form/SearchForm.php:81
+msgid "Filter"
+msgstr "Filtrer"
+
+#: src/Form/StatusForm.php:41
+msgid "Change status"
+msgstr "Modifier statut"
+
+#: src/Form/StatusForm.php:61
+msgid "Financial status"
+msgstr "Statut financier"
+
+#: src/Form/StatusForm.php:84 template/admin/ticket-detail.phtml:27
+#: template/admin/ticket-index.phtml:27 template/front/index-index.phtml:31
+#: template/front/ticket-index.phtml:21
+msgid "Suggested time"
+msgstr "Temps estimé"
+
+#: src/Form/StatusForm.php:95 template/admin/ticket-detail.phtml:30
+#: template/admin/ticket-index.phtml:28 template/front/index-index.phtml:32
+#: template/front/ticket-index.phtml:24
+msgid "Execution time"
+msgstr "Temps réel"
+
+#: src/Form/StatusForm.php:107
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: src/Form/TicketForm.php:42
+msgid "To user ID"
+msgstr "A l'USER ID"
+
+#: src/Form/TicketForm.php:54
+msgid "Subject"
+msgstr "Sujet"
+
+#: src/Form/TicketForm.php:65
+msgid "Message"
+msgstr "Message"
+
+#: src/Form/TicketForm.php:79
+msgid "Attach file"
+msgstr "Fichier attaché"
+
+#: template/admin/label-index.phtml:9
+msgid "List of labels"
+msgstr "Liste des labels"
+
+#: template/admin/label-index.phtml:12 template/admin/ticket-index.phtml:22
+#: template/admin/ticket-index.phtml:52
+msgid "ID"
+msgstr "ID"
+
+#: template/admin/label-index.phtml:14
+msgid "Ticket"
+msgstr "Ticket"
+
+#: template/admin/label-index.phtml:15
+msgid "Action"
+msgstr "Action"
+
+#: template/admin/label-index.phtml:32 template/admin/label-index.phtml:34
+msgid "Edit"
+msgstr "Editer"
+
+#: template/admin/ticket-detail.phtml:33 template/front/ticket-index.phtml:27
+msgid "Last update"
+msgstr "Dernière mise à jour"
+
+#: template/admin/ticket-index.phtml:25
+msgid "Status / Label / Financial"
+msgstr "Statut / Label / Financier"
+
+#: template/admin/ticket-index.phtml:26 template/front/index-index.phtml:29
+msgid "Time update"
+msgstr "Date mise à jour"
+
+#: template/admin/ticket-index.phtml:44
+msgid "Close"
+msgstr "Fermer"
+
+#: template/admin/ticket-index.phtml:48
+#, php-format
+msgid "%s information"
+msgstr "%s information"
+
+#: template/admin/ticket-index.phtml:53
+msgid "Identity"
+msgstr "Identité"
+
+#: template/admin/ticket-index.phtml:54 template/admin/user-index.phtml:7
+msgid "Name"
+msgstr "Nom"
+
+#: template/admin/ticket-index.phtml:55 template/admin/user-index.phtml:8
+msgid "Email"
+msgstr "Email"
+
+#: template/admin/ticket-index.phtml:81 template/front/index-index.phtml:56
+msgid "You didnt send any support ticket yet"
+msgstr "Vous n'avez pas encore envoyé de ticket de support"
+
+#: template/admin/user-index.phtml:3
+msgid "List of users"
+msgstr "Liste des utilisateus"
+
+#: template/admin/user-index.phtml:6
+msgid "UID"
+msgstr "UID"
+
+#: template/admin/user-index.phtml:9
+msgid "Number open ticket"
+msgstr "Nombre de tickets ouverts"
+
+#: template/admin/user-index.phtml:10
+msgid "Number reply"
+msgstr "Nombre réponses"
+
+#: template/admin/user-index.phtml:11
+msgid "Last activity"
+msgstr "Dernière activité"
+
+#: template/front/index-index.phtml:13
+msgid "List of your submitted tickets"
+msgstr "Vos demandes d'assistance"
+
+#: template/front/index-index.phtml:16 template/front/index-index.phtml:17
+msgid "New ticket"
+msgstr "Nouveau ticket"
+
+#: template/front/index-index.phtml:26
+msgid "Number"
+msgstr "Nombre"
+
+#: template/front/ticket-index.phtml:77
+msgid "This ticket finished, for more suppoert please open new ticket"
+msgstr ""
+"Ce ticket est terminé, pour plus de support, merci d'ouvrir un nouveau ticket"
+
+#: template/front/ticket-index.phtml:81
+msgid ""
+"This ticket holded, please wait our support team finish your other support "
+"requests, after that we will work on this ticket"
+msgstr ""
+"Ce ticket a été mis en attente, merci d'attendre que notre équipe termine "
+"vos précédentes demandes, nous travaillerons à ce nouveau ticket ensuite"

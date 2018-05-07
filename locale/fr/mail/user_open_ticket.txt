@@ -1,0 +1,20 @@
+[comment]User open ticket[/comment]
+
+[format]html[/format]
+
+[subject]Votre demande d'assitance a été créée sur %site_name%[/subject]
+
+[body]
+<div style="padding: 1px; direction: ltr;">
+	<h3 style="font-size: 1.1em;">Cher utilisateur de %site_name%</h3>
+	<div style="padding: 3px; margin: 2px;">Vous avez ouvert une demande d'assistance <strong>%subject%</strong> sur le site %site_name%, nous allons vous répondre très rapidement.</div>
+	<div style="margin-top: 10px; margin-bottom: 10px; padding: 10px 5px; background-color: #ddd;">%message%</div>
+	<div style="margin-top: 10px">
+        <a href="%url%" title="%subject%">%url%</a>
+    </div>
+    <div style="padding: 3px; margin: 2px;">Merci de ne pas répondre à ce mail</div>
+	<div style="margin-top: 10px">
+        <a href="%site_url%" title="%site_name%">%site_name%</a>
+    </div>
+</div>
+[/body]

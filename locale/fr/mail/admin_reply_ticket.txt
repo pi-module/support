@@ -1,0 +1,17 @@
+[comment]Admin reply ticket[/comment]
+
+[format]html[/format]
+
+[subject]Une nouvelle réponse a été postée sur un ticket Assistance sur %site_name%[/subject]
+
+[body]
+<div style="padding: 1px; direction: ltr;">
+	<h3 style="font-size: 1.1em;">Cher admin de %site_name%</h3>
+	<div style="padding: 3px; margin: 2px;">Une nouvelle réponse sur <strong>%subject%</strong> a été ajoutée sur %site_name%, merci de vous connecter en mode admin pour en voir les détails</div>
+	<div style="margin-top: 10px; margin-bottom: 10px; padding: 10px 5px; background-color: #ddd;">%message%</div>
+	<div style="padding: 3px; margin: 2px;">Merci de ne pas répondre à cet email</div>
+	<div style="margin-top: 10px">
+        <a href="%site_url%" title="%site_name%">%site_name%</a>
+    </div>
+</div>
+[/body]
