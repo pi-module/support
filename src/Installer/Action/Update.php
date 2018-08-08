@@ -273,6 +273,23 @@ EOD;
             }
         }
 
+        // Update to version 0.1.6
+        if (version_compare($moduleVersion, '0.1.6', '<')) {
+
+            // Alter table field `file_type`
+            $sql = sprintf("ALTER TABLE %s CHANGE `message` `message` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;", $ticketTable);
+            try {
+                $ticketAdapter->query($sql, 'execute');
+            } catch (\Exception $exception) {
+                $this->setResult('db', array(
+                    'status' => false,
+                    'message' => 'Table alter query failed: '
+                        . $exception->getMessage(),
+                ));
+                return false;
+            }
+        }
+
         return true;
     }
 }
