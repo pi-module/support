@@ -58,6 +58,10 @@ class TicketForm extends BaseForm
                 'required' => true,
             )
         ));
+
+        // Get config
+        $config = Pi::service('registry')->config->read('support');
+
         // Message
         $this->add(array(
             'name' => 'message',
@@ -65,6 +69,7 @@ class TicketForm extends BaseForm
                 'label' => __('Message'),
             ),
             'attributes' => array(
+                'description' => '↑ ' . $config['create_msg'],
                 'required' => true,
                 'type' => 'textarea',
                 'rows' => '10',
