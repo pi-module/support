@@ -92,7 +92,7 @@ return array(
 
         'create_msg' => array(
             'category' => 'general',
-            'title' => _a('Create message'),
+            'title' => _a('Instructions to display above any new issue form'),
             'description' => _a('Display instructions above the form when a new ticket is created , like minimum information to give, clear use case, process to replay the issue, etc.'),
             'edit' => 'textarea',
             'filter' => 'string',
