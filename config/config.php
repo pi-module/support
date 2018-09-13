@@ -17,6 +17,10 @@ return array(
             'name' => 'admin'
         ),
         array(
+            'title' => _a('General'),
+            'name' => 'general'
+        ),
+        array(
             'title' => _a('View'),
             'name' => 'view'
         ),
@@ -84,6 +88,14 @@ return array(
             'edit' => 'textarea',
             'filter' => 'string',
             'value' => 'jpg,jpeg,png,gif,avi,flv,mp3,mp4,pdf,docs,xdocs,zip,rar'
+        ),
+
+        'create_msg' => array(
+            'category' => 'general',
+            'title' => _a('Instructions to display above any new issue form'),
+            'description' => _a('Display instructions above the form when a new ticket is created , like minimum information to give, clear use case, process to replay the issue, etc.'),
+            'edit' => 'textarea',
+            'filter' => 'string',
         ),
     ),
 );

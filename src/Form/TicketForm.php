@@ -58,6 +58,7 @@ class TicketForm extends BaseForm
                 'required' => true,
             )
         ));
+
         // Message
         $this->add(array(
             'name' => 'message',
