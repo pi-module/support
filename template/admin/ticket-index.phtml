@@ -3,13 +3,13 @@ $this->css($this->assetModule('css/admin.css'));
 $this->backbone();
 ?>
 <div id="js-ticket" class="clearfix">
-    <div class="well well-sm clearfix">
+    <div class="card card-body bg-light mb-3 clearfix">
         <div class="col-md-8">
             <?php echo $this->form($form, 'inline'); ?>
         </div>
         <ul class="nav nav-pills col-md-4">
-            <li class="pull-right active">
-                <a title="<?php _e('Open new support ticket'); ?>"
+            <li class="nav-item pull-right ">
+                <a  class="nav-link active" title="<?php _e('Open new support ticket'); ?>"
                    href="<?php echo $this->url('', array('controller' => 'ticket', 'action' => 'update')); ?>">
                     <i class="fa fa-folder-open"></i> <?php _e('Open new support ticket'); ?>
                 </a>
@@ -17,7 +17,7 @@ $this->backbone();
         </ul>
     </div>
     <?php if (!empty($tickets)) { ?>
-        <table class="table table-striped table-bordered table-condensed">
+        <table class="table table-striped table-bordered table-sm">
             <tr>
                 <th class="text-center small"><?php _e('ID'); ?></th>
                 <th class="text-center small"><?php _e('User'); ?></th>
@@ -64,7 +64,7 @@ $this->backbone();
                         </a>
                     </td>
                     <td class="text-center small">
-                        <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn btn-xs <?php echo $this->escape($ticket['status_btn']); ?>">
+                        <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn btn-sm <?php echo $this->escape($ticket['status_btn']); ?>">
                             <?php echo $this->escape($ticket['status_view']); ?>
                         </button>
                         <span id="update-label-<?php echo $this->escape($ticket['id']); ?>" class="label" style="background: <?php echo $this->escape($ticket['label_color']); ?>"><?php echo $this->escape($ticket['label_title']); ?></span>
@@ -105,7 +105,7 @@ $this->backbone();
                     formModule.success = function (res) {
                         var d = res.data;
                         self.modal.html(res).modal('hide');
-                        $('#update-status-' + p.attr('data-id')).attr('class', 'update-status btn btn-xs ' + d.status_btn).html(d.status_view);
+                        $('#update-status-' + p.attr('data-id')).attr('class', 'update-status btn btn-sm ' + d.status_btn).html(d.status_view);
                         $('#update-status-financial-' + p.attr('data-id')).attr('class', 'label ' + d.status_financial_class).html(d.status_financial_view);
                         $('#update-label-' + p.attr('data-id')).attr('style',  'background: ' + d.label_color).html(d.label_title);
                         $('#update-time-suggested-' + p.attr('data-id')).html(d.time_suggested_view);
