@@ -43,7 +43,7 @@
                         <?php echo $ticketMain['message']; ?>
                         <?php if (!empty($ticketMain['file_path']) && !empty($ticketMain['file_name'])&& $config['file_active']) { ?>
                             <div class="panel-footer">
-                                <a target="_blank" href="<?php echo $this->escape($ticketMain['file_url_user']); ?>" title="<?php echo $this->escape($ticketMain['file_title_view']); ?>"><i class="fa fa-paperclip"></i> <?php echo $this->escape($ticketMain['file_title_view']); ?></a>
+                                <a target="_blank" href="<?php echo $this->escape($ticketMain['file_url_user']); ?>" title="<?php echo $this->escape($ticketMain['file_title_view']); ?>"><i class="fas fa-paperclip"></i> <?php echo $this->escape($ticketMain['file_title_view']); ?></a>
                             </div>
                         <?php } ?>
                     </div>
@@ -66,7 +66,7 @@
                         </div>
                         <?php if (!empty($ticket['file_path']) && !empty($ticket['file_name']) && $config['file_active']) { ?>
                             <div class="panel-footer">
-                                <a target="_blank" href="<?php echo $this->escape($ticket['file_url_user']); ?>" title="<?php echo $this->escape($ticket['file_title_view']); ?>"><i class="fa fa-paperclip"></i> <?php echo $this->escape($ticket['file_title_view']); ?></a>
+                                <a target="_blank" href="<?php echo $this->escape($ticket['file_url_user']); ?>" title="<?php echo $this->escape($ticket['file_title_view']); ?>"><i class="fas fa-paperclip"></i> <?php echo $this->escape($ticket['file_title_view']); ?></a>
                             </div>
                         <?php } ?>
                     </div>
@@ -88,7 +88,7 @@
                     ?>
 
                     <?php if(!empty($config['create_msg'])) : ?>
-                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                        <i class="far fa-lightbulb" aria-hidden="true"></i>
                         <?php echo nl2br($config['create_msg']); ?>
                         <br />
                         <hr /><br />
