@@ -13,7 +13,7 @@ $this->backbone();
                 data-status="<?php echo Pi::url($this->url('', array('action' => 'updateStatus', 'id' => $ticket['id']))); ?>">
                 <li class="list-inline-item">
                     <?php _e('Status'); ?> :
-                    <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn btn-xs <?php echo $this->escape($ticket['status_btn']); ?>">
+                    <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn btn-sm <?php echo $this->escape($ticket['status_btn']); ?>">
                         <?php echo $this->escape($ticket['status_view']); ?>
                     </button>
                 </li class="list-inline-item">
@@ -101,7 +101,7 @@ $this->backbone();
                     formModule.success = function (res) {
                         var d = res.data;
                         self.modal.html(res).modal('hide');
-                        $('#update-status-' + p.attr('data-id')).attr('class', 'update-status btn btn-xs ' + d.status_btn).html(d.status_view);
+                        $('#update-status-' + p.attr('data-id')).attr('class', 'update-status btn btn-sm ' + d.status_btn).html(d.status_view);
                         $('#update-status-financial-' + p.attr('data-id')).attr('class', 'label ' + d.status_financial_class).html(d.status_financial_view);
                         $('#update-label-' + p.attr('data-id')).attr('style',  'background: ' + d.label_color).html(d.label_title);
                         $('#update-time-suggested-' + p.attr('data-id')).html(d.time_suggested_view);
