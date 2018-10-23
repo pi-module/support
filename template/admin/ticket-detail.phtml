@@ -11,25 +11,25 @@ $this->backbone();
             <ul class="list-inline clearfix"
                 data-id="<?php echo $this->escape($ticket['id']); ?>"
                 data-status="<?php echo Pi::url($this->url('', array('action' => 'updateStatus', 'id' => $ticket['id']))); ?>">
-                <li>
+                <li class="list-inline-item">
                     <?php _e('Status'); ?> :
                     <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn btn-xs <?php echo $this->escape($ticket['status_btn']); ?>">
                         <?php echo $this->escape($ticket['status_view']); ?>
                     </button>
-                </li>
+                </li class="list-inline-item">
                 <li id="update-label-<?php echo $this->escape($ticket['id']); ?>" class="label" style="background: <?php echo $this->escape($ticket['label_color']); ?>">
                     <?php echo $this->escape($ticket['label_title']); ?>
                 </li>
-                <li id="update-status-financial-<?php echo $this->escape($ticket['id']); ?>" class="label <?php echo $this->escape($ticket['status_financial_class']); ?>">
+                <li id="update-status-financial-<?php echo $this->escape($ticket['id']); ?>" class="list-inline-item label <?php echo $this->escape($ticket['status_financial_class']); ?>">
                     <?php echo $this->escape($ticket['status_financial_view']); ?>
                 </li>
-                <li>
+                <li class="list-inline-item">
                     <?php _e('Suggested time'); ?> : <strong id="update-time-suggested-<?php echo $this->escape($ticket['id']); ?>"><?php echo $this->escape($ticket['time_suggested_view']); ?></strong>
                 </li>
-                <li>
+                <li class="list-inline-item">
                     <?php _e('Execution time'); ?> : <strong id="update-time-execution-<?php echo $this->escape($ticket['id']); ?>"><?php echo $this->escape($ticket['time_execution_view']); ?></strong>
                 </li>
-                <li>
+                <li class="list-inline-item">
                     <?php _e('Last update'); ?> : <strong><?php echo $this->escape($ticket['time_update_view']); ?></strong>
                 </li>
             </ul>
