@@ -36,11 +36,11 @@ $this->backbone();
         </div>
         <div class="card">
             <div class="card-header clearfix">
-                <div class="pull-left">
+                <div class="float-left">
                     <?php echo $ticket['user']['avatar']; ?>
                     <?php echo $this->escape($ticket['user']['name']); ?>
                 </div>
-                <div class="pull-right">
+                <div class="float-right">
                     <?php echo $this->escape($ticket['time_create_view']); ?>
                 </div>
             </div>
@@ -58,11 +58,11 @@ $this->backbone();
         <?php foreach ($tickets as $ticket) { ?>
             <div class="card">
                 <div class="card-header clearfix">
-                    <div class="pull-left">
+                    <div class="float-left">
                         <?php echo $ticket['user']['avatar']; ?>
                         <?php echo $this->escape($ticket['user']['name']); ?>
                     </div>
-                    <div class="pull-right">
+                    <div class="float-right">
                         <?php echo $this->escape($ticket['time_create_view']); ?>
                     </div>
                 </div>
