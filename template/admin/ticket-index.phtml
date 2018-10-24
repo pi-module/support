@@ -8,8 +8,8 @@ $this->backbone();
             <?php echo $this->form($form, 'inline'); ?>
         </div>
         <ul class="nav nav-pills col-md-4">
-            <li class="pull-right active">
-                <a title="<?php _e('Open new support ticket'); ?>"
+            <li class="nav-item pull-right">
+                <a class="nav-link active" title="<?php _e('Open new support ticket'); ?>"
                    href="<?php echo $this->url('', array('controller' => 'ticket', 'action' => 'update')); ?>">
                     <i class="fas fa-folder-open"></i> <?php _e('Open new support ticket'); ?>
                 </a>
