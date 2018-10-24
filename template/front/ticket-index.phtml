@@ -29,8 +29,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading clearfix">
+                <div class="card">
+                    <div class="card-header clearfix">
                         <div class="pull-left">
                             <?php echo $ticketMain['user']['avatar']; ?>
                             <?php echo $this->escape($ticketMain['user']['name']); ?>
@@ -39,10 +39,10 @@
                             <?php echo $this->escape($ticketMain['time_create_view']); ?>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         <?php echo $ticketMain['message']; ?>
                         <?php if (!empty($ticketMain['file_path']) && !empty($ticketMain['file_name'])&& $config['file_active']) { ?>
-                            <div class="panel-footer">
+                            <div class="card-footer">
                                 <a target="_blank" href="<?php echo $this->escape($ticketMain['file_url_user']); ?>" title="<?php echo $this->escape($ticketMain['file_title_view']); ?>"><i class="fas fa-paperclip"></i> <?php echo $this->escape($ticketMain['file_title_view']); ?></a>
                             </div>
                         <?php } ?>
@@ -51,8 +51,8 @@
             <?php } ?>
             <?php if (isset($tickets) && !empty($tickets)) { ?>
                 <?php foreach ($tickets as $ticket) { ?>
-                    <div class="panel panel-default">
-                        <div class="panel-heading clearfix">
+                    <div class="card">
+                        <div class="card-header clearfix">
                             <div class="pull-left">
                                 <?php echo $ticket['user']['avatar']; ?>
                                 <?php echo $this->escape($ticket['user']['name']); ?>
@@ -61,11 +61,11 @@
                                 <?php echo $this->escape($ticket['time_create_view']); ?>
                             </div>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <?php echo $ticket['message']; ?>
                         </div>
                         <?php if (!empty($ticket['file_path']) && !empty($ticket['file_name']) && $config['file_active']) { ?>
-                            <div class="panel-footer">
+                            <div class="card-footer">
                                 <a target="_blank" href="<?php echo $this->escape($ticket['file_url_user']); ?>" title="<?php echo $this->escape($ticket['file_title_view']); ?>"><i class="fas fa-paperclip"></i> <?php echo $this->escape($ticket['file_title_view']); ?></a>
                             </div>
                         <?php } ?>
