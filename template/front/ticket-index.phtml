@@ -1,14 +1,15 @@
 <?php $this->css($this->assetModule('css/front.css')); ?>
 <div class="clearfix">
-    <div class="page-header">
-        <h1><?php echo $this->escape($title); ?></h1>
-    </div>
     <div class="row">
         <div class="col-md-3">
             <?php $sideActive = 'support'; ?>
             <?php include $this->templateModule('front/user-profile-sidebar.phtml', 'user'); ?>
         </div>
         <div class="col-md-9">
+            <div class="page-header">
+                <h1><?php echo $this->escape($title); ?></h1>
+            </div>
+
             <?php if (isset($ticketMain) && !empty($ticketMain)) { ?>
                 <div class="clearfix">
                     <div class="alert alert-info" role="alert">
