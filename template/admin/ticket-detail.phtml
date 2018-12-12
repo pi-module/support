@@ -16,8 +16,8 @@ $this->backbone();
                     <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn btn-sm <?php echo $this->escape($ticket['status_btn']); ?>">
                         <?php echo $this->escape($ticket['status_view']); ?>
                     </button>
-                </li class="list-inline-item">
-                <li id="update-label-<?php echo $this->escape($ticket['id']); ?>" class="label" style="background: <?php echo $this->escape($ticket['label_color']); ?>">
+                </li>
+                <li id="update-label-<?php echo $this->escape($ticket['id']); ?>" class="list-inline-item label" style="background: <?php echo $this->escape($ticket['label_color']); ?>">
                     <?php echo $this->escape($ticket['label_title']); ?>
                 </li>
                 <li id="update-status-financial-<?php echo $this->escape($ticket['id']); ?>" class="list-inline-item label <?php echo $this->escape($ticket['status_financial_class']); ?>">
@@ -34,9 +34,9 @@ $this->backbone();
                 </li>
             </ul>
         </div>
-        <div class="card">
+        <div class="card card-body bg-light mb-3">
             <div class="card-header clearfix">
-                <div class="float-left">
+                <div class="pull-left">
                     <?php echo $ticket['user']['avatar']; ?>
                     <?php echo $this->escape($ticket['user']['name']); ?>
                 </div>
@@ -49,16 +49,16 @@ $this->backbone();
             </div>
             <?php if (!empty($ticket['file_path']) && !empty($ticket['file_name']) && $config['file_active']) { ?>
                 <div class="card-footer">
-                    <a target="_blank" href="<?php echo $this->escape($ticket['file_url_admin']); ?>" title="<?php echo $this->escape($ticket['file_title_view']); ?>"><i class="fas fa-paperclip"></i> <?php echo $this->escape($ticket['file_title_view']); ?></a>
+                    <a target="_blank" href="<?php echo $this->escape($ticket['file_url_admin']); ?>" title="<?php echo $this->escape($ticket['file_title_view']); ?>"><i class="fa fa-paperclip"></i> <?php echo $this->escape($ticket['file_title_view']); ?></a>
                 </div>
             <?php } ?>
         </div>
     <?php } ?>
     <?php if (isset($tickets) && !empty($tickets)) { ?>
         <?php foreach ($tickets as $ticket) { ?>
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header clearfix">
-                    <div class="float-left">
+                    <div class="pull-left">
                         <?php echo $ticket['user']['avatar']; ?>
                         <?php echo $this->escape($ticket['user']['name']); ?>
                     </div>
@@ -77,7 +77,7 @@ $this->backbone();
             </div>
         <?php } ?>
     <?php } ?>
-    <div class="well">
+    <div class="card card-body bg-light mb-3">
         <?php echo $this->form($form, 'vertical'); ?>
     </div>
 </div>

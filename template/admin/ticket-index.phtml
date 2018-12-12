@@ -3,13 +3,13 @@ $this->css($this->assetModule('css/admin.css'));
 $this->backbone();
 ?>
 <div id="js-ticket" class="clearfix">
-    <div class="well well-sm clearfix">
+    <div class="card card-body bg-light mb-3 clearfix">
         <div class="col-md-8">
             <?php echo $this->form($form, 'inline'); ?>
         </div>
         <ul class="nav nav-pills col-md-4">
-            <li class="nav-item float-right">
-                <a class="nav-link active" title="<?php _e('Open new support ticket'); ?>"
+            <li class="nav-item float-right ">
+                <a  class="nav-link active" title="<?php _e('Open new support ticket'); ?>"
                    href="<?php echo $this->url('', array('controller' => 'ticket', 'action' => 'update')); ?>">
                     <i class="fas fa-folder-open"></i> <?php _e('Open new support ticket'); ?>
                 </a>
