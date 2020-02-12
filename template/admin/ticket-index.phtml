@@ -9,7 +9,7 @@ $this->backbone();
         </div>
         <div class="col-md-3 text-right">
             <a class="btn btn-primary" title="<?php _e('Open new support ticket'); ?>"
-               href="<?php echo $this->url('', array('controller' => 'ticket', 'action' => 'update')); ?>">
+               href="<?php echo $this->url('', ['controller' => 'ticket', 'action' => 'update']); ?>">
                 <i class="fa fa-folder-open"></i> <?php _e('Open new support ticket'); ?>
             </a>
         </div>
@@ -27,15 +27,16 @@ $this->backbone();
             </tr>
             <?php foreach ($tickets as $ticket) { ?>
                 <tr
-                    data-id="<?php echo $this->escape($ticket['id']); ?>"
-                    data-status="<?php echo Pi::url($this->url('', array('action' => 'updateStatus', 'id' => $ticket['id']))); ?>"
+                        data-id="<?php echo $this->escape($ticket['id']); ?>"
+                        data-status="<?php echo Pi::url($this->url('', ['action' => 'updateStatus', 'id' => $ticket['id']])); ?>"
                 >
                     <td class="text-center "><?php echo $this->escape($ticket['id']); ?></td>
                     <td>
                         <a class="text-center " data-toggle="modal" data-target="#userModal<?php echo $this->escape($ticket['id']); ?>">
                             <?php echo $this->escape($ticket['user']['name']); ?>
                         </a>
-                        <div class="modal fade" id="userModal<?php echo $this->escape($ticket['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="userModalLabel<?php echo $this->escape($ticket['id']); ?>">
+                        <div class="modal fade" id="userModal<?php echo $this->escape($ticket['id']); ?>" tabindex="-1" role="dialog"
+                             aria-labelledby="userModalLabel<?php echo $this->escape($ticket['id']); ?>">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -62,15 +63,26 @@ $this->backbone();
                         </a>
                     </td>
                     <td class="text-center ">
-                        <button id="update-status-<?php echo $this->escape($ticket['id']); ?>" class="update-status btn btn-sm <?php echo $this->escape($ticket['status_btn']); ?>">
+                        <button id="update-status-<?php echo $this->escape($ticket['id']); ?>"
+                                class="update-status btn btn-sm <?php echo $this->escape($ticket['status_btn']); ?>">
                             <?php echo $this->escape($ticket['status_view']); ?>
                         </button>
-                        <span id="update-label-<?php echo $this->escape($ticket['id']); ?>" class="label" style="background: <?php echo $this->escape($ticket['label_color']); ?>"><?php echo $this->escape($ticket['label_title']); ?></span>
-                        <span id="update-status-financial-<?php echo $this->escape($ticket['id']); ?>" class="label <?php echo $this->escape($ticket['status_financial_class']); ?>"><?php echo $this->escape($ticket['status_financial_view']); ?></span>
+                        <span id="update-label-<?php echo $this->escape($ticket['id']); ?>" class="label"
+                              style="background: <?php echo $this->escape($ticket['label_color']); ?>"><?php echo $this->escape(
+                                $ticket['label_title']
+                            ); ?></span>
+                        <span id="update-status-financial-<?php echo $this->escape($ticket['id']); ?>"
+                              class="label <?php echo $this->escape($ticket['status_financial_class']); ?>"><?php echo $this->escape(
+                                $ticket['status_financial_view']
+                            ); ?></span>
                     </td>
                     <td class="text-center "><?php echo $this->escape($ticket['time_update_view']); ?></td>
-                    <td class="text-center " id="update-time-suggested-<?php echo $this->escape($ticket['id']); ?>"><?php echo $this->escape($ticket['time_suggested_view']); ?></td>
-                    <td class="text-center " id="update-time-execution-<?php echo $this->escape($ticket['id']); ?>"><?php echo $this->escape($ticket['time_execution_view']); ?></td>
+                    <td class="text-center " id="update-time-suggested-<?php echo $this->escape($ticket['id']); ?>"><?php echo $this->escape(
+                            $ticket['time_suggested_view']
+                        ); ?></td>
+                    <td class="text-center " id="update-time-execution-<?php echo $this->escape($ticket['id']); ?>"><?php echo $this->escape(
+                            $ticket['time_execution_view']
+                        ); ?></td>
                 </tr>
             <?php } ?>
         </table>
@@ -105,7 +117,7 @@ $this->backbone();
                         self.modal.html(res).modal('hide');
                         $('#update-status-' + p.attr('data-id')).attr('class', 'update-status btn btn-sm ' + d.status_btn).html(d.status_view);
                         $('#update-status-financial-' + p.attr('data-id')).attr('class', 'label ' + d.status_financial_class).html(d.status_financial_view);
-                        $('#update-label-' + p.attr('data-id')).attr('style',  'background: ' + d.label_color).html(d.label_title);
+                        $('#update-label-' + p.attr('data-id')).attr('style', 'background: ' + d.label_color).html(d.label_title);
                         $('#update-time-suggested-' + p.attr('data-id')).html(d.time_suggested_view);
                         $('#update-time-execution-' + p.attr('data-id')).html(d.time_execution_view);
                     };

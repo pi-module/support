@@ -11,6 +11,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Support\Registry;
 
 use Pi;
@@ -27,11 +28,11 @@ class LabelList extends AbstractRegistry
     /**
      * {@inheritDoc}
      */
-    protected function loadDynamic($options = array())
+    protected function loadDynamic($options = [])
     {
-        $return = array();
-        $where = array('status' => 1);
-        $order = array('time_update DESC', 'id DESC');
+        $return = [];
+        $where  = ['status' => 1];
+        $order  = ['time_update DESC', 'id DESC'];
         $select = Pi::model('label', $this->module)->select()->where($where)->order($order);
         $rowset = Pi::model('label', $this->module)->selectWith($select);
         foreach ($rowset as $row) {
@@ -46,8 +47,8 @@ class LabelList extends AbstractRegistry
      */
     public function read()
     {
-        $options = array();
-        $result = $this->loadData($options);
+        $options = [];
+        $result  = $this->loadData($options);
 
         return $result;
     }

@@ -25,7 +25,7 @@ class User extends Select
     {
         if (empty($this->valueOptions)) {
             $userList = Pi::api('user', 'support')->getUserList();
-            $list[0] = __('All users');
+            $list[0]  = __('All users');
             foreach ($userList as $user) {
                 $list[$user['id']] = $user['display'];
             }

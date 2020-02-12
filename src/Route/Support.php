@@ -19,17 +19,20 @@ class Support extends Standard
 {
     /**
      * Default values.
+     *
      * @var array
      */
-    protected $defaults = array(
-        'module' => 'support',
-        'controller' => 'index',
-        'action' => 'index'
-    );
+    protected $defaults
+        = [
+            'module'     => 'support',
+            'controller' => 'index',
+            'action'     => 'index',
+        ];
 
-    protected $controllerList = array(
-        'index', 'ticket'
-    );
+    protected $controllerList
+        = [
+            'index', 'ticket',
+        ];
 
     /**
      * {@inheritDoc}
@@ -41,8 +44,8 @@ class Support extends Standard
      */
     protected function parse($path)
     {
-        $matches = array();
-        $parts = array_filter(explode($this->structureDelimiter, $path));
+        $matches = [];
+        $parts   = array_filter(explode($this->structureDelimiter, $path));
 
         // Set controller
         $matches = array_merge($this->defaults, $matches);
@@ -58,7 +61,7 @@ class Support extends Standard
                         $matches['id'] = intval($parts[1]);
                     } elseif (isset($parts[1]) && $parts[1] == 'download' && isset($parts[2]) && is_numeric($parts[2])) {
                         $matches['action'] = 'download';
-                        $matches['id'] = intval($parts[2]);
+                        $matches['id']     = intval($parts[2]);
                     }
                     break;
             }
@@ -75,16 +78,16 @@ class Support extends Standard
     /**
      * assemble(): Defined by Route interface.
      *
-     * @see    Route::assemble()
-     * @param  array $params
-     * @param  array $options
+     * @param array $params
+     * @param array $options
+     *
      * @return string
+     * @see    Route::assemble()
      */
     public function assemble(
-        array $params = array(),
-        array $options = array()
-    )
-    {
+        array $params = [],
+        array $options = []
+    ) {
         $mergedParams = array_merge($this->defaults, $params);
         if (!$mergedParams) {
             return $this->prefix;

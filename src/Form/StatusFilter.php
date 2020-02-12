@@ -21,39 +21,49 @@ class StatusFilter extends InputFilter
     public function __construct()
     {
         // status
-        $this->add(array(
-            'name' => 'status',
-            'required' => true,
-        ));
+        $this->add(
+            [
+                'name'     => 'status',
+                'required' => true,
+            ]
+        );
         // status_financial
-        $this->add(array(
-            'name' => 'status_financial',
-            'required' => true,
-        ));
+        $this->add(
+            [
+                'name'     => 'status_financial',
+                'required' => true,
+            ]
+        );
         // Label
-        $this->add(array(
-            'name' => 'label',
-            'required' => false,
-        ));
+        $this->add(
+            [
+                'name'     => 'label',
+                'required' => false,
+            ]
+        );
         // time_suggested
-        $this->add(array(
-            'name' => 'time_suggested',
-            'required' => false,
-            'filters' => array(
-                array(
-                    'name' => 'StringTrim',
-                ),
-            ),
-        ));
+        $this->add(
+            [
+                'name'     => 'time_suggested',
+                'required' => false,
+                'filters'  => [
+                    [
+                        'name' => 'StringTrim',
+                    ],
+                ],
+            ]
+        );
         // time_execution
-        $this->add(array(
-            'name' => 'time_execution',
-            'required' => false,
-            'filters' => array(
-                array(
-                    'name' => 'StringTrim',
-                ),
-            ),
-        ));
+        $this->add(
+            [
+                'name'     => 'time_execution',
+                'required' => false,
+                'filters'  => [
+                    [
+                        'name' => 'StringTrim',
+                    ],
+                ],
+            ]
+        );
     }
 }

@@ -18,41 +18,49 @@ use Zend\InputFilter\InputFilter;
 
 class TicketFilter extends InputFilter
 {
-    public function __construct($option = array())
+    public function __construct($option = [])
     {
         // Select user
         if (isset($option['selectUser']) && $option['selectUser'] == 1) {
-            $this->add(array(
-                'name' => 'user',
-                'required' => true,
-                'filters' => array(
-                    array(
-                        'name' => 'StringTrim',
-                    ),
-                ),
-            ));
+            $this->add(
+                [
+                    'name'     => 'user',
+                    'required' => true,
+                    'filters'  => [
+                        [
+                            'name' => 'StringTrim',
+                        ],
+                    ],
+                ]
+            );
         }
         // subject
-        $this->add(array(
-            'name' => 'subject',
-            'required' => true,
-            'filters' => array(
-                array(
-                    'name' => 'StringTrim',
-                ),
-            ),
-        ));
+        $this->add(
+            [
+                'name'     => 'subject',
+                'required' => true,
+                'filters'  => [
+                    [
+                        'name' => 'StringTrim',
+                    ],
+                ],
+            ]
+        );
         // message
-        $this->add(array(
-            'name' => 'message',
-            'required' => true,
-        ));
+        $this->add(
+            [
+                'name'     => 'message',
+                'required' => true,
+            ]
+        );
         // attach
         if ($option['attach']) {
-            $this->add(array(
-                'name' => 'attach',
-                'required' => false,
-            ));
+            $this->add(
+                [
+                    'name'     => 'attach',
+                    'required' => false,
+                ]
+            );
         }
     }
 }

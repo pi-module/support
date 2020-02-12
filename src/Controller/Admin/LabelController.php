@@ -24,6 +24,7 @@ class LabelController extends ActionController
     {
         // Get info
         $list = Pi::api('label', 'support')->getLabelList();
+
         // Set view
         $this->view()->setTemplate('label-index');
         $this->view()->assign('list', $list);
@@ -32,8 +33,9 @@ class LabelController extends ActionController
     public function updateAction()
     {
         // Get id
-        $id = $this->params('id');
+        $id     = $this->params('id');
         $module = $this->params('module');
+
         // Set form
         $form = new LabelForm('label');
         $form->setAttribute('enctype', 'multipart/form-data');
@@ -43,6 +45,7 @@ class LabelController extends ActionController
             $form->setData($data);
             if ($form->isValid()) {
                 $values = $form->getData();
+
                 // Save values
                 if (!empty($values['id'])) {
                     $row = $this->getModel('label')->find($values['id']);
@@ -51,11 +54,13 @@ class LabelController extends ActionController
                 }
                 $row->assign($values);
                 $row->save();
+
                 // clear registry
                 Pi::registry('labelList', 'support')->clear();
+
                 // Add log
                 $message = __('Label data saved successfully.');
-                $this->jump(array('action' => 'index'), $message);
+                $this->jump(['action' => 'index'], $message);
             }
         } else {
             if ($id) {
@@ -63,6 +68,7 @@ class LabelController extends ActionController
                 $form->setData($label);
             }
         }
+
         // Set view
         $this->view()->setTemplate('label-update');
         $this->view()->assign('form', $form);

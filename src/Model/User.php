@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Support\Model;
 
 use Pi\Application\Model\Model;
@@ -19,10 +20,11 @@ class User extends Model
     /**
      * {@inheritDoc}
      */
-    protected $columns = array(
-        'id',
-        'ticket',
-        'reply',
-        'time_update',
-    );
+    protected $columns
+        = [
+            'id',
+            'ticket',
+            'reply',
+            'time_update',
+        ];
 }

@@ -24,56 +24,80 @@ class IndexController extends ActionController
     {
         // Check user is login or not
         Pi::service('authentication')->requireLogin();
+
         // Get info from url
         $module = $this->params('module');
+
         // Get config
         $config = Pi::service('registry')->config->read($module);
+
         // Get user info
-        $uid = Pi::user()->getId();
-        $user = Pi::user()->get($uid, array('id', 'identity', 'name', 'email'));
-        $user['avatar'] = Pi::service('user')->avatar($user['id'], 'medium', $user['name']);
-        $user['profileUrl'] = Pi::url(Pi::service('user')->getUrl('profile', array(
-            'id' => $user['id'],
-        )));
-        $user['accountUrl'] = Pi::url(Pi::service('user')->getUrl(
-            'user', array('controller' => 'account')
-        ));
+        $uid                = Pi::user()->getId();
+        $user               = Pi::user()->get($uid, ['id', 'identity', 'name', 'email']);
+        $user['avatar']     = Pi::service('user')->avatar($user['id'], 'medium', $user['name']);
+        $user['profileUrl'] = Pi::url(
+            Pi::service('user')->getUrl(
+                'profile', [
+                    'id' => $user['id'],
+                ]
+            )
+        );
+        $user['accountUrl'] = Pi::url(
+            Pi::service('user')->getUrl(
+                'user', ['controller' => 'account']
+            )
+        );
+
         // Get page
         $page = $this->params('page', 1);
+
         // Set info
-        $ticket = array();
-        $where = array('mid' => 0, 'uid' => $uid);
-        $order = array('time_update DESC', 'id DESC');
+        $ticket = [];
+        $where  = ['mid' => 0, 'uid' => $uid];
+        $order  = ['time_update DESC', 'id DESC'];
         $offset = (int)($page - 1) * $this->config('view_perpage');
-        $limit = intval($this->config('view_perpage'));
+        $limit  = intval($this->config('view_perpage'));
+
         // Get info
         $select = $this->getModel('ticket')->select()->where($where)->order($order)->offset($offset)->limit($limit);
         $rowset = $this->getModel('ticket')->selectWith($select);
+
         // Make list
         foreach ($rowset as $row) {
             $ticket[$row->id] = Pi::api('ticket', 'support')->canonizeTicket($row);
         }
+
         // Set paginator
-        $count = array('count' => new Expression('count(*)'));
-        $select = $this->getModel('ticket')->select()->columns($count)->where($where);
-        $count = $this->getModel('ticket')->selectWith($select)->current()->count;
+        $count     = ['count' => new Expression('count(*)')];
+        $select    = $this->getModel('ticket')->select()->columns($count)->where($where);
+        $count     = $this->getModel('ticket')->selectWith($select)->current()->count;
         $paginator = Paginator::factory(intval($count));
         $paginator->setItemCountPerPage($this->config('view_perpage'));
         $paginator->setCurrentPageNumber($page);
-        $paginator->setUrlOptions(array(
-            'router'    => $this->getEvent()->getRouter(),
-            'route'     => $this->getEvent()->getRouteMatch()->getMatchedRouteName(),
-            'params'    => array_filter(array(
-                'module'        => $this->getModule(),
-                'controller'    => 'index',
-                'action'        => 'index',
-            )),
-        ));
+        $paginator->setUrlOptions(
+            [
+                'router' => $this->getEvent()->getRouter(),
+                'route'  => $this->getEvent()->getRouteMatch()->getMatchedRouteName(),
+                'params' => array_filter(
+                    [
+                        'module'     => $this->getModule(),
+                        'controller' => 'index',
+                        'action'     => 'index',
+                    ]
+                ),
+            ]
+        );
+
         // Set submit link
-        $submit =  Pi::url($this->url('', array(
-            'controller' => 'ticket',
-            'action' => 'index',
-        )));
+        $submit = Pi::url(
+            $this->url(
+                '', [
+                    'controller' => 'ticket',
+                    'action'     => 'index',
+                ]
+            )
+        );
+
         // Set view
         $this->view()->assign('tickets', $ticket);
         $this->view()->assign('paginator', $paginator);

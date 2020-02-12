@@ -34,53 +34,61 @@ class SearchForm extends BaseForm
     public function init()
     {
         // search Status
-        $this->add(array(
-            'name' => 'searchStatus',
-            'type' => 'select',
-            'options' => array(
-                'label' => __('Status'),
-                'value_options' => array(
-                    'open' => __('Opened tickets'),
-                    'finish' => __('Finished tickets'),
-                    'all' => __('All tickets'),
-                    1 => __('Open'),
-                    2 => __('Answered'),
-                    3 => __('Customer-Reply'),
-                    4 => __('In Progress'),
-                    5 => __('Finished'),
-                    6 => __('Hold'),
-                    7 => __('Development'),
-                    8 => __('Support'),
-                    9 => __('Financial'),
-                    10 => __('Follow up'),
-                ),
-            ),
-        ));
+        $this->add(
+            [
+                'name'    => 'searchStatus',
+                'type'    => 'select',
+                'options' => [
+                    'label'         => __('Status'),
+                    'value_options' => [
+                        'open'   => __('Opened tickets'),
+                        'finish' => __('Finished tickets'),
+                        'all'    => __('All tickets'),
+                        1        => __('Open'),
+                        2        => __('Answered'),
+                        3        => __('Customer-Reply'),
+                        4        => __('In Progress'),
+                        5        => __('Finished'),
+                        6        => __('Hold'),
+                        7        => __('Development'),
+                        8        => __('Support'),
+                        9        => __('Financial'),
+                        10       => __('Follow up'),
+                    ],
+                ],
+            ]
+        );
         // searc hUser
-        $this->add(array(
-            'name' => 'searchUser',
-            'type' => 'Module\Support\Form\Element\User',
-            'options' => array(
-                'label' => __('User'),
-            ),
-        ));
+        $this->add(
+            [
+                'name'    => 'searchUser',
+                'type'    => 'Module\Support\Form\Element\User',
+                'options' => [
+                    'label' => __('User'),
+                ],
+            ]
+        );
         // search Label
-        $this->add(array(
-            'name' => 'searchLabel',
-            'type' => 'Module\Support\Form\Element\Label',
-            'options' => array(
-                'label' => __('Label'),
-                'zero-title' => __('All labels'),
-            ),
-        ));
+        $this->add(
+            [
+                'name'    => 'searchLabel',
+                'type'    => 'Module\Support\Form\Element\Label',
+                'options' => [
+                    'label'      => __('Label'),
+                    'zero-title' => __('All labels'),
+                ],
+            ]
+        );
         // Save
-        $this->add(array(
-            'name' => 'submit',
-            'type' => 'submit',
-            'attributes' => array(
-                'value' => __('Filter'),
-                'class' => 'btn btn-primary',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'submit',
+                'type'       => 'submit',
+                'attributes' => [
+                    'value' => __('Filter'),
+                    'class' => 'btn btn-primary',
+                ],
+            ]
+        );
     }
 }

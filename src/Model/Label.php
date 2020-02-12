@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Support\Model;
 
 use Pi\Application\Model\Model;
@@ -19,12 +20,13 @@ class Label extends Model
     /**
      * {@inheritDoc}
      */
-    protected $columns = array(
-        'id',
-        'title',
-        'ticket',
-        'status',
-        'color',
-        'time_update',
-    );
+    protected $columns
+        = [
+            'id',
+            'title',
+            'ticket',
+            'status',
+            'color',
+            'time_update',
+        ];
 }

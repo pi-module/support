@@ -34,79 +34,91 @@ class StatusForm extends BaseForm
     public function init()
     {
         // status
-        $this->add(array(
-            'name' => 'status',
-            'type' => 'select',
-            'options' => array(
-                'label' => __('Change status'),
-                'value_options' => array(
-                    1 => __('Open'),
-                    2 => __('Answered'),
-                    3 => __('Customer-Reply'),
-                    4 => __('In Progress'),
-                    5 => __('Finished'),
-                    6 => __('Hold'),
-                    7 => __('Development'),
-                    8 => __('Support'),
-                    9 => __('Financial'),
-                    10 => __('Follow up'),
-                ),
-            ),
-        ));
+        $this->add(
+            [
+                'name'    => 'status',
+                'type'    => 'select',
+                'options' => [
+                    'label'         => __('Change status'),
+                    'value_options' => [
+                        1  => __('Open'),
+                        2  => __('Answered'),
+                        3  => __('Customer-Reply'),
+                        4  => __('In Progress'),
+                        5  => __('Finished'),
+                        6  => __('Hold'),
+                        7  => __('Development'),
+                        8  => __('Support'),
+                        9  => __('Financial'),
+                        10 => __('Follow up'),
+                    ],
+                ],
+            ]
+        );
         // status_financial
-        $this->add(array(
-            'name' => 'status_financial',
-            'type' => 'select',
-            'options' => array(
-                'label' => __('Financial status'),
-                'value_options' => array(
-                    0 => __('Not defined'),
-                    1 => __('Paid'),
-                    2 => __('Not paid'),
-                    3 => __('Including contract'),
-                    4 => __('Free'),
-                ),
-            ),
-        ));
+        $this->add(
+            [
+                'name'    => 'status_financial',
+                'type'    => 'select',
+                'options' => [
+                    'label'         => __('Financial status'),
+                    'value_options' => [
+                        0 => __('Not defined'),
+                        1 => __('Paid'),
+                        2 => __('Not paid'),
+                        3 => __('Including contract'),
+                        4 => __('Free'),
+                    ],
+                ],
+            ]
+        );
         // Label
-        $this->add(array(
-            'name' => 'label',
-            'type' => 'Module\Support\Form\Element\Label',
-            'options' => array(
-                'label' => __('Label'),
-                'zero-title' => '',
-            ),
-        ));
+        $this->add(
+            [
+                'name'    => 'label',
+                'type'    => 'Module\Support\Form\Element\Label',
+                'options' => [
+                    'label'      => __('Label'),
+                    'zero-title' => '',
+                ],
+            ]
+        );
         // time_suggested
-        $this->add(array(
-            'name' => 'time_suggested',
-            'options' => array(
-                'label' => __('Suggested time'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-                'description' => __('minute'),
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'time_suggested',
+                'options'    => [
+                    'label' => __('Suggested time'),
+                ],
+                'attributes' => [
+                    'type'        => 'text',
+                    'description' => __('minute'),
+                ],
+            ]
+        );
         // time_execution
-        $this->add(array(
-            'name' => 'time_execution',
-            'options' => array(
-                'label' => __('Execution time'),
-            ),
-            'attributes' => array(
-                'type' => 'text',
-                'description' => __('minute'),
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'time_execution',
+                'options'    => [
+                    'label' => __('Execution time'),
+                ],
+                'attributes' => [
+                    'type'        => 'text',
+                    'description' => __('minute'),
+                ],
+            ]
+        );
         // Save
-        $this->add(array(
-            'name' => 'submit',
-            'type' => 'submit',
-            'attributes' => array(
-                'value' => __('Update'),
-                'class' => 'btn btn-primary',
-            )
-        ));
+        $this->add(
+            [
+                'name'       => 'submit',
+                'type'       => 'submit',
+                'attributes' => [
+                    'value' => __('Update'),
+                    'class' => 'btn btn-primary',
+                ],
+            ]
+        );
     }
 }

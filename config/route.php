@@ -10,18 +10,18 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-return array(
+return [
     // route name
-    'guide' => array(
-        'name' => 'support',
-        'type' => 'Module\Support\Route\Support',
-        'options' => array(
-            'route' => '/support',
-            'defaults' => array(
-                'module' => 'support',
+    'guide' => [
+        'name'    => 'support',
+        'type'    => 'Module\Support\Route\Support',
+        'options' => [
+            'route'    => '/support',
+            'defaults' => [
+                'module'     => 'support',
                 'controller' => 'index',
-                'action' => 'index'
-            )
-        ),
-    )
-);
+                'action'     => 'index',
+            ],
+        ],
+    ],
+];

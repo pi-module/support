@@ -21,19 +21,25 @@ class SearchFilter extends InputFilter
     public function __construct()
     {
         // search Status
-        $this->add(array(
-            'name' => 'searchStatus',
-            'required' => true,
-        ));
+        $this->add(
+            [
+                'name'     => 'searchStatus',
+                'required' => true,
+            ]
+        );
         // search User
-        $this->add(array(
-            'name' => 'searchUser',
-            'required' => true,
-        ));
+        $this->add(
+            [
+                'name'     => 'searchUser',
+                'required' => true,
+            ]
+        );
         // search User
-        $this->add(array(
-            'name' => 'searchLabel',
-            'required' => true,
-        ));
+        $this->add(
+            [
+                'name'     => 'searchLabel',
+                'required' => true,
+            ]
+        );
     }
 }

@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Support\Api;
 
 use Pi;
@@ -30,28 +31,30 @@ class Breadcrumbs extends AbstractBreadcrumbs
         if ($params['controller'] == 'index') {
             $href = '';
         } else {
-            $href = Pi::service('url')->assemble('default', array(
+            $href = Pi::service('url')->assemble(
+                'default', [
                 'module' => $this->getModule(),
-            ));
+            ]
+            );
         }
         // Set result
-        $result = array();
-        $result[] = array(
+        $result   = [];
+        $result[] = [
             'label' => $moduleData['title'],
             'href'  => $href,
-        );
+        ];
         // Set module internal links
         switch ($params['controller']) {
             case 'ticket':
                 if (isset($params['id']) && !empty($params['id']) && $params['id'] > 0) {
-                    $ticket = Pi::api('ticket', 'support')->getTicket($params['id']);
-                    $result[] = array(
+                    $ticket   = Pi::api('ticket', 'support')->getTicket($params['id']);
+                    $result[] = [
                         'label' => $ticket['subject'],
-                    );
+                    ];
                 } else {
-                    $result[] = array(
+                    $result[] = [
                         'label' => __('New support ticket'),
-                    );
+                    ];
                 }
 
                 break;

@@ -25,7 +25,7 @@ class Label extends Select
     {
         if (empty($this->valueOptions)) {
             $labelList = Pi::api('label', 'support')->getLabelList();
-            $list[0] = $this->options['zero-title'];
+            $list[0]   = $this->options['zero-title'];
             foreach ($labelList as $label) {
                 $list[$label['id']] = $label['title'];
             }

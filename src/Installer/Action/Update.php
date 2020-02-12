@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Support\Installer\Action;
 
 use Pi;
@@ -26,7 +27,7 @@ class Update extends BasicUpdate
     protected function attachDefaultListeners()
     {
         $events = $this->events;
-        $events->attach('update.pre', array($this, 'updateSchema'));
+        $events->attach('update.pre', [$this, 'updateSchema']);
         parent::attachDefaultListeners();
 
         return $this;
@@ -40,13 +41,13 @@ class Update extends BasicUpdate
         $moduleVersion = $e->getParam('version');
 
         // Set ticket model
-        $ticketModel = Pi::model('ticket', $this->module);
-        $ticketTable = $ticketModel->getTable();
+        $ticketModel   = Pi::model('ticket', $this->module);
+        $ticketTable   = $ticketModel->getTable();
         $ticketAdapter = $ticketModel->getAdapter();
 
         // Set user model
-        $userModel = Pi::model('user', $this->module);
-        $userTable = $userModel->getTable();
+        $userModel   = Pi::model('user', $this->module);
+        $userTable   = $userModel->getTable();
         $userAdapter = $userModel->getAdapter();
 
         // Update to version 0.0.3
@@ -56,11 +57,13 @@ class Update extends BasicUpdate
             try {
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
         }
@@ -85,51 +88,53 @@ EOD;
             try {
                 $sqlHandler->queryContent($sql);
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'SQL schema query for author table failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
 
             // Update user table
-            $list = array();
-            $order = array('time_update DESC');
+            $list  = [];
+            $order = ['time_update DESC'];
 
-            $where = array('mid' => 0);
+            $where  = ['mid' => 0];
             $select = $ticketModel->select()->where($where)->order($order);
             $rowset = $ticketModel->selectWith($select);
             foreach ($rowset as $row) {
                 if (isset($list[$row->uid])) {
-                    $list[$row->uid]['ticket'] = $list[$row->uid]['ticket'] + 1;
+                    $list[$row->uid]['ticket']      = $list[$row->uid]['ticket'] + 1;
                     $list[$row->uid]['time_update'] = $row->time_create;
                 } else {
-                    $list[$row->uid] = array(
-                        'id' => $row->uid,
-                        'ticket' => 1,
-                        'reply' => 0,
+                    $list[$row->uid] = [
+                        'id'          => $row->uid,
+                        'ticket'      => 1,
+                        'reply'       => 0,
                         'time_update' => $row->time_create,
-                    );
+                    ];
                 }
             }
 
-            $where = array('mid != ?' => 0);
+            $where  = ['mid != ?' => 0];
             $select = $ticketModel->select()->where($where)->order($order);
             $rowset = $ticketModel->selectWith($select);
             foreach ($rowset as $row) {
                 if (isset($list[$row->uid])) {
-                    $list[$row->uid]['reply'] = $list[$row->uid]['reply'] + 1;
+                    $list[$row->uid]['reply']       = $list[$row->uid]['reply'] + 1;
                     $list[$row->uid]['time_update'] = $row->time_create;
                 }
             }
 
-            foreach($list as $single) {
+            foreach ($list as $single) {
                 if (isset($single['id']) && $single['id'] > 0) {
-                    $user = $userModel->createRow();
-                    $user->id = $single['id'];
-                    $user->ticket = $single['ticket'];
-                    $user->reply = $single['reply'];
+                    $user              = $userModel->createRow();
+                    $user->id          = $single['id'];
+                    $user->ticket      = $single['ticket'];
+                    $user->reply       = $single['reply'];
                     $user->time_update = $single['time_update'];
                     $user->save();
                 }
@@ -159,11 +164,13 @@ EOD;
             try {
                 $sqlHandler->queryContent($sql);
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'SQL schema query for author table failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
 
@@ -172,11 +179,13 @@ EOD;
             try {
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
         }
@@ -188,11 +197,13 @@ EOD;
             try {
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
             // Alter table field `time_suggested`
@@ -200,11 +211,13 @@ EOD;
             try {
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
             // Alter table field `time_execution`
@@ -212,11 +225,13 @@ EOD;
             try {
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
         }
@@ -228,11 +243,13 @@ EOD;
             try {
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
             // Alter table field `file_path`
@@ -240,11 +257,13 @@ EOD;
             try {
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
             // Alter table field `file_title`
@@ -252,11 +271,13 @@ EOD;
             try {
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
             // Alter table field `file_type`
@@ -264,11 +285,13 @@ EOD;
             try {
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
         }
@@ -281,11 +304,13 @@ EOD;
             try {
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
-                $this->setResult('db', array(
-                    'status' => false,
+                $this->setResult(
+                    'db', [
+                    'status'  => false,
                     'message' => 'Table alter query failed: '
                         . $exception->getMessage(),
-                ));
+                ]
+                );
                 return false;
             }
         }

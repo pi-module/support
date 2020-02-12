@@ -20,9 +20,11 @@ class IndexController extends ActionController
 {
     public function indexAction()
     {
-        return $this->redirect()->toRoute('', array(
-            'controller' => 'ticket',
-            'action' => 'index',
-        ));
+        return $this->redirect()->toRoute(
+            '', [
+                'controller' => 'ticket',
+                'action'     => 'index',
+            ]
+        );
     }
 }

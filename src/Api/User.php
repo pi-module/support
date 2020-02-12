@@ -10,6 +10,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
+
 namespace Module\Support\Api;
 
 use Pi;
@@ -26,7 +27,7 @@ class User extends AbstractApi
     {
         $user = Pi::model('user', $this->getModule())->find($uid);
         if (empty($user)) {
-            $user = Pi::model('user', $this->getModule())->createRow();
+            $user     = Pi::model('user', $this->getModule())->createRow();
             $user->id = $uid;
             if ($type == 'ticket') {
                 $user->ticket = 1;
@@ -49,29 +50,29 @@ class User extends AbstractApi
     public function getUserList()
     {
         // Get info
-        $list = array();
-        $where = array('ticket > ?' => 0);
-        $order = array('time_update DESC', 'id DESC');
+        $list   = [];
+        $where  = ['ticket > ?' => 0];
+        $order  = ['time_update DESC', 'id DESC'];
         $select = Pi::model('user', $this->getModule())->select()->where($where)->order($order);
         $rowset = Pi::model('user', $this->getModule())->selectWith($select);
         // Make list
         foreach ($rowset as $row) {
-            $user = Pi::user()->get($row->id, array('id', 'identity', 'name', 'email', 'first_name', 'last_name'));
+            $user = Pi::user()->get($row->id, ['id', 'identity', 'name', 'email', 'first_name', 'last_name']);
             if (isset($user) && !empty($user)) {
                 if (!empty($user['first_name']) && !empty($user['last_name'])) {
                     $user['display'] = sprintf('%s %s', $user['first_name'], $user['last_name']);
                 } else {
                     $user['display'] = $user['name'];
                 }
-                $list[$row->id] = array(
-                    'id' => $row->id,
-                    'display' => $user['display'],
+                $list[$row->id] = [
+                    'id'       => $row->id,
+                    'display'  => $user['display'],
                     'identity' => $user['identity'],
-                    'email' => $user['email'],
-                    'ticket' => _number($row->ticket),
-                    'reply' => _number($row->reply),
-                    'time' => _date($row->time_update),
-                );
+                    'email'    => $user['email'],
+                    'ticket'   => _number($row->ticket),
+                    'reply'    => _number($row->reply),
+                    'time'     => _date($row->time_update),
+                ];
             }
         }
         return $list;
