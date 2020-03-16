@@ -19,14 +19,14 @@ return [
         'license'     => 'New BSD',
         'logo'        => 'image/logo.png',
         'readme'      => 'docs/readme.txt',
-        'demo'        => 'http://pialog',
+        'demo'        => 'http://piengine.org',
         'icon'        => 'fa-ticket-alt',
     ],
     // Author information
     'author'   => [
         'Name'    => 'Hossein Azizabadi',
         'email'   => 'azizabadi@faragostaresh.com',
-        'website' => 'http://pialog',
+        'website' => 'http://piengine.org',
         'credits' => 'Pi Engine Team',
     ],
     // Resource
