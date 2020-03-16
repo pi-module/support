@@ -60,8 +60,8 @@ class Notification extends AbstractApi
             $uids   = [];
             $where  = ['role' => 'admin', 'section' => 'admin'];
             $select = Pi::model('user_role')->select()->where($where);
-            $rowset = Pi::model('user_role')->selectWith($select);
-            foreach ($rowset as $row) {
+            $rowSet = Pi::model('user_role')->selectWith($select);
+            foreach ($rowSet as $row) {
                 $uids[$row->uid] = $row->uid;
             }
             $users = Pi::service('user')->mget($uids, ['uid', 'name', 'email', 'identity']);

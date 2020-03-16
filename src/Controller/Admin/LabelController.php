@@ -34,7 +34,6 @@ class LabelController extends ActionController
     {
         // Get id
         $id     = $this->params('id');
-        $module = $this->params('module');
 
         // Set form
         $form = new LabelForm('label');
@@ -47,8 +46,8 @@ class LabelController extends ActionController
                 $values = $form->getData();
 
                 // Save values
-                if (!empty($values['id'])) {
-                    $row = $this->getModel('label')->find($values['id']);
+                if (!empty($id)) {
+                    $row = $this->getModel('label')->find($id);
                 } else {
                     $row = $this->getModel('label')->createRow();
                 }

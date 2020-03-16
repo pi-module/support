@@ -49,6 +49,7 @@ class TicketForm extends BaseForm
                 ]
             );
         }
+
         // Subject
         $this->add(
             [
@@ -78,6 +79,7 @@ class TicketForm extends BaseForm
                 ],
             ]
         );
+
         // Attach
         if ($this->option['attach']) {
             $this->add(
@@ -93,6 +95,7 @@ class TicketForm extends BaseForm
                 ]
             );
         }
+
         // Save
         $this->add(
             [

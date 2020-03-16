@@ -34,6 +34,7 @@ class TicketFilter extends InputFilter
                 ]
             );
         }
+
         // subject
         $this->add(
             [
@@ -46,6 +47,7 @@ class TicketFilter extends InputFilter
                 ],
             ]
         );
+
         // message
         $this->add(
             [
@@ -53,6 +55,7 @@ class TicketFilter extends InputFilter
                 'required' => true,
             ]
         );
+
         // attach
         if ($option['attach']) {
             $this->add(

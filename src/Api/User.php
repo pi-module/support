@@ -54,9 +54,9 @@ class User extends AbstractApi
         $where  = ['ticket > ?' => 0];
         $order  = ['time_update DESC', 'id DESC'];
         $select = Pi::model('user', $this->getModule())->select()->where($where)->order($order);
-        $rowset = Pi::model('user', $this->getModule())->selectWith($select);
+        $rowSet = Pi::model('user', $this->getModule())->selectWith($select);
         // Make list
-        foreach ($rowset as $row) {
+        foreach ($rowSet as $row) {
             $user = Pi::user()->get($row->id, ['id', 'identity', 'name', 'email', 'first_name', 'last_name']);
             if (isset($user) && !empty($user)) {
                 if (!empty($user['first_name']) && !empty($user['last_name'])) {

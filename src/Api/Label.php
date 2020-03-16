@@ -31,9 +31,9 @@ class Label extends AbstractApi
         $where  = ['status' => 1];
         $order  = ['time_update DESC', 'id DESC'];
         $select = Pi::model('label', $this->getModule())->select()->where($where)->order($order);
-        $rowset = Pi::model('label', $this->getModule())->selectWith($select);
+        $rowSet = Pi::model('label', $this->getModule())->selectWith($select);
         // Make list
-        foreach ($rowset as $row) {
+        foreach ($rowSet as $row) {
             $list[$row->id] = $row->toArray();
         }
         return $list;

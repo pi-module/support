@@ -34,8 +34,8 @@ class LabelList extends AbstractRegistry
         $where  = ['status' => 1];
         $order  = ['time_update DESC', 'id DESC'];
         $select = Pi::model('label', $this->module)->select()->where($where)->order($order);
-        $rowset = Pi::model('label', $this->module)->selectWith($select);
-        foreach ($rowset as $row) {
+        $rowSet = Pi::model('label', $this->module)->selectWith($select);
+        foreach ($rowSet as $row) {
             $return[$row->id] = $row->toArray();
         }
         return $return;

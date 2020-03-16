@@ -104,8 +104,8 @@ EOD;
 
             $where  = ['mid' => 0];
             $select = $ticketModel->select()->where($where)->order($order);
-            $rowset = $ticketModel->selectWith($select);
-            foreach ($rowset as $row) {
+            $rowSet = $ticketModel->selectWith($select);
+            foreach ($rowSet as $row) {
                 if (isset($list[$row->uid])) {
                     $list[$row->uid]['ticket']      = $list[$row->uid]['ticket'] + 1;
                     $list[$row->uid]['time_update'] = $row->time_create;
@@ -121,8 +121,8 @@ EOD;
 
             $where  = ['mid != ?' => 0];
             $select = $ticketModel->select()->where($where)->order($order);
-            $rowset = $ticketModel->selectWith($select);
-            foreach ($rowset as $row) {
+            $rowSet = $ticketModel->selectWith($select);
+            foreach ($rowSet as $row) {
                 if (isset($list[$row->uid])) {
                     $list[$row->uid]['reply']       = $list[$row->uid]['reply'] + 1;
                     $list[$row->uid]['time_update'] = $row->time_create;

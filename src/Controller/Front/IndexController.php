@@ -55,22 +55,24 @@ class IndexController extends ActionController
         $ticket = [];
         $where  = ['mid' => 0, 'uid' => $uid];
         $order  = ['time_update DESC', 'id DESC'];
-        $offset = (int)($page - 1) * $this->config('view_perpage');
         $limit  = intval($this->config('view_perpage'));
+        $offset = (int)($page - 1) * $limit;
 
         // Get info
         $select = $this->getModel('ticket')->select()->where($where)->order($order)->offset($offset)->limit($limit);
-        $rowset = $this->getModel('ticket')->selectWith($select);
+        $rowSet = $this->getModel('ticket')->selectWith($select);
 
         // Make list
-        foreach ($rowset as $row) {
+        foreach ($rowSet as $row) {
             $ticket[$row->id] = Pi::api('ticket', 'support')->canonizeTicket($row);
         }
 
-        // Set paginator
+        // Set count
         $count     = ['count' => new Expression('count(*)')];
         $select    = $this->getModel('ticket')->select()->columns($count)->where($where);
         $count     = $this->getModel('ticket')->selectWith($select)->current()->count;
+
+        // Set paginator
         $paginator = Paginator::factory(intval($count));
         $paginator->setItemCountPerPage($this->config('view_perpage'));
         $paginator->setCurrentPageNumber($page);

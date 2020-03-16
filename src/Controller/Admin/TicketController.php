@@ -39,8 +39,8 @@ class TicketController extends ActionController
         $ticket = [];
         $where  = ['mid' => 0];
         $order  = ['time_update DESC', 'id DESC'];
-        $offset = (int)($page - 1) * $this->config('admin_perpage');
         $limit  = intval($this->config('admin_perpage'));
+        $offset = (int)($page - 1) * $limit;
 
         // Check status
         switch ($searchStatus) {
@@ -79,11 +79,11 @@ class TicketController extends ActionController
 
         // Get info
         $select = $this->getModel('ticket')->select()->where($where)->order($order)->offset($offset)->limit($limit);
-        $rowset = $this->getModel('ticket')->selectWith($select);
+        $rowSet = $this->getModel('ticket')->selectWith($select);
         $users  = [];
 
         // Make list
-        foreach ($rowset as $row) {
+        foreach ($rowSet as $row) {
             $ticket[$row->id] = Pi::api('ticket', 'support')->canonizeTicket($row);
             if (isset($users[$row->uid])) {
                 $ticket[$row->id]['user'] = $users[$row->uid];
@@ -197,10 +197,10 @@ class TicketController extends ActionController
 
             // Get info
             $select = $this->getModel('ticket')->select()->where($where)->order($order);
-            $rowset = $this->getModel('ticket')->selectWith($select);
+            $rowSet = $this->getModel('ticket')->selectWith($select);
 
             // Make list
-            foreach ($rowset as $row) {
+            foreach ($rowSet as $row) {
                 $tickets[$row->id]                   = Pi::api('ticket', 'support')->canonizeTicket($row);
                 $tickets[$row->id]['user']           = Pi::user()->get($row->uid, ['id', 'identity', 'name', 'email']);
                 $tickets[$row->id]['user']['avatar'] = Pi::service('user')->avatar($row->uid, 'small', $tickets[$row->id]['user']['name']);

@@ -7,18 +7,18 @@
         </div>
         <div class="col-md-9">
             <?php include $this->template('flash-messenger'); ?>
-
             <div class="page-header">
                 <h1><?php echo $this->escape($title); ?></h1>
             </div>
-
             <?php if (isset($ticketMain) && !empty($ticketMain)) { ?>
                 <div class="clearfix">
                     <div class="alert alert-info" role="alert">
                         <ul class="list-inline clearfix">
                             <li class="list-inline-item">
-                                <?php _e('Status'); ?> : <span class="label <?php echo $this->escape($ticketMain['status_class']); ?>">
-                            <?php echo $this->escape($ticketMain['status_view']); ?></span>
+                                <?php _e('Status'); ?> :
+                                <span class="badge <?php echo $this->escape($ticketMain['status_class']); ?>">
+                                    <?php echo $this->escape($ticketMain['status_view']); ?>
+                                </span>
                             </li>
                             <li class="list-inline-item">
                                 <?php _e('Suggested time'); ?> : <strong><?php echo $this->escape($ticketMain['time_suggested_view']); ?></strong>
@@ -32,7 +32,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header clearfix">
                         <div class="float-left">
                             <?php echo $ticketMain['user']['avatar']; ?>
@@ -56,7 +56,7 @@
             <?php } ?>
             <?php if (isset($tickets) && !empty($tickets)) { ?>
                 <?php foreach ($tickets as $ticket) { ?>
-                    <div class="card">
+                    <div class="card mb-3">
                         <div class="card-header clearfix">
                             <div class="float-left">
                                 <?php echo $ticket['user']['avatar']; ?>
@@ -81,16 +81,28 @@
                 <?php } ?>
             <?php } ?>
             <?php if (isset($ticketMain['status']) && $ticketMain['status'] == 5) { ?>
-                <div class="well">
-                    <?php _e('This ticket finished, for more suppoert please open new ticket'); ?>
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <?php _e('This ticket finished, for more suppoert please open new ticket'); ?>
+                        </div>
+                    </div>
                 </div>
             <?php } elseif (isset($ticketMain['status']) && $ticketMain['status'] == 6) { ?>
-                <div class="well">
-                    <?php _e('This ticket holded, please wait our support team finish your other support requests, after that we will work on this ticket'); ?>
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <?php _e('This ticket holded, please wait our support team finish your other support requests, after that we will work on this ticket'); ?>
+                        </div>
+                    </div>
                 </div>
             <?php } else { ?>
-                <div class="well">
-                    <?php echo $this->form($form, 'vertical'); ?>
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <?php echo $this->form($form, 'vertical'); ?>
+                        </div>
+                    </div>
                 </div>
             <?php } ?>
         </div>

@@ -23,7 +23,7 @@ $this->backbone();
                     <?php echo $this->escape($ticket['label_title']); ?>
                 </li>
                 <li id="update-status-financial-<?php echo $this->escape($ticket['id']); ?>"
-                    class="list-inline-item label <?php echo $this->escape($ticket['status_financial_class']); ?>">
+                    class="list-inline-item badge <?php echo $this->escape($ticket['status_financial_class']); ?>">
                     <?php echo $this->escape($ticket['status_financial_view']); ?>
                 </li>
                 <li class="list-inline-item">
@@ -41,7 +41,7 @@ $this->backbone();
                 </li>
             </ul>
         </div>
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-header clearfix">
                 <div class="float-left">
                     <?php echo $ticket['user']['avatar']; ?>
@@ -57,16 +57,16 @@ $this->backbone();
             <?php if (!empty($ticket['file_path']) && !empty($ticket['file_name']) && $config['file_active']) { ?>
                 <div class="card-footer">
                     <a target="_blank" href="<?php echo $this->escape($ticket['file_url_admin']); ?>"
-                       title="<?php echo $this->escape($ticket['file_title_view']); ?>"><i class="fa fa-paperclip"></i> <?php echo $this->escape(
-                            $ticket['file_title_view']
-                        ); ?></a>
+                       title="<?php echo $this->escape($ticket['file_title_view']); ?>">
+                        <i class="fa fa-paperclip"></i> <?php echo $this->escape($ticket['file_title_view']); ?>
+                    </a>
                 </div>
             <?php } ?>
         </div>
     <?php } ?>
     <?php if (isset($tickets) && !empty($tickets)) { ?>
         <?php foreach ($tickets as $ticket) { ?>
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header clearfix">
                     <div class="float-left">
                         <?php echo $ticket['user']['avatar']; ?>
@@ -82,17 +82,19 @@ $this->backbone();
                 <?php if (!empty($ticket['file_path']) && !empty($ticket['file_name']) && $config['file_active']) { ?>
                     <div class="card-footer">
                         <a target="_blank" href="<?php echo $this->escape($ticket['file_url_admin']); ?>"
-                           title="<?php echo $this->escape($ticket['file_title_view']); ?>"><i class="fas fa-paperclip"></i> <?php echo $this->escape(
-                                $ticket['file_title_view']
-                            ); ?></a>
+                           title="<?php echo $this->escape($ticket['file_title_view']); ?>">
+                            <i class="fas fa-paperclip"></i> <?php echo $this->escape($ticket['file_title_view']); ?>
+                        </a>
                     </div>
                 <?php } ?>
             </div>
         <?php } ?>
     <?php } ?>
-    <div class="card mt-3">
-        <div class="card-header clearfix">
-            <?php echo $this->form($form, 'vertical'); ?>
+    <div class="card bg-light mb-3">
+        <div class="card-body">
+            <div class="card-text">
+                <?php echo $this->form($form, 'vertical'); ?>
+            </div>
         </div>
     </div>
 </div>
@@ -117,7 +119,7 @@ $this->backbone();
                         var d = res.data;
                         self.modal.html(res).modal('hide');
                         $('#update-status-' + p.attr('data-id')).attr('class', 'update-status btn btn-sm ' + d.status_btn).html(d.status_view);
-                        $('#update-status-financial-' + p.attr('data-id')).attr('class', 'label ' + d.status_financial_class).html(d.status_financial_view);
+                        $('#update-status-financial-' + p.attr('data-id')).attr('class', 'badge ' + d.status_financial_class).html(d.status_financial_view);
                         $('#update-label-' + p.attr('data-id')).attr('style', 'background: ' + d.label_color).html(d.label_title);
                         $('#update-time-suggested-' + p.attr('data-id')).html(d.time_suggested_view);
                         $('#update-time-execution-' + p.attr('data-id')).html(d.time_execution_view);

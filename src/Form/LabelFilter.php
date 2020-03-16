@@ -20,13 +20,6 @@ class LabelFilter extends InputFilter
 {
     public function __construct($option = [])
     {
-        // id
-        $this->add(
-            [
-                'name'     => 'id',
-                'required' => false,
-            ]
-        );
         // title
         $this->add(
             [
@@ -39,6 +32,7 @@ class LabelFilter extends InputFilter
                 ],
             ]
         );
+
         // color
         $this->add(
             [
@@ -51,6 +45,7 @@ class LabelFilter extends InputFilter
                 ],
             ]
         );
+
         // status
         $this->add(
             [

@@ -78,61 +78,61 @@ class Ticket extends AbstractApi
         switch ($status) {
             case 1:
                 $ticket['status_view']  = __('Open');
-                $ticket['status_class'] = 'label-info';
+                $ticket['status_class'] = 'badge-info';
                 $ticket['status_btn']   = 'btn-info';
                 break;
 
             case 2:
                 $ticket['status_view']  = __('Answered');
-                $ticket['status_class'] = 'label-primary';
+                $ticket['status_class'] = 'badge-primary';
                 $ticket['status_btn']   = 'btn-primary';
                 break;
 
             case 3:
                 $ticket['status_view']  = __('Customer-Reply');
-                $ticket['status_class'] = 'label-warning';
+                $ticket['status_class'] = 'badge-warning';
                 $ticket['status_btn']   = 'btn-warning';
                 break;
 
             case 4:
                 $ticket['status_view']  = __('In Progress');
-                $ticket['status_class'] = 'label-danger';
+                $ticket['status_class'] = 'badge-danger';
                 $ticket['status_btn']   = 'btn-danger';
                 break;
 
             case 5:
                 $ticket['status_view']  = __('Finished');
-                $ticket['status_class'] = 'label-success';
+                $ticket['status_class'] = 'badge-success';
                 $ticket['status_btn']   = 'btn-success';
                 break;
 
             case 6:
                 $ticket['status_view']  = __('Hold');
-                $ticket['status_class'] = 'label-info';
+                $ticket['status_class'] = 'badge-info';
                 $ticket['status_btn']   = 'btn-info';
                 break;
 
             case 7:
                 $ticket['status_view']  = __('Development');
-                $ticket['status_class'] = 'label-success';
+                $ticket['status_class'] = 'badge-success';
                 $ticket['status_btn']   = 'btn-success';
                 break;
 
             case 8:
                 $ticket['status_view']  = __('Support');
-                $ticket['status_class'] = 'label-danger';
+                $ticket['status_class'] = 'badge-danger';
                 $ticket['status_btn']   = 'btn-danger';
                 break;
 
             case 9:
                 $ticket['status_view']  = __('Financial');
-                $ticket['status_class'] = 'label-danger';
+                $ticket['status_class'] = 'badge-danger';
                 $ticket['status_btn']   = 'btn-danger';
                 break;
 
             case 10:
                 $ticket['status_view']  = __('Follow up');
-                $ticket['status_class'] = 'label-danger';
+                $ticket['status_class'] = 'badge-danger';
                 $ticket['status_btn']   = 'btn-danger';
                 break;
         }
@@ -146,31 +146,31 @@ class Ticket extends AbstractApi
         switch ($statusFinancial) {
             case 0:
                 $ticket['status_financial_view']  = __('Not defined');
-                $ticket['status_financial_class'] = 'label-warning';
+                $ticket['status_financial_class'] = 'badge-warning';
                 $ticket['status_financial_btn']   = 'btn-warning';
                 break;
 
             case 1:
                 $ticket['status_financial_view']  = __('Paid');
-                $ticket['status_financial_class'] = 'label-success';
+                $ticket['status_financial_class'] = 'badge-success';
                 $ticket['status_financial_btn']   = 'btn-success';
                 break;
 
             case 2:
                 $ticket['status_financial_view']  = __('Not paid');
-                $ticket['status_financial_class'] = 'label-danger';
+                $ticket['status_financial_class'] = 'badge-danger';
                 $ticket['status_financial_btn']   = 'btn-danger';
                 break;
 
             case 3:
                 $ticket['status_financial_view']  = __('Including contract');
-                $ticket['status_financial_class'] = 'label-success';
+                $ticket['status_financial_class'] = 'badge-success';
                 $ticket['status_financial_btn']   = 'btn-success';
                 break;
 
             case 4:
                 $ticket['status_financial_view']  = __('Free');
-                $ticket['status_financial_class'] = 'label-success';
+                $ticket['status_financial_class'] = 'badge-success';
                 $ticket['status_financial_btn']   = 'btn-success';
                 break;
         }

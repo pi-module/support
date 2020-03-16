@@ -34,15 +34,6 @@ class LabelForm extends BaseForm
 
     public function init()
     {
-        // id
-        $this->add(
-            [
-                'name'       => 'id',
-                'attributes' => [
-                    'type' => 'hidden',
-                ],
-            ]
-        );
         // title
         $this->add(
             [
@@ -57,6 +48,7 @@ class LabelForm extends BaseForm
                 ],
             ]
         );
+
         // color
         $this->add(
             [
@@ -66,11 +58,12 @@ class LabelForm extends BaseForm
                 ],
                 'attributes' => [
                     'type'        => 'text',
-                    'description' => '',
+                    'description' => __('Full color code, like #ff0000'),
                     'required'    => true,
                 ],
             ]
         );
+
         // status
         $this->add(
             [
@@ -88,6 +81,7 @@ class LabelForm extends BaseForm
                 ],
             ]
         );
+
         // Save
         $this->add(
             [
