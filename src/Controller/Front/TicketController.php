@@ -55,12 +55,17 @@ class TicketController extends ActionController
 
             // Get main ticket
             $ticketMain = Pi::api('ticket', 'support')->getTicket($id);
-            if ($uid == $ticketMain['uid']) {
-                $ticketMain['user'] = $user;
-            } else {
-                $ticketMain['user']           = Pi::user()->get($ticketMain['uid'], ['id', 'identity', 'name', 'email']);
-                $ticketMain['user']['avatar'] = Pi::service('user')->avatar($ticketMain['uid'], 'small', $ticketMain['user']['name']);
+
+            // Check its your ticket
+            if ($ticketMain['uid'] != $uid) {
+                $this->getResponse()->setStatusCode(403);
+                $this->terminate(__('This is not your ticket'), '', 'error-denied');
+                $this->view()->setLayout('layout-simple');
+                return;
             }
+
+            // Set user
+            $ticketMain['user'] = $user;
 
             // Get list of replies
             $tickets = [];
@@ -69,10 +74,10 @@ class TicketController extends ActionController
 
             // Get info
             $select = $this->getModel('ticket')->select()->where($where)->order($order);
-            $rowset = $this->getModel('ticket')->selectWith($select);
+            $rowSet = $this->getModel('ticket')->selectWith($select);
 
             // Make list
-            foreach ($rowset as $row) {
+            foreach ($rowSet as $row) {
                 $tickets[$row->id] = Pi::api('ticket', 'support')->canonizeTicket($row);
                 if ($uid == $row->uid) {
                     $tickets[$row->id]['user'] = $user;
