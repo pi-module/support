@@ -210,10 +210,10 @@ class Ticket extends AbstractApi
         $ticket['ticketUrl'] = Pi::url(
             Pi::service('url')->assemble(
                 'support', [
-                'module'     => $this->getModule(),
-                'controller' => 'ticket',
-                'id'         => $ticket['id'],
-            ]
+                    'module'     => $this->getModule(),
+                    'controller' => 'ticket',
+                    'id'         => $ticket['id'],
+                ]
             )
         );
         // Set time
@@ -227,21 +227,21 @@ class Ticket extends AbstractApi
             $ticket['file_url_admin']  = Pi::url(
                 Pi::service('url')->assemble(
                     'admin', [
-                    'module'     => $this->getModule(),
-                    'controller' => 'ticket',
-                    'action'     => 'download',
-                    'id'         => $ticket['id'],
-                ]
+                        'module'     => $this->getModule(),
+                        'controller' => 'ticket',
+                        'action'     => 'download',
+                        'id'         => $ticket['id'],
+                    ]
                 )
             );
             $ticket['file_url_user']   = Pi::url(
                 Pi::service('url')->assemble(
                     'support', [
-                    'module'     => $this->getModule(),
-                    'controller' => 'ticket',
-                    'action'     => 'download',
-                    'id'         => $ticket['id'],
-                ]
+                        'module'     => $this->getModule(),
+                        'controller' => 'ticket',
+                        'action'     => 'download',
+                        'id'         => $ticket['id'],
+                    ]
                 )
             );
         }

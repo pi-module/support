@@ -33,7 +33,7 @@ class LabelController extends ActionController
     public function updateAction()
     {
         // Get id
-        $id     = $this->params('id');
+        $id = $this->params('id');
 
         // Set form
         $form = new LabelForm('label');

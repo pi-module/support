@@ -30,7 +30,7 @@ return [
             'controller' => 'ticket',
             'action'     => 'index',
             'pages'      => [
-                'list' => [
+                'list'   => [
                     'label'      => _a('Ticket'),
                     'permission' => [
                         'resource' => 'ticket',
@@ -83,7 +83,7 @@ return [
             'controller' => 'label',
             'action'     => 'index',
             'pages'      => [
-                'list' => [
+                'list'   => [
                     'label'      => _a('Label'),
                     'permission' => [
                         'resource' => 'label',

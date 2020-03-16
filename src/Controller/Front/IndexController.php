@@ -68,9 +68,9 @@ class IndexController extends ActionController
         }
 
         // Set count
-        $count     = ['count' => new Expression('count(*)')];
-        $select    = $this->getModel('ticket')->select()->columns($count)->where($where);
-        $count     = $this->getModel('ticket')->selectWith($select)->current()->count;
+        $count  = ['count' => new Expression('count(*)')];
+        $select = $this->getModel('ticket')->select()->columns($count)->where($where);
+        $count  = $this->getModel('ticket')->selectWith($select)->current()->count;
 
         // Set paginator
         $paginator = Paginator::factory(intval($count));

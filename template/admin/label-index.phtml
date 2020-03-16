@@ -2,38 +2,40 @@
 <div class="clearfix">
     <h3><?php _e('List of labels'); ?></h3>
     <?php if (isset($list) && !empty($list)) { ?>
-    <table class="table table-striped table-bordered table-sm">
-        <tr>
-            <th><?php _e('ID'); ?></th>
-            <th><?php _e('Title'); ?></th>
-            <th><?php _e('Color'); ?></th>
-            <th><?php _e('Ticket'); ?></th>
-            <th><?php _e('Action'); ?></th>
-        </tr>
-        <?php foreach ($list as $label) { ?>
-            <?php
-            if ($label['status'] == 1) {
-                $badgeIdClass = 'badge-success';
-            } else {
-                $badgeIdClass = 'badge-warning';
-            }
-            ?>
+        <table class="table table-striped table-bordered table-sm">
             <tr>
-                <td>
-                    <span class="badge <?php echo $badgeIdClass; ?>"><?php echo $this->escape($label['id']); ?></span>
-                </td>
-                <td><?php echo $this->escape($label['title']); ?></td>
-                <td><span style="margin: 2px 4px; padding: 3px 6px; background: <?php echo $this->escape($label['color']); ?>;"><?php echo $this->escape($label['color']); ?></span></td>
-                <td><?php echo $this->escape($label['ticket']); ?></td>
-                <td>
-                    <a class="btn btn-primary btn-sm" title="<?php _e('Edit'); ?>"
-                       href="<?php echo $this->url('', ['action' => 'update', 'id' => $label['id']]); ?>">
-                        <i class="fas fa-edit"></i> <?php _e('Edit'); ?>
-                    </a>
-                </td>
+                <th><?php _e('ID'); ?></th>
+                <th><?php _e('Title'); ?></th>
+                <th><?php _e('Color'); ?></th>
+                <th><?php _e('Ticket'); ?></th>
+                <th><?php _e('Action'); ?></th>
             </tr>
-        <?php } ?>
-    </table>
+            <?php foreach ($list as $label) { ?>
+                <?php
+                if ($label['status'] == 1) {
+                    $badgeIdClass = 'badge-success';
+                } else {
+                    $badgeIdClass = 'badge-warning';
+                }
+                ?>
+                <tr>
+                    <td>
+                        <span class="badge <?php echo $badgeIdClass; ?>"><?php echo $this->escape($label['id']); ?></span>
+                    </td>
+                    <td><?php echo $this->escape($label['title']); ?></td>
+                    <td><span style="margin: 2px 4px; padding: 3px 6px; background: <?php echo $this->escape($label['color']); ?>;"><?php echo $this->escape(
+                                $label['color']
+                            ); ?></span></td>
+                    <td><?php echo $this->escape($label['ticket']); ?></td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" title="<?php _e('Edit'); ?>"
+                           href="<?php echo $this->url('', ['action' => 'update', 'id' => $label['id']]); ?>">
+                            <i class="fas fa-edit"></i> <?php _e('Edit'); ?>
+                        </a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </table>
     <?php } else { ?>
         <div class="alert alert-danger">
             <?php _e('You dont have any label yet, please create some labels for better manage your tickets'); ?>

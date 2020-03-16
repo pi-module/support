@@ -95,10 +95,10 @@ class TicketController extends ActionController
             $ticket[$row->id]['ticketUrl'] = Pi::url(
                 $this->url(
                     '', [
-                    'controller' => 'ticket',
-                    'action'     => 'detail',
-                    'id'         => $row->id,
-                ]
+                        'controller' => 'ticket',
+                        'action'     => 'detail',
+                        'id'         => $row->id,
+                    ]
                 )
             );
         }
@@ -463,9 +463,9 @@ class TicketController extends ActionController
             $form->setAttribute(
                 'action', $this->url(
                 '', [
-                'action' => 'updateStatus',
-                'id'     => $ticket->id,
-            ]
+                    'action' => 'updateStatus',
+                    'id'     => $ticket->id,
+                ]
             )
             );
         }
