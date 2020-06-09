@@ -17,7 +17,7 @@ use Pi;
 use Pi\Mvc\Controller\ActionController;
 use Pi\Paginator\Paginator;
 use Pi\File\Transfer\Upload;
-use Zend\Db\Sql\Predicate\Expression;
+use Laminas\Db\Sql\Predicate\Expression;
 use Module\Support\Form\TicketForm;
 use Module\Support\Form\TicketFilter;
 use Module\Support\Form\StatusForm;

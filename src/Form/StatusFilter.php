@@ -14,7 +14,7 @@
 namespace Module\Support\Form;
 
 use Pi;
-use Zend\InputFilter\InputFilter;
+use Laminas\InputFilter\InputFilter;
 
 class StatusFilter extends InputFilter
 {
