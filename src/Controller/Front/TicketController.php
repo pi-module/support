@@ -105,6 +105,7 @@ class TicketController extends ActionController
         // Set option
         $option = [
             'attach' => $config['file_active'],
+            'label'  => ($mid == 0) ? $config['show_label'] : 0,
         ];
 
         // Set form
@@ -112,17 +113,22 @@ class TicketController extends ActionController
         $form->setAttribute('enctype', 'multipart/form-data');
         if ($this->request->isPost()) {
             $data = $this->request->getPost();
+
+            d($data);
+
             $file = $this->request->getFiles();
-            $form->setInputFilter(new TicketFilter);
+            $form->setInputFilter(new TicketFilter($option));
             $form->setData($data);
             if ($form->isValid()) {
                 $values = $form->getData();
 
                 // upload file
                 if (!empty($file['attach']['name']) && $config['file_active']) {
+
                     // Set upload path
                     $values['file_path'] = sprintf('%s/%s', date('Y'), date('m'));
                     $path                = Pi::path(sprintf('upload/support/%s', $values['file_path']));
+
                     // Upload
                     $uploader = new Upload;
                     $uploader->setDestination($path);
@@ -185,11 +191,13 @@ class TicketController extends ActionController
                 $url     = ['controller' => 'index', 'action' => 'index'];
                 $this->jump($url, $message);
             }
-        } elseif (isset($ticketMain) && !empty($ticketMain)) {
-            $values = [
-                'subject' => sprintf('Re : %s', $ticketMain['subject']),
-            ];
-            $form->setData($values);
+        } else {
+            if (isset($ticketMain) && !empty($ticketMain)) {
+                $values = [
+                    'subject' => sprintf('Re : %s', $ticketMain['subject']),
+                ];
+                $form->setData($values);
+            }
         }
 
         // Set view

@@ -47,6 +47,7 @@ return [
             'filter'      => 'number_int',
             'value'       => 0,
         ],
+
         // View
         'view_perpage'   => [
             'category'    => 'view',
@@ -64,9 +65,10 @@ return [
             'filter'      => 'number_int',
             'value'       => 1,
         ],
+
         // File
         'file_active'    => [
-            'category'    => 'view',
+            'category'    => 'file',
             'title'       => _a('Active attach file'),
             'description' => '',
             'edit'        => 'checkbox',
@@ -90,6 +92,7 @@ return [
             'value'       => 'jpg,jpeg,png,gif,avi,flv,mp3,mp4,pdf,docs,xdocs,zip,rar',
         ],
 
+        // General
         'create_msg' => [
             'category'    => 'general',
             'title'       => _a('Instructions to display above any new issue form'),
@@ -98,6 +101,14 @@ return [
             ),
             'edit'        => 'textarea',
             'filter'      => 'string',
+        ],
+        'show_label'    => [
+            'category'    => 'general',
+            'title'       => _a('Show label to user'),
+            'description' => '',
+            'edit'        => 'checkbox',
+            'filter'      => 'number_int',
+            'value'       => 0,
         ],
     ],
 ];
