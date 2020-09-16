@@ -50,13 +50,12 @@ class Ticket extends AbstractApi
         $where   = [
             'uid'    => $uid,
             'mid'    => 0,
-            'status' => [2, 4, 7, 8, 9, 10],
+            'status' => [1, 2, 3, 4, 7, 8, 9, 10],
         ];
         $columns = ['count' => new Expression('count(*)')];
 
         $select = Pi::model('ticket', $this->getModule())->select()->columns($columns)->where($where);
-        $count  = Pi::model('ticket', $this->getModule())->selectWith($select)->current()->count;
-        return $count;
+        return Pi::model('ticket', $this->getModule())->selectWith($select)->current()->count;
     }
 
     public function getCountAdmin()

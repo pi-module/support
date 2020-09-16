@@ -181,7 +181,7 @@ class TicketController extends ActionController
                 }
 
                 // Jump
-                $message = __('Your support ticket submit successfully, we will answer you very soon');
+                $message = __('Your ticket submitted successfully, we will answer you very soon');
                 $url     = ['controller' => 'index', 'action' => 'index'];
                 $this->jump($url, $message);
             }
