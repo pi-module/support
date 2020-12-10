@@ -48,6 +48,16 @@ class TicketFilter extends InputFilter
             ]
         );
 
+        // Label
+        if (isset($option['department']) && $option['department'] == 1) {
+            $this->add(
+                [
+                    'name'     => 'label',
+                    'required' => false,
+                ]
+            );
+        }
+
         // message
         $this->add(
             [

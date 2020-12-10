@@ -6,10 +6,14 @@
             <?php include $this->templateModule('front/user-profile-sidebar.phtml', 'user'); ?>
         </div>
         <div class="col-md-9">
-            <?php include $this->template('flash-messenger'); ?>
-            <div class="page-header">
+            <div class="page-header mb-3">
                 <h1><?php echo $this->escape($title); ?></h1>
             </div>
+
+            <?php if (isset($config['create_msg']) && !empty($config['create_msg'])) { ?>
+                <div class="alert alert-warning"><?php echo $config['create_msg']; ?></div>
+            <?php } ?>
+
             <?php if (isset($ticketMain) && !empty($ticketMain)) { ?>
                 <div class="clearfix">
                     <div class="alert alert-info" role="alert">
@@ -47,8 +51,9 @@
                         <?php if (!empty($ticketMain['file_path']) && !empty($ticketMain['file_name']) && $config['file_active']) { ?>
                             <div class="card-footer">
                                 <a target="_blank" href="<?php echo $this->escape($ticketMain['file_url_user']); ?>"
-                                   title="<?php echo $this->escape($ticketMain['file_title_view']); ?>"><i
-                                            class="fas fa-paperclip"></i> <?php echo $this->escape($ticketMain['file_title_view']); ?></a>
+                                   title="<?php echo $this->escape($ticketMain['file_title_view']); ?>">
+                                    <i class="fas fa-paperclip"></i> <?php echo $this->escape($ticketMain['file_title_view']); ?>
+                                </a>
                             </div>
                         <?php } ?>
                     </div>
@@ -72,9 +77,9 @@
                         <?php if (!empty($ticket['file_path']) && !empty($ticket['file_name']) && $config['file_active']) { ?>
                             <div class="card-footer">
                                 <a target="_blank" href="<?php echo $this->escape($ticket['file_url_user']); ?>"
-                                   title="<?php echo $this->escape($ticket['file_title_view']); ?>"><i class="fas fa-paperclip"></i> <?php echo $this->escape(
-                                        $ticket['file_title_view']
-                                    ); ?></a>
+                                   title="<?php echo $this->escape($ticket['file_title_view']); ?>">
+                                    <i class="fas fa-paperclip"></i> <?php echo $this->escape($ticket['file_title_view']); ?>
+                                </a>
                             </div>
                         <?php } ?>
                     </div>

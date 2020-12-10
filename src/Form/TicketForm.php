@@ -64,6 +64,22 @@ class TicketForm extends BaseForm
             ]
         );
 
+        // Label
+        if (isset($this->option['department']) && $this->option['department'] == 1) {
+            $this->add(
+                [
+                    'name'    => 'label',
+                    'type'    => 'Module\Support\Form\Element\Label',
+                    'options' => [
+                        'label'      => __('Department'),
+                    ],
+                    'attributes' => [
+                        'required' => true,
+                    ],
+                ]
+            );
+        }
+
         // Message
         $this->add(
             [

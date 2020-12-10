@@ -30,7 +30,6 @@ class Notification extends AbstractApi
         // Set info
         $information = [
             'subject' => $ticket['subject'],
-            'message' => $ticket['message'],
             'time'    => $ticket['time_create_view'],
             'url'     => $ticket['ticketUrl'],
             'message' => empty($message) ? $ticket['message'] : $message,
@@ -65,45 +64,54 @@ class Notification extends AbstractApi
                 $uids[$row->uid] = $row->uid;
             }
             $users = Pi::service('user')->mget($uids, ['uid', 'name', 'email', 'identity']);
+
             // Send email to admins
             foreach ($users as $user) {
+                if (isset($user['email']) && !empty($user['email']) && filter_var($user['email'], FILTER_VALIDATE_EMAIL)) {
+                    $toAdmin = [
+                        $user['email'] => $user['name'],
+                    ];
+                    // Send mail to admin
+                    Pi::service('notification')->send(
+                        $toAdmin,
+                        $templateAdmin,
+                        $information,
+                        Pi::service('module')->current(),
+                        $user['id']
+                    );
+                }
+            }
+        } else {
+            $adminMail = Pi::config('adminmail');
+            if (isset($adminMail) && !empty($adminMail) && filter_var($adminMail, FILTER_VALIDATE_EMAIL)) {
                 $toAdmin = [
-                    $user['email'] => $user['name'],
+                    Pi::config('adminmail') => Pi::config('adminname'),
                 ];
+
                 // Send mail to admin
                 Pi::service('notification')->send(
                     $toAdmin,
                     $templateAdmin,
                     $information,
-                    Pi::service('module')->current(),
-                    $user['id']
+                    Pi::service('module')->current()
                 );
             }
-        } else {
-            $toAdmin = [
-                Pi::config('adminmail') => Pi::config('adminname'),
-            ];
-            // Send mail to admin
-            Pi::service('notification')->send(
-                $toAdmin,
-                $templateAdmin,
-                $information,
-                Pi::service('module')->current()
-            );
         }
 
         // Set to user
-        $toUser = [
-            $ticket['user']['email'] => $ticket['user']['name'],
-        ];
+        if (isset($ticket['user']['email']) && !empty($ticket['user']['email']) && filter_var($ticket['user']['email'], FILTER_VALIDATE_EMAIL)) {
+            $toUser = [
+                $ticket['user']['email'] => $ticket['user']['name'],
+            ];
 
-        // Send mail to user
-        Pi::service('notification')->send(
-            $toUser,
-            $templateUser,
-            $information,
-            Pi::service('module')->current(),
-            $ticket['uid']
-        );
+            // Send mail to user
+            Pi::service('notification')->send(
+                $toUser,
+                $templateUser,
+                $information,
+                Pi::service('module')->current(),
+                $ticket['uid']
+            );
+        }
     }
 }

@@ -27,6 +27,7 @@ class StatusFilter extends InputFilter
                 'required' => true,
             ]
         );
+
         // status_financial
         $this->add(
             [
@@ -34,6 +35,7 @@ class StatusFilter extends InputFilter
                 'required' => true,
             ]
         );
+
         // Label
         $this->add(
             [
@@ -41,6 +43,7 @@ class StatusFilter extends InputFilter
                 'required' => false,
             ]
         );
+
         // time_suggested
         $this->add(
             [
@@ -53,6 +56,7 @@ class StatusFilter extends InputFilter
                 ],
             ]
         );
+
         // time_execution
         $this->add(
             [

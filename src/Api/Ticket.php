@@ -201,10 +201,13 @@ class Ticket extends AbstractApi
         }
         // Get config
         $config = Pi::service('registry')->config->read($this->getModule());
+
         // object to array
         $ticket = $ticket->toArray();
+
         // Set message
         $ticket['message'] = Pi::service('markup')->render($ticket['message'], 'html', 'text');
+
         // Set item url
         $ticket['ticketUrl'] = Pi::url(
             Pi::service('url')->assemble(
@@ -215,11 +218,13 @@ class Ticket extends AbstractApi
                 ]
             )
         );
+
         // Set time
         $ticket['time_create_view']    = _date($ticket['time_create']);
         $ticket['time_update_view']    = _date($ticket['time_update']);
         $ticket['time_suggested_view'] = ($ticket['time_suggested'] > 0) ? sprintf('%s %s', _number($ticket['time_suggested']), __('minute')) : '-';
         $ticket['time_execution_view'] = ($ticket['time_execution'] > 0) ? sprintf('%s %s', _number($ticket['time_execution']), __('minute')) : '-';
+
         // Set file
         if (!empty($ticket['file_path']) && !empty($ticket['file_name']) && $config['file_active']) {
             $ticket['file_title_view'] = sprintf('%s : %s', __('Attache file'), $ticket['file_title']);
@@ -244,11 +249,12 @@ class Ticket extends AbstractApi
                 )
             );
         }
+
         // Set extra information
         $status          = $this->status($ticket['status']);
-        $statusFinancial = $this->statusFinancial($ticket['status_financial']);
+        $financial = $this->statusFinancial($ticket['status_financial']);
         $label           = $this->label($ticket['label']);
-        $ticket          = array_merge($ticket, $status, $statusFinancial, $label);
+        $ticket          = array_merge($ticket, $status, $financial, $label);
 
         return $ticket;
     }

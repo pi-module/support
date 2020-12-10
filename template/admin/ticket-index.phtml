@@ -18,8 +18,8 @@ $this->backbone();
         <table class="table table-striped table-bordered table-sm">
             <tr>
                 <th class="text-center"><?php _e('ID'); ?></th>
+                <th class="text-center col-5"><?php _e('Title'); ?></th>
                 <th class="text-center"><?php _e('User'); ?></th>
-                <th class=""><?php _e('Title'); ?></th>
                 <th class="text-center"><?php _e('Status / Label / Financial'); ?></th>
                 <th class="text-center"><?php _e('Time update'); ?></th>
                 <th class="text-center"><?php _e('Suggested time'); ?></th>
@@ -31,6 +31,11 @@ $this->backbone();
                         data-status="<?php echo Pi::url($this->url('', ['action' => 'updateStatus', 'id' => $ticket['id']])); ?>"
                 >
                     <td class="text-center"><?php echo $this->escape($ticket['id']); ?></td>
+                    <td>
+                        <a href="<?php echo $this->escape($ticket['ticketUrl']); ?>">
+                            <?php echo $this->escape($ticket['subject']); ?>
+                        </a>
+                    </td>
                     <td class="text-center">
                         <a target="_blank" href="<?php echo Pi::url(
                             $this->url(
@@ -43,11 +48,6 @@ $this->backbone();
                             )
                         ); ?>">
                             <?php echo $this->escape($ticket['user']['name']); ?>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="<?php echo $this->escape($ticket['ticketUrl']); ?>">
-                            <?php echo $this->escape($ticket['subject']); ?>
                         </a>
                     </td>
                     <td class="text-center">

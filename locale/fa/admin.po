@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: support\n"
-"POT-Creation-Date: 2017-02-28 12:16+0330\n"
+"POT-Creation-Date: 2020-12-10 09:15+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _a;_t\n"
 "X-Poedit-Basepath: ../..\n"
@@ -21,22 +21,26 @@ msgid "Admin"
 msgstr "مدیریت"
 
 #: config/config.php:20
+msgid "General"
+msgstr "عمومی"
+
+#: config/config.php:24
 msgid "View"
 msgstr "نمایش"
 
-#: config/config.php:24
+#: config/config.php:28
 msgid "File"
 msgstr "فایل"
 
-#: config/config.php:32 config/config.php:49
+#: config/config.php:36 config/config.php:62
 msgid "Perpage"
 msgstr "تعداد در هر صفحه"
 
-#: config/config.php:40
+#: config/config.php:44
 msgid "Send notification to admin group"
 msgstr "ارسال آگاهی رسانی به تمام مدیران"
 
-#: config/config.php:41
+#: config/config.php:45
 msgid ""
 "If not checked send notification to website admin email and if checked send "
 "to all admin users"
@@ -44,21 +48,34 @@ msgstr ""
 "اگر این گزینه تنظیم نشود ایمیل آگاهی رسانی به ایمیل اصلی سایت ارسال می شود ، "
 "و اگر تنظیم شود به تمام مدیران سایت ارسال می شود"
 
-#: config/config.php:57
-msgid "Show timing"
-msgstr "نمایش زمان بندی"
+#: config/config.php:52
+msgid "Use label as department"
+msgstr "استفاده از برچسب به عنوان موضوع ( دپارتمان )"
 
-#: config/config.php:66
+#: config/config.php:72
 msgid "Active attach file"
-msgstr "پیوست فایل فعال باشد؟"
+msgstr "پیوست فایل فعال باشد"
 
-#: config/config.php:74
+#: config/config.php:80
 msgid "File Size"
 msgstr "حجم فایل"
 
-#: config/config.php:82
+#: config/config.php:88
 msgid "File Extension"
 msgstr "پسوند های مجاز"
+
+#: config/config.php:98
+msgid "Instructions to display above any new issue form"
+msgstr "دستورالعمل هایی برای نمایش در بالای هر فرم شماره جدید"
+
+#: config/config.php:100
+msgid ""
+"Display instructions above the form when a new ticket is created , like "
+"minimum information to give, clear use case, process to replay the issue, "
+"etc."
+msgstr ""
+"هنگام ایجاد بلیط جدید ، دستورالعمل ها را بالای فرم قرار دهید ، مانند حداقل "
+"اطلاعات برای دادن ، موارد استفاده روشن ، روند پخش مجدد موضوع و غیره"
 
 #: config/module.php:16
 msgid "Support"
@@ -72,22 +89,38 @@ msgstr "سیستم پشتیبانی تیکتی"
 msgid "Submit ticket"
 msgstr "ارسال درخواست پشتیبانی"
 
-#: config/navigation.php:24 config/page.php:17 config/page.php:40
-#: config/permission.php:17
+#: config/navigation.php:24 config/navigation.php:34 config/page.php:17
+#: config/page.php:40 config/permission.php:17
 msgid "Ticket"
 msgstr "درخواست پشتیبانی"
 
-#: config/navigation.php:34 config/page.php:22 config/permission.php:21
+#: config/navigation.php:44
+msgid "Open new ticket"
+msgstr "درخاست پشتیبانی جدید"
+
+#: config/navigation.php:54
+msgid "Ticket details"
+msgstr "جزئیات درخواست"
+
+#: config/navigation.php:67 config/page.php:22 config/permission.php:21
 msgid "User"
 msgstr "کاربر"
 
-#: config/navigation.php:44 config/page.php:27 config/permission.php:25
+#: config/navigation.php:77 config/navigation.php:87 config/page.php:27
+#: config/permission.php:25
 msgid "Label"
 msgstr "برچسب"
+
+#: config/navigation.php:97
+msgid "New label / Manage"
+msgstr "برچسب جدید / مدیریت برچسب"
 
 #: config/page.php:35
 msgid "Index page"
 msgstr "صفحه اصلی"
+
+#~ msgid "Show timing"
+#~ msgstr "نمایش زمان بندی"
 
 #~ msgid "Main support email"
 #~ msgstr "ایمیل پشتیبانی اصلی"

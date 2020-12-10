@@ -47,6 +47,15 @@ return [
             'filter'      => 'number_int',
             'value'       => 0,
         ],
+        'has_department'    => [
+            'category'    => 'view',
+            'title'       => _a('Use label as department'),
+            'description' => '',
+            'edit'        => 'checkbox',
+            'filter'      => 'number_int',
+            'value'       => 0,
+        ],
+
         // View
         'view_perpage'   => [
             'category'    => 'view',
@@ -56,14 +65,7 @@ return [
             'filter'      => 'number_int',
             'value'       => 50,
         ],
-        'view_timing'    => [
-            'category'    => 'view',
-            'title'       => _a('Show timing'),
-            'description' => '',
-            'edit'        => 'checkbox',
-            'filter'      => 'number_int',
-            'value'       => 1,
-        ],
+
         // File
         'file_active'    => [
             'category'    => 'view',
@@ -90,6 +92,7 @@ return [
             'value'       => 'jpg,jpeg,png,gif,avi,flv,mp3,mp4,pdf,docs,xdocs,zip,rar',
         ],
 
+        // general
         'create_msg' => [
             'category'    => 'general',
             'title'       => _a('Instructions to display above any new issue form'),

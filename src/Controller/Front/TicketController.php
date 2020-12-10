@@ -105,6 +105,7 @@ class TicketController extends ActionController
         // Set option
         $option = [
             'attach' => $config['file_active'],
+            'department' => $config['has_department'],
         ];
 
         // Set form
@@ -120,9 +121,11 @@ class TicketController extends ActionController
 
                 // upload file
                 if (!empty($file['attach']['name']) && $config['file_active']) {
+
                     // Set upload path
                     $values['file_path'] = sprintf('%s/%s', date('Y'), date('m'));
                     $path                = Pi::path(sprintf('upload/support/%s', $values['file_path']));
+
                     // Upload
                     $uploader = new Upload;
                     $uploader->setDestination($path);

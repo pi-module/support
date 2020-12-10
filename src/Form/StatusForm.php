@@ -55,6 +55,7 @@ class StatusForm extends BaseForm
                 ],
             ]
         );
+
         // status_financial
         $this->add(
             [
@@ -72,6 +73,7 @@ class StatusForm extends BaseForm
                 ],
             ]
         );
+
         // Label
         $this->add(
             [
@@ -83,6 +85,7 @@ class StatusForm extends BaseForm
                 ],
             ]
         );
+
         // time_suggested
         $this->add(
             [
@@ -96,6 +99,7 @@ class StatusForm extends BaseForm
                 ],
             ]
         );
+
         // time_execution
         $this->add(
             [
@@ -109,6 +113,7 @@ class StatusForm extends BaseForm
                 ],
             ]
         );
+
         // Save
         $this->add(
             [
