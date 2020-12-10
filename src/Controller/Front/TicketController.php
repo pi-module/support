@@ -106,6 +106,7 @@ class TicketController extends ActionController
         $option = [
             'attach' => $config['file_active'],
             'department' => $config['has_department'],
+            'is_new' => ($mid > 0) ? 0 : 1,
         ];
 
         // Set form
@@ -114,7 +115,7 @@ class TicketController extends ActionController
         if ($this->request->isPost()) {
             $data = $this->request->getPost();
             $file = $this->request->getFiles();
-            $form->setInputFilter(new TicketFilter);
+            $form->setInputFilter(new TicketFilter($option));
             $form->setData($data);
             if ($form->isValid()) {
                 $values = $form->getData();

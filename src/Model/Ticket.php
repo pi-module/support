@@ -35,7 +35,6 @@ class Ticket extends Model
             'ip',
             'mid',
             'label',
-
             'file_name',
             'file_path',
             'file_title',

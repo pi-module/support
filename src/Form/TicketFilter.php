@@ -36,24 +36,26 @@ class TicketFilter extends InputFilter
         }
 
         // subject
-        $this->add(
-            [
-                'name'     => 'subject',
-                'required' => true,
-                'filters'  => [
-                    [
-                        'name' => 'StringTrim',
+        if (isset($option['is_new']) && $option['is_new']) {
+            $this->add(
+                [
+                    'name'     => 'subject',
+                    'required' => true,
+                    'filters'  => [
+                        [
+                            'name' => 'StringTrim',
+                        ],
                     ],
-                ],
-            ]
-        );
+                ]
+            );
+        }
 
         // Label
-        if (isset($option['department']) && $option['department'] == 1) {
+        if (isset($option['is_new']) && $option['is_new'] && isset($option['department']) && $option['department'] == 1) {
             $this->add(
                 [
                     'name'     => 'label',
-                    'required' => false,
+                    'required' => true,
                 ]
             );
         }

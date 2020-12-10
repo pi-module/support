@@ -226,6 +226,7 @@ class TicketController extends ActionController
             'side'   => 'admin',
             'attach' => $config['file_active'],
             'department' => $config['has_department'],
+            'is_new' => 0,
         ];
         $form   = new TicketForm('ticket', $option);
         $form->setAttribute('enctype', 'multipart/form-data');
@@ -319,6 +320,7 @@ class TicketController extends ActionController
             'side'       => 'admin',
             'attach'     => $config['file_active'],
             'department' => $config['has_department'],
+            'is_new' => 1,
         ];
         $form   = new TicketForm('ticket', $option);
         $form->setAttribute('enctype', 'multipart/form-data');

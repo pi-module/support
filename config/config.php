@@ -68,7 +68,7 @@ return [
 
         // File
         'file_active'    => [
-            'category'    => 'view',
+            'category'    => 'file',
             'title'       => _a('Active attach file'),
             'description' => '',
             'edit'        => 'checkbox',

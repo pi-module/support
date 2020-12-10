@@ -51,21 +51,23 @@ class TicketForm extends BaseForm
         }
 
         // Subject
-        $this->add(
-            [
-                'name'       => 'subject',
-                'options'    => [
-                    'label' => __('Subject'),
-                ],
-                'attributes' => [
-                    'type'     => 'text',
-                    'required' => true,
-                ],
-            ]
-        );
+        if (isset($this->option['is_new']) && $this->option['is_new']) {
+            $this->add(
+                [
+                    'name'       => 'subject',
+                    'options'    => [
+                        'label' => __('Subject'),
+                    ],
+                    'attributes' => [
+                        'type'     => 'text',
+                        'required' => true,
+                    ],
+                ]
+            );
+        }
 
         // Label
-        if (isset($this->option['department']) && $this->option['department'] == 1) {
+        if (isset($this->option['is_new']) && $this->option['is_new'] && isset($this->option['department']) && $this->option['department'] == 1) {
             $this->add(
                 [
                     'name'    => 'label',
