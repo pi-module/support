@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: support\n"
-"POT-Creation-Date: 2020-12-10 09:11+0330\n"
+"POT-Creation-Date: 2020-12-13 12:59+0330\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -113,30 +113,30 @@ msgstr "تنظیم نشده"
 msgid "Please select ticket to see details"
 msgstr "لطفا یک درخواست پشتیبانی را برای مشاهده جززئیات انتخاب کنید"
 
-#: src/Controller/Admin/TicketController.php:291
-#: src/Controller/Admin/TicketController.php:403
+#: src/Controller/Admin/TicketController.php:292
+#: src/Controller/Admin/TicketController.php:405
 msgid "Your answer user support ticket successfully"
 msgstr "شما با موفقیت به درخواست پشتیبانی کاربر پاسخ داده اید"
 
-#: src/Controller/Admin/TicketController.php:343
+#: src/Controller/Admin/TicketController.php:345
 msgid "Admin open this ticket for you"
 msgstr "مدیر وب سایت این درخواست پشتیبانی را برای شما باز کرده است"
 
-#: src/Controller/Admin/TicketController.php:411
+#: src/Controller/Admin/TicketController.php:413
 #: src/Controller/Front/TicketController.php:100
 #: template/admin/ticket-index.phtml:11 template/admin/ticket-index.phtml:13
 msgid "Open new support ticket"
 msgstr "ارسال درخواست پشتیبانی جدید"
 
-#: src/Controller/Admin/TicketController.php:477
+#: src/Controller/Admin/TicketController.php:479
 msgid "Update status"
 msgstr "به روز رسانی وضعیت"
 
-#: src/Controller/Admin/TicketController.php:500
-#: src/Controller/Admin/TicketController.php:506
-#: src/Controller/Front/TicketController.php:235
-#: src/Controller/Front/TicketController.php:255
-#: src/Controller/Front/TicketController.php:261
+#: src/Controller/Admin/TicketController.php:502
+#: src/Controller/Admin/TicketController.php:508
+#: src/Controller/Front/TicketController.php:236
+#: src/Controller/Front/TicketController.php:256
+#: src/Controller/Front/TicketController.php:262
 msgid "The media not set."
 msgstr "میدا تنظیم نشده است."
 
@@ -172,7 +172,7 @@ msgstr ""
 msgid "You need set both of subject and message"
 msgstr "شما باید پیام و عنوان را تنظیم کنید"
 
-#: src/Controller/Front/TicketController.php:187
+#: src/Controller/Front/TicketController.php:188
 msgid "Your ticket submitted successfully, we will answer you very soon"
 msgstr ""
 "درخواست پشتیبانی شما با موفقیت ارسال شد ، به زودی به آن پاسخ خواهیم داد"
@@ -220,7 +220,7 @@ msgstr "خصوصی"
 msgid "Delete"
 msgstr "حذف"
 
-#: src/Form/LabelForm.php:91 src/Form/TicketForm.php:121
+#: src/Form/LabelForm.php:91 src/Form/TicketForm.php:123
 msgid "Submit"
 msgstr "ارسال"
 
@@ -241,7 +241,6 @@ msgid "User"
 msgstr "کاربر"
 
 #: src/Form/SearchForm.php:77 src/Form/StatusForm.php:83
-#: src/Form/TicketForm.php:74
 msgid "Label"
 msgstr "برچسب"
 
@@ -279,15 +278,19 @@ msgstr "به روز کردن"
 msgid "To user ID"
 msgstr "به کاربر ( شناسه کاربر )"
 
-#: src/Form/TicketForm.php:58
+#: src/Form/TicketForm.php:59
 msgid "Subject"
 msgstr "موضوع"
 
-#: src/Form/TicketForm.php:88
+#: src/Form/TicketForm.php:76 template/front/index-index.phtml:28
+msgid "Department"
+msgstr "موضوع"
+
+#: src/Form/TicketForm.php:90
 msgid "Message"
 msgstr "پیام"
 
-#: src/Form/TicketForm.php:105
+#: src/Form/TicketForm.php:107
 msgid "Attach file"
 msgstr "پیوست فایل"
 
@@ -303,7 +306,7 @@ msgstr "شناسه"
 msgid "Ticket"
 msgstr "درخواست پشتیبانی"
 
-#: template/admin/label-index.phtml:11
+#: template/admin/label-index.phtml:11 template/front/index-index.phtml:32
 msgid "Action"
 msgstr "عملکرد"
 
@@ -373,11 +376,11 @@ msgstr "درخواست پشتیبانی جدید"
 msgid "Ticket ID"
 msgstr "شناسه درخواست"
 
-#: template/front/index-index.phtml:28
-msgid "Department"
-msgstr "موضوع"
+#: template/front/index-index.phtml:53
+msgid "View"
+msgstr "مشاهده"
 
-#: template/front/index-index.phtml:55
+#: template/front/index-index.phtml:61
 msgid "You do not have any support tickets"
 msgstr "شما هنوز هیچ درخواست پشتیبانی ارسال نکرده اید"
 

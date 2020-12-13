@@ -29,6 +29,7 @@
                             <?php } ?>
                             <th class="text-center"><?php _e('Status'); ?></th>
                             <th class="text-center"><?php _e('Time update'); ?></th>
+                            <th class="text-center"><?php _e('Action'); ?></th>
                         </tr>
                         <?php foreach ($tickets as $ticket) { ?>
                             <tr>
@@ -47,6 +48,11 @@
                                     </div>
                                 </td>
                                 <td class="text-center"><?php echo $this->escape($ticket['time_update_view']); ?></td>
+                                <td class="text-center">
+                                    <a class="btn btn-success btn-sm" href="<?php echo $this->escape($ticket['ticketUrl']); ?>">
+                                        <?php _e('View'); ?>
+                                    </a>
+                                </td>
                             </tr>
                         <?php } ?>
                     </table>
