@@ -211,7 +211,8 @@ class Ticket extends AbstractApi
         // Set item url
         $ticket['ticketUrl'] = Pi::url(
             Pi::service('url')->assemble(
-                'support', [
+                'support',
+                [
                     'module'     => $this->getModule(),
                     'controller' => 'ticket',
                     'id'         => $ticket['id'],
@@ -230,7 +231,8 @@ class Ticket extends AbstractApi
             $ticket['file_title_view'] = sprintf('%s : %s', __('Attache file'), $ticket['file_title']);
             $ticket['file_url_admin']  = Pi::url(
                 Pi::service('url')->assemble(
-                    'admin', [
+                    'admin',
+                    [
                         'module'     => $this->getModule(),
                         'controller' => 'ticket',
                         'action'     => 'download',
@@ -240,7 +242,8 @@ class Ticket extends AbstractApi
             );
             $ticket['file_url_user']   = Pi::url(
                 Pi::service('url')->assemble(
-                    'support', [
+                    'support',
+                    [
                         'module'     => $this->getModule(),
                         'controller' => 'ticket',
                         'action'     => 'download',

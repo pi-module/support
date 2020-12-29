@@ -38,14 +38,16 @@ class TicketController extends ActionController
         $user['avatar']     = Pi::service('user')->avatar($user['id'], 'small', $user['name']);
         $user['profileUrl'] = Pi::url(
             Pi::service('user')->getUrl(
-                'profile', [
+                'profile',
+                [
                     'id' => $user['id'],
                 ]
             )
         );
         $user['accountUrl'] = Pi::url(
             Pi::service('user')->getUrl(
-                'user', ['controller' => 'account']
+                'user',
+                ['controller' => 'account']
             )
         );
 

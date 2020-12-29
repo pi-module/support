@@ -58,7 +58,8 @@ class Update extends BasicUpdate
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'Table alter query failed: '
                             . $exception->getMessage(),
@@ -89,7 +90,8 @@ EOD;
                 $sqlHandler->queryContent($sql);
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'SQL schema query for author table failed: '
                             . $exception->getMessage(),
@@ -165,7 +167,8 @@ EOD;
                 $sqlHandler->queryContent($sql);
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'SQL schema query for author table failed: '
                             . $exception->getMessage(),
@@ -180,7 +183,8 @@ EOD;
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'Table alter query failed: '
                             . $exception->getMessage(),
@@ -198,7 +202,8 @@ EOD;
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'Table alter query failed: '
                             . $exception->getMessage(),
@@ -212,7 +217,8 @@ EOD;
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'Table alter query failed: '
                             . $exception->getMessage(),
@@ -226,7 +232,8 @@ EOD;
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'Table alter query failed: '
                             . $exception->getMessage(),
@@ -244,7 +251,8 @@ EOD;
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'Table alter query failed: '
                             . $exception->getMessage(),
@@ -258,7 +266,8 @@ EOD;
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'Table alter query failed: '
                             . $exception->getMessage(),
@@ -272,7 +281,8 @@ EOD;
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'Table alter query failed: '
                             . $exception->getMessage(),
@@ -286,7 +296,8 @@ EOD;
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'Table alter query failed: '
                             . $exception->getMessage(),
@@ -305,7 +316,8 @@ EOD;
                 $ticketAdapter->query($sql, 'execute');
             } catch (\Exception $exception) {
                 $this->setResult(
-                    'db', [
+                    'db',
+                    [
                         'status'  => false,
                         'message' => 'Table alter query failed: '
                             . $exception->getMessage(),
