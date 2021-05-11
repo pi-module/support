@@ -38,14 +38,12 @@ class TicketController extends ActionController
         $check = Pi::api('token', 'tools')->check($token, true);
         if ($check['status'] == 1) {
 
-            // Get page
-            $page = $this->params('page', 1);
-
             // Set info
             $tickets = [];
             $where   = ['mid' => 0, 'uid' => $check['uid']];
             $order   = ['time_update DESC', 'id DESC'];
-            $limit   = intval($this->config('view_perpage'));
+            $page = $this->params('page', 1);
+            $limit = $this->params('limit', $this->config('view_perpage'));
             $offset  = (int)($page - 1) * $limit;
 
             // Get info
