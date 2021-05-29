@@ -206,7 +206,7 @@ class TicketController extends ActionController
         if ($check['status'] == 1) {
 
             // Get ticket id
-            $ticketId = $this->params('ticket_id');
+            $ticketId = $this->params('ticket_id', 0);
             $subject  = $this->params('subject');
             $message  = $this->params('message');
 
@@ -218,14 +218,14 @@ class TicketController extends ActionController
                 $ticketMain = [];
 
                 // Check
-                if ($ticketId && intval($ticketId) > 0) {
+                if (intval($ticketId) > 0) {
 
                     // Get main ticket
-                    $ticketMain = Pi::api('ticket', 'support')->getTicket($ticketId);
+                    $ticketMain = Pi::api('ticket', 'support')->getTicket(intval($ticketId));
 
                     // Check user
                     if ($ticketMain['uid'] == $check['uid']) {
-                        $mid    = $ticketId;
+                        $mid    = intval($ticketId);
                         $status = 0;
                     }
                 }
@@ -248,7 +248,7 @@ class TicketController extends ActionController
                 $row->save();
 
                 // Update main ticket status
-                if (isset($ticketMain['id']) && $ticketMain['id'] > 0) {
+                if (isset($ticketMain['id']) && intval($ticketMain['id']) > 0) {
                     Pi::model('ticket', $this->getModule())->update(
                         [
                             'status'      => 3,
