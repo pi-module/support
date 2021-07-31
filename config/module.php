@@ -15,7 +15,7 @@ return [
     'meta'     => [
         'title'       => _a('Support'),
         'description' => _a('Support ticket system'),
-        'version'     => '1.0.4',
+        'version'     => '1.0.5',
         'license'     => 'New BSD',
         'logo'        => 'image/logo.png',
         'readme'      => 'docs/readme.txt',

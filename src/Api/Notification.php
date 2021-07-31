@@ -81,22 +81,23 @@ class Notification extends AbstractApi
                     );
                 }
             }
-        } else {
-            $adminMail = Pi::config('adminmail');
-            if (isset($adminMail) && !empty($adminMail) && filter_var($adminMail, FILTER_VALIDATE_EMAIL)) {
-                $toAdmin = [
-                    Pi::config('adminmail') => Pi::config('adminname'),
-                ];
-
-                // Send mail to admin
-                Pi::service('notification')->send(
-                    $toAdmin,
-                    $templateAdmin,
-                    $information,
-                    Pi::service('module')->current()
-                );
-            }
         }
+
+        // Set admin mail
+        $adminMail = Pi::config('adminmail');
+        if (isset($config['admin_email']) && !empty($config['admin_email']) && filter_var($config['admin_email'], FILTER_VALIDATE_EMAIL)) {
+            $adminMail = $config['admin_email'];
+        }
+
+        // Send mail to admin
+        Pi::service('notification')->send(
+            [
+                $adminMail => Pi::config('adminname'),
+            ],
+            $templateAdmin,
+            $information,
+            Pi::service('module')->current()
+        );
 
         // Set to user
         if (isset($ticket['user']['email']) && !empty($ticket['user']['email']) && filter_var($ticket['user']['email'], FILTER_VALIDATE_EMAIL)) {

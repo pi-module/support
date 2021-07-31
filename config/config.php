@@ -47,6 +47,14 @@ return [
             'filter'      => 'number_int',
             'value'       => 0,
         ],
+        'admin_email' => [
+            'category'    => 'admin',
+            'title'       => _a('Replace admin email'),
+            'description' => _a('Put an email address, all emails will be sent to this email instead of the site admin email '),
+            'edit'        => 'text',
+            'filter'      => 'string',
+            'value'       => '',
+        ],
         'has_department'    => [
             'category'    => 'admin',
             'title'       => _a('Use label as department'),
