@@ -1,11 +1,13 @@
 <?php $this->css($this->assetModule('css/front.css')); ?>
 <div class="clearfix">
     <div class="row user-section-wrapper">
-        <div class="col-md-3">
-            <?php $sideActive = 'support'; ?>
-            <?php include $this->templateModule('front/user-profile-sidebar.phtml', 'user'); ?>
-        </div>
-        <div class="col-md-9">
+        <?php if ($config['show_userbar']) { ?>
+            <div class="col-md-3">
+                <?php $sideActive = 'support'; ?>
+                <?php include $this->templateModule('front/user-profile-sidebar.phtml', 'user'); ?>
+            </div>
+        <?php } ?>
+        <div class="<?php if ($config['show_userbar']) { ?>col-md-9<?php } else { ?>col-md-12<?php } ?>">
 
             <div class="clearfix">
                 <div class="clearfix row mb-3">
@@ -20,7 +22,8 @@
                 </div>
 
                 <?php if (!empty($tickets)) { ?>
-                    <table class="table table-striped table-bordered table-sm">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover table-responsive-md table-sm mt-3">
                         <tr>
                             <th class="text-center"><?php _e('Ticket ID'); ?></th>
                             <th class="text-center"><?php _e('Title'); ?></th>
@@ -56,6 +59,7 @@
                             </tr>
                         <?php } ?>
                     </table>
+                </div>
                 <?php } else { ?>
                     <div class="alert alert-danger" role="alert">
                         <?php _e('You do not have any support tickets') ?>

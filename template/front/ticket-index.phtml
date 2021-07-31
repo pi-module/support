@@ -1,13 +1,15 @@
 <?php $this->css($this->assetModule('css/front.css')); ?>
 <div class="clearfix">
     <div class="row user-section-wrapper">
-        <div class="col-md-3">
-            <?php $sideActive = 'support'; ?>
-            <?php include $this->templateModule('front/user-profile-sidebar.phtml', 'user'); ?>
-        </div>
-        <div class="col-md-9">
+        <?php if ($config['show_userbar']) { ?>
+            <div class="col-md-3">
+                <?php $sideActive = 'support'; ?>
+                <?php include $this->templateModule('front/user-profile-sidebar.phtml', 'user'); ?>
+            </div>
+        <?php } ?>
+        <div class="<?php if ($config['show_userbar']) { ?>col-md-9<?php } else { ?>col-md-12<?php } ?>">
             <div class="page-header mb-3">
-                <h1><?php echo $this->escape($title); ?></h1>
+                <h1><?php _e('Subject'); ?> : <small><?php echo $this->escape($title); ?></small></h1>
             </div>
 
             <?php if (isset($config['create_msg']) && !empty($config['create_msg'])) { ?>

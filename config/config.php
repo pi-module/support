@@ -40,7 +40,7 @@ return [
             'value'       => 50,
         ],
         'admin_group'    => [
-            'category'    => 'view',
+            'category'    => 'admin',
             'title'       => _a('Send notification to admin group'),
             'description' => _a('If not checked send notification to website admin email and if checked send to all admin users'),
             'edit'        => 'checkbox',
@@ -48,7 +48,7 @@ return [
             'value'       => 0,
         ],
         'has_department'    => [
-            'category'    => 'view',
+            'category'    => 'admin',
             'title'       => _a('Use label as department'),
             'description' => '',
             'edit'        => 'checkbox',
@@ -64,6 +64,14 @@ return [
             'edit'        => 'text',
             'filter'      => 'number_int',
             'value'       => 50,
+        ],
+        'show_userbar'   => [
+            'category'    => 'view',
+            'title'       => _a('Show userbar in side'),
+            'description' => '',
+            'edit'        => 'checkbox',
+            'filter'      => 'number_int',
+            'value'       => 1,
         ],
 
         // File
