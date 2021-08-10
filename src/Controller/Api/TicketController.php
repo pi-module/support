@@ -281,7 +281,7 @@ class TicketController extends ActionController
                 $result = [
                     'result' => true,
                     'data'   => [
-                        'message' => __('Your support ticket submit successfully, we will answer you very soon'),
+                        'message' => __('The support ticket has been submitted successfully, we will reply your ticket soon!'),
                     ],
                     'error'  => [
                         'code'    => 0,
