@@ -88,7 +88,7 @@
                 <?php } ?>
             <?php } ?>
             <?php if (isset($ticketMain['status']) && $ticketMain['status'] == 5) { ?>
-                <div class="card bg-light">
+                <div class="card">
                     <div class="card-body">
                         <div class="card-text">
                             <?php _e('This ticket finished, for more suppoert please open new ticket'); ?>
@@ -96,7 +96,7 @@
                     </div>
                 </div>
             <?php } elseif (isset($ticketMain['status']) && $ticketMain['status'] == 6) { ?>
-                <div class="card bg-light">
+                <div class="card">
                     <div class="card-body">
                         <div class="card-text">
                             <?php _e(
@@ -106,7 +106,7 @@
                     </div>
                 </div>
             <?php } else { ?>
-                <div class="card bg-light">
+                <div class="card">
                     <div class="card-body">
                         <div class="card-text">
                             <?php echo $this->form($form, 'vertical'); ?>
