@@ -9,7 +9,7 @@
 	<h3 style="font-size: 1.1em;">Dear %site_name% admin</h3>
 	<div style="padding: 3px; margin: 2px;">New ticket by <strong>%subject%</strong> subject opened on %site_name%, please go to admin side and check it</div>
 	<div style="margin-top: 10px; margin-bottom: 10px; padding: 10px 5px; background-color: #ddd;">%message%</div>
-	<div style="padding: 3px; margin: 2px;">Dont reply to this email</div>
+	<div style="padding: 3px; margin: 2px;">Please do not reply to this email</div>
 	<div style="margin-top: 10px">
         <a href="%site_url%" title="%site_name%">%site_name%</a>
     </div>
